@@ -1,0 +1,80 @@
+/*Backgrounds and colors*/
+/*Font setting*/
+/*Basic set up*/
+* {
+  font-family: "Ubuntu", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+body {
+  background-color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  font-family: "Ubuntu", sans-serif;
+  padding: 0.5em;
+  background-color: transparent;
+  border: 2px solid black;
+  outline-width: 5px;
+  outline: none;
+}
+input[type=submit] {
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  height: 4em;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.menu {
+  display: flex;
+  gap: 0.5em;
+}
+
+.menu__item {
+  font-size: 1.5em;
+}
+.menu__item a {
+  font-weight: bold;
+  color: white;
+  position: relative;
+}
+.menu__item a::before {
+  content: "";
+  position: absolute;
+  bottom: -0.15em;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s;
+}
+.menu__item a:hover::before {
+  color: #e6e6e6;
+  transform: scaleX(1);
+}
+
+/*content*//*# sourceMappingURL=styles.css.map */

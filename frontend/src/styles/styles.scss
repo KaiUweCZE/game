@@ -1,0 +1,50 @@
+@import "./addons/variables", "./addons/mixins";
+
+@include start-setting;
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: $bgc-primary;
+    color: white;
+    height: 4em;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.menu{
+    display: flex;
+    gap: 0.5em;
+}
+
+.menu__item{
+    font-size: 1.5em;
+    a{
+        font-weight: bold;
+        color: $color-primary;
+        position: relative;
+        &::before{
+            content: '';
+            position: absolute;
+            bottom: -0.15em;
+            left: 0;
+            height: 2px;
+            width: 100%;
+            background-color: white;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: .5s;
+        }    
+        &:hover::before{
+            color: darken(white, 10);
+            transform: scaleX(1);
+        }
+    }
+}
+
+/*content*/

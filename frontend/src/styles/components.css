@@ -1,0 +1,80 @@
+/*Backgrounds and colors*/
+/*Font setting*/
+.form__login {
+  display: grid;
+  grid-template-areas: "user . " "password submit";
+  position: relative;
+  margin: 1em;
+  padding: 0.5em;
+  max-width: 17.5em;
+  row-gap: 0.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
+}
+.form__login input {
+  border: none;
+  border-bottom: 3px solid black;
+  transition: 0.5s;
+  font-size: 1em;
+}
+.form__login input[type=submit] {
+  height: -moz-fit-content;
+  height: fit-content;
+  align-self: flex-end;
+  font-weight: bold;
+  font-size: 1em;
+  border: none;
+  background-color: transparent;
+}
+
+.login {
+  display: flex;
+  position: relative;
+  background-color: transparent;
+  width: 110%;
+  overflow: hidden;
+}
+.login input:hover {
+  color: white;
+}
+
+div.login {
+  display: flex;
+  height: -moz-fit-content;
+  height: fit-content;
+  align-self: flex-end;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: 0.5em;
+  border: 2px solid black;
+}
+
+.login::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(20, 20, 20);
+  height: 100%;
+  width: 0%;
+  z-index: -1;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.login:hover::before {
+  width: 100%;
+}
+
+/*buttons*/
+.button__link {
+  display: flex;
+  font-weight: bold;
+  width: -moz-fit-content;
+  width: fit-content;
+  color: black;
+  transition: 0.5s;
+}
+.button__link:hover {
+  letter-spacing: 1px;
+}/*# sourceMappingURL=components.css.map */

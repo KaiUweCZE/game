@@ -1,0 +1,30 @@
+/*Basic set up*/
+
+@mixin start-setting {
+    *{
+        font-family: 'Ubuntu', sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: 0;
+    }
+    body{
+        background-color: $bgc-secondary;
+    }
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    input{
+        font-family: 'Ubuntu', sans-serif;
+        padding: 0.5em;
+        background-color: transparent;
+        border: 2px solid black;
+        outline-width: 5px;
+        outline: none;
+        &[type=submit]{
+            cursor: pointer;
+        }
+    }
+}
