@@ -48,3 +48,10 @@ header{
 }
 
 /*content*/
+
+.container__base {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    row-gap: 1em;
+}

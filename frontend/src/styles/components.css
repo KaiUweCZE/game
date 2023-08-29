@@ -4,7 +4,6 @@
   display: grid;
   grid-template-areas: "user . " "password submit";
   position: relative;
-  margin: 1em;
   padding: 0.5em;
   max-width: 17.5em;
   row-gap: 0.5em;
@@ -77,4 +76,18 @@ div.login {
 }
 .button__link:hover {
   letter-spacing: 1px;
+}
+
+.Error-Message {
+  display: flex;
+  flex-wrap: wrap;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 20em;
+  font-size: 1.125em;
+  font-weight: bold;
+  background-color: rgb(253, 77, 77);
+  color: white;
+  padding: 0.25em;
+  box-shadow: 0 0 4px rgb(80, 80, 80);
 }/*# sourceMappingURL=components.css.map */

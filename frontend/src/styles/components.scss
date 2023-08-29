@@ -7,7 +7,6 @@
     "user . "
     "password submit";
     position: relative;
-    margin: 1em;
     padding: 0.5em;
     max-width: 17.5em;
     row-gap: 0.5em;
@@ -83,3 +82,15 @@ div.login{
     }
 }
 
+.Error-Message{
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    max-width: 20em;
+    font-size: $size-important*0.75;
+    font-weight: bold;
+    background-color: $color-error;
+    color: white;
+    padding: 0.25em;
+    box-shadow: 0 0 4px rgb(80,80,80);
+}
