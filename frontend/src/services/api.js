@@ -10,6 +10,9 @@ class UserApi{
     loginUser(data){
         return axios.post(`${URL}login`, data)
     }
+    logoutUser(){
+        return axios.get(`${URL}logout`)
+    }
 }
 
 export default new UserApi()
