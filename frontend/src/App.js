@@ -5,7 +5,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import SharedLayouts from './pages/SharedLayouts';
 import PrivateRoute from './components/PrivateRoute';
-import Secrets from './pages/Secrets';
+import Profile from './pages/Profile'
 
 const App = () => {
     return(
@@ -16,7 +16,7 @@ const App = () => {
                     <Route path='/Login' element={<Login />}/>
                     <Route path= '/Register' element={<Register />}/>
                     <Route element={<PrivateRoute/>}>
-                        <Route path='/secrets' element={<Secrets />}/>
+                        <Route path='/profile' element={<Profile />}/>
                     </Route>
                 </Route>
                 

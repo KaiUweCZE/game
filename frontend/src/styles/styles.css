@@ -33,6 +33,10 @@ input[type=submit] {
   cursor: pointer;
 }
 
+fieldset {
+  border: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -84,4 +88,123 @@ header {
   flex-direction: column;
   margin: 1em;
   row-gap: 1em;
+}
+
+.container__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__profile .animation-professor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20em;
+  position: relative;
+  overflow: hidden;
+}
+.container__profile .animation-professor:hover article {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+.container__profile .animation-professor:hover .img-wrapper::before {
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: translateY(0);
+}
+.container__profile .animation-professor article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 5.5em;
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  transform: translateY(0);
+  transition: transform 0.5s, opacity 0.8s;
+  transition-delay: 0;
+  padding: 0.5em;
+  color: white;
+  z-index: 2;
+}
+.container__profile .animation-professor .img-wrapper {
+  opacity: 0;
+  animation: intro 0.5s ease-in forwards;
+  position: relative;
+  /*
+  &:hover::before{
+      background-color: rgba(0,0,0,0.6);
+      transform: translateY(0);
+  }*/
+}
+.container__profile .animation-professor .img-wrapper img {
+  width: 100%;
+}
+.container__profile .animation-professor .img-wrapper::before {
+  content: "";
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  height: 5.5em;
+  width: 100%;
+  transform: translateY(6em);
+  transition: 0.5s;
+}
+
+.box__painter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  place-items: center;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+}
+.box__painter img {
+  width: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.box__painter img:hover {
+  transform: scale(1.1);
+}
+.box__painter fieldset {
+  overflow: hidden;
+  height: 20em;
+}
+.box__painter fieldset:hover p {
+  opacity: 1;
+}
+.box__painter fieldset p {
+  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  transition: 0.5s;
+  transform: translateY(-3.5em);
+}
+
+@keyframes intro {
+  to {
+    opacity: 1;
+  }
+}
+h2.margin {
+  margin-bottom: 1em;
+}
+
+.fade-in {
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=styles.css.map */

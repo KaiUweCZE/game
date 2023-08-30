@@ -26,7 +26,7 @@ const Login = () => {
             const response = await UserApi.loginUser(user);
             console.log("User logged in", response.data);
             dispatch(signInSuccess(response.data));
-            navigate("/")
+            navigate("/profile")
         } catch (error) {
             console.log("error due logging", error);
             dispatch(signInFailure(error))

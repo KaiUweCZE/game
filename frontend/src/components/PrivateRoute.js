@@ -6,7 +6,7 @@ const PrivateRoute = () => {
     const {currentUser} = useSelector((state) => state.user)
     return(
         <>
-            {currentUser ? <h2>HOUHOU</h2> : <Navigate to="/register"/>}
+            {currentUser ? <Outlet /> : <Navigate to="/register"/>}
         </>
     )
 }
