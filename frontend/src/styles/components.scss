@@ -72,14 +72,10 @@ div.login{
 
 /*buttons*/
 .button__link{
-    display: flex;
-    font-weight: bold;
+    display: flex;  
     width: fit-content;
     color: $color-secondary;
-    transition: 0.5s;
-    &:hover{
-        letter-spacing: 1px;
-    }
+    font-weight: bold;
 }
 
 .Error-Message{
@@ -94,3 +90,66 @@ div.login{
     padding: 0.25em;
     box-shadow: 0 0 4px rgb(80,80,80);
 }
+
+/*images painter*/
+.box__painter{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+    place-items: center;
+    column-gap: 1em;
+    animation: intro 0.5s ease-in forwards;
+    opacity: 0;
+    margin-bottom: 2em;
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img{
+        width: 100%;
+        cursor: pointer;
+        transition: .5s;
+        filter: brightness(0.4);
+        &:hover{
+            transform: scale(1.05);
+            filter: brightness(1);
+        }
+    }
+    figure{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        &:hover article{          
+            opacity: 1;
+        }
+        article{
+            padding: 0.5em;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            opacity: 0;
+            transition: 0.5s;
+            transform: translateY(-3.5em);
+            &:empty{
+                background-color: red;
+            }
+        }
+    }
+}
+
+/*animation*/
+.animation-translate{
+    transform: translateX(-55vw);
+    opacity: 0;
+    animation: translate .5s ease 0.25s forwards;
+}
+
+@keyframes translate {
+    100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+}
+
+
+/*loading*/

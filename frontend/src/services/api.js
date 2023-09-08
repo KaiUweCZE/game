@@ -13,6 +13,21 @@ class UserApi{
     logoutUser(){
         return axios.get(`${URL}logout`)
     }
+    profileImage(data){
+        return axios.post(`${URL}imageProfile`, data)
+    }
+    obtainPokemon(data){
+        return axios.post(`${URL}addPokemon`, data)
+    }
+    checkCampaign(data){
+        return axios.get(`${URL}checkCampaign`, { params: data })
+    }
+    nextCampaign(data){
+        return axios.post(`${URL}nextCampaign`, data)
+    }
+    getYourPokemons(data){
+        return axios.get(`${URL}myPokemons`, {params: data})
+    }
 }
 
 export default new UserApi()

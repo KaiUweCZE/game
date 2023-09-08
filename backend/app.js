@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose, { Schema } from 'mongoose';
 import dotenv from 'dotenv';
-import User from './models/user.model.js';
+import {User} from './models/user.model.js';
 import userRoutes from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js';
 import cors from 'cors'

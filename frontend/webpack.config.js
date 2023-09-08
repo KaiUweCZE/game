@@ -32,6 +32,10 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /\.svg$/, // nové pravidlo pro SVG
+                use: ['file-loader'],
+            },
         ],
     },
     plugins: [

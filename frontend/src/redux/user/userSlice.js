@@ -4,6 +4,7 @@ const initialState = {
   currentUser: null,
   loading: false,
   error: false,
+  hasMadeFirstChoice: false,
 };
 
 const userSlice = createSlice({
@@ -26,10 +27,21 @@ const userSlice = createSlice({
             state.currentUser = null;
             state.loading = false;
             state.error = false;
+        },
+        addPokemon: (state, action) =>{
+            if (state.currentUser) {
+                if (!state.currentUser.pokemons){
+                    state.currentUser.pokemons = [];
+                }
+                state.currentUser.pokemons.push(action.payload)
+            }
+        },
+        firstChoice: (state) => {
+            state.hasMadeFirstChoice = true;           
         }
     }
 });
 
-export const { signInStart, signInSuccess, signInFailure, signOut } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, signOut, addPokemon, firstChoice } = userSlice.actions;
 
 export default userSlice.reducer;

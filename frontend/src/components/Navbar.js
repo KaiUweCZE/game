@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import useLogOut from "./Functions";
+import { useLogOut } from "./Functions";
 
 const Navbar = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -9,7 +9,7 @@ const Navbar = () => {
     return(
         <header>
             <div className="logo">
-                <span>PokeLogo</span>
+                <span>Goloa</span>
             </div>
             <nav className="navigation">
                 <ul className="menu">
@@ -17,7 +17,8 @@ const Navbar = () => {
                     {
                     currentUser ? 
                     <>
-                        <li className="menu__item" onClick={logOut}><a>Logout</a></li>
+                        <li className="menu__item"><NavLink to="/profile">Profile</NavLink></li>
+                        <li className="menu__item" onClick={logOut}><a>Logout</a></li> 
                     </>
                     :
                     <>
@@ -27,9 +28,7 @@ const Navbar = () => {
                     }
                 </ul>
             </nav>
-            <div className="box__icons">
-                <span>icons</span>
-            </div>
+            
         </header>
     )
 }

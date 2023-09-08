@@ -1,19 +1,25 @@
 import React from "react";
 
 
-const ImagePainter = ({ pokemons }) => {
+const ImagePainter = ({ characters, fun }) => {
 
     return(
         <div className="box__painter">
             {
-                pokemons.map((pokemon,index) => {
-                    const {image, content} = pokemon
+                characters.map((character,index) => {
+                    
                     return(
-                        <fieldset key={index} >
-                            <img src={image} alt="" />
-                            <p>{content}</p>
-                        </fieldset>
-                        
+                        <div key={index}>
+                        <figure  onClick={(e) => fun(e, character.name, character.image)}>
+                            <img src={character.image} alt="" />
+                            { character.content && (
+                                <article>
+                                    <h2>{character.name}</h2>
+                                    <p>{character.content}</p>
+                                </article>
+                            )}
+                        </figure>
+                         </div>
                     )
                     
                 })

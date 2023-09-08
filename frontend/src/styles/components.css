@@ -68,14 +68,10 @@ div.login {
 /*buttons*/
 .button__link {
   display: flex;
-  font-weight: bold;
   width: -moz-fit-content;
   width: fit-content;
   color: black;
-  transition: 0.5s;
-}
-.button__link:hover {
-  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .Error-Message {
@@ -90,4 +86,66 @@ div.login {
   color: white;
   padding: 0.25em;
   box-shadow: 0 0 4px rgb(80, 80, 80);
-}/*# sourceMappingURL=components.css.map */
+}
+
+/*images painter*/
+.box__painter {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  place-items: center;
+  -moz-column-gap: 1em;
+       column-gap: 1em;
+  animation: intro 0.5s ease-in forwards;
+  opacity: 0;
+  margin-bottom: 2em;
+}
+.box__painter div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box__painter img {
+  width: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+  filter: brightness(0.4);
+}
+.box__painter img:hover {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+.box__painter figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+.box__painter figure:hover article {
+  opacity: 1;
+}
+.box__painter figure article {
+  padding: 0.5em;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  opacity: 0;
+  transition: 0.5s;
+  transform: translateY(-3.5em);
+}
+.box__painter figure article:empty {
+  background-color: red;
+}
+
+/*animation*/
+.animation-translate {
+  transform: translateX(-55vw);
+  opacity: 0;
+  animation: translate 0.5s ease 0.25s forwards;
+}
+
+@keyframes translate {
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/*loading*//*# sourceMappingURL=components.css.map */
