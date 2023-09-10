@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import { useMyPokemon } from "../components/Functions";
+import { useMySix } from "../components/Functions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { pokemonsData } from "../data/pokemons";
@@ -8,7 +8,7 @@ import { pokemonsData } from "../data/pokemons";
 const Battleground = () => {
     const location = useLocation()
     const from = location.state.from || "Nope"
-    const {pokemons, loading} = useMyPokemon()
+    const {pokemons, loading} = useMySix()
     const [activePokemon, setActivePokemon] = useState({})
     const [activeEnemy, setActiveEnemy] = useState({})
 
@@ -55,13 +55,16 @@ const Battleground = () => {
                     <div>
                         <img src={activePokemon.img} alt="" />
                     </div>
+                    <div className="box-battle">
+                        <h2>Your Pokemons</h2>
                     {
                         pokemons.map((pokemon, index) => {
                             return(
-                                <h2 key={index} onClick={() => chooseYou(pokemon.name)}>{pokemon.name}</h2>
+                                <span key={index} onClick={() => chooseYou(pokemon.name)}>{pokemon.name}</span>
                             )
                         })
                     }
+                    </div>
                 </div>
             }
                 <div className="container__battle--middle">

@@ -34,6 +34,12 @@ class UserApi{
     addToSix(data){
         return axios.post(`${URL}addToSix`, data)
     }
+    getSix(data){
+        return axios.get(`${URL}mySix`, { params: data })
+    }
+    removeFromSix(data){
+        return axios.delete(`${URL}removeFromSix`, data)
+    }
 }
 
 export default new UserApi()

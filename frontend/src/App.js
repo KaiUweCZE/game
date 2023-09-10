@@ -11,6 +11,7 @@ import Crossroad from './pages/countries/Crossroad';
 import MagicalForest from './pages/countries/MagicalForest';
 import Cave from './pages/countries/Cave';
 import Battleground from './pages/Battleground';
+import MyBox from './pages/UserPages/MyBox';
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
                         <Route path='/magicalforest' element={<MagicalForest/>}/>
                         <Route path='/cave' element={<Cave />}/>
                         <Route path='/battle' element={<Battleground />} />
+                        <Route path='/mybox' element={<MyBox/>} />
                     </Route>
                 </Route>
                 

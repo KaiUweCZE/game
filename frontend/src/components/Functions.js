@@ -40,6 +40,28 @@ export const useMyPokemon = () => {
     return {pokemons, loading}
 }
 
+export const useMySix = () => {
+    const [pokemons, setPokemons] = useState([])
+    const [loading, setLoading] = useState(true);
+    const {currentUser} = useSelector((state)=> state.user)
+
+    const getMySix = () => {
+        UserApi.getSix({username: currentUser.username})
+        .then( (res) => {
+            setPokemons(res.data.mySix)
+            setLoading(false);
+        })
+        .catch((err) => console.error(err))
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        getMySix()     
+    }, []);
+
+    return {pokemons, loading}
+}
+
 export const useToBattle = (name) => {
     const navigate = useNavigate()
 

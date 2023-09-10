@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserApi from '../services/api'
 import { pokemonsData } from "../data/pokemons";
@@ -33,17 +34,17 @@ const Profile = () => {
     }, []);
     
 
-    const getPokemons = () => {
-        UserApi.getYourPokemons({username: currentUser.username})
-        .then((res) => {
-            setPokemons(res.data.pokemon)
+    const getMySix = () => {
+        UserApi.getSix({username: currentUser.username})
+        .then( (res) => {
+            setPokemons(res.data.mySix)
             console.log(res.data);
         })
-        .catch((err) => console.error(err));
+        .catch((err) => console.error(err))
     }
 
     useEffect(() => {
-        getPokemons()     
+        getMySix()     
     }, []);
 
     const showComponent = () =>{
@@ -118,6 +119,7 @@ const Profile = () => {
             <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>
                 <h2>Pokemons:</h2>
                 <button onClick={otherclass}>{buttonShow}</button>
+                <button><Link to="/mybox">do boxu!</Link></button>
                 <div>     
                 {       
                     pokemons.map((pokemon, index) => {
