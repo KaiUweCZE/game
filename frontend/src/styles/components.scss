@@ -1,4 +1,4 @@
-@import './addons/variables';
+@import './addons/variables', './addons/mixins';
 
 
 .form__login{
@@ -153,3 +153,93 @@ div.login{
 
 
 /*loading*/
+.loader{
+    display: flex;
+    flex-direction: column;
+    width: 80;
+    justify-content: center;
+    align-items: center;
+    .loader-background{
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background-image: url('https://cdn.midjourney.com/f0d6e775-1558-4049-b329-3ba36cde0011/0_1.png');
+        background-position: bottom left;
+        height: 20em;
+        width: 40em;
+        position: relative;
+        animation: translateBg 5s linear infinite;
+        overflow: hidden;
+        border-radius: 2em;
+        box-shadow: 0 0 10px black;
+        span{
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 0 0 5px black;
+            position: absolute;
+            z-index: 2;
+        }
+        img{
+            width: 35%;
+            position: absolute;
+            z-index: 1;
+            animation: run  5s ease infinite ;
+        }
+    }
+}
+
+@keyframes run {
+    from {transform:  translateX(-150%);}
+    to { transform: translateX(150%);}
+}
+
+@keyframes translateBg {
+    from { background-position: left bottom;}
+    to { background-position: right bottom;}
+}
+
+
+/*backgrounds for pages*/
+
+
+.background-main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    position: relative;
+    opacity: 0;
+    animation: intro 0.75s ease-in forwards;
+    .box__action{
+        background-color: rgba(0,0,0,0.6);
+        padding: 2em;
+        border-radius: 1em;
+        border: 2px solid rgb(200,200,200);
+        position: absolute;
+        box-shadow: 0 0 15px black;
+        min-width: 15em;
+    }
+    a{
+        color: white;
+        &:hover{
+            font-weight: bold;
+            text-shadow: 0 0 2px white ;
+        }
+    }
+}
+
+@keyframes intro {
+    to {opacity: 1;}
+ }
+
+
+ /*battle ground*/
+ .container__battle{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}

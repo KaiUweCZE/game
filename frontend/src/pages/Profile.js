@@ -2,18 +2,36 @@ import React, { useEffect, useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import UserApi from '../services/api'
 import { pokemonsData } from "../data/pokemons";
-import { char1, char3, arrow } from "../data/charImages";
+import { char1, char3, arrow, elixirOne } from "../data/charImages";
+import  { BoxBadges, BoxInventory } from "../components/light-component/LightComponent";
 
 
 const Profile = () => {
     const {currentUser} = useSelector((state) => state.user)
     const [pokemons, setPokemons] = useState([])
     const [myClass, setMyClass] = useState("");
+    const [t,setT] = useState("")
+    const [buttonShow, setButtonShow] = useState("Show stats!")
     const arrowRef = useRef(null);
     const arrowRef2 = useRef(null)
-    const [data, setData] = useState([])
     const [i, setI] = useState(0)
     const charImg = currentUser.img === "char1" ? char1 : char3
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userData = (await UserApi.aboutUser({ username: currentUser.username })).data;
+                return userData
+            } catch (error) {
+                console.error("An error occurred:", error);
+            }
+        };
+        console.log(currentUser.img);
+        console.log(charImg);
+        fetchData();
+    }, []);
+    
 
     const getPokemons = () => {
         UserApi.getYourPokemons({username: currentUser.username})
@@ -25,8 +43,7 @@ const Profile = () => {
     }
 
     useEffect(() => {
-        getPokemons()
-        
+        getPokemons()     
     }, []);
 
     const showComponent = () =>{
@@ -53,33 +70,54 @@ const Profile = () => {
             setI(1)
         }
     }
+
+    /* Nutné přejmenovat a opravit s ostatními funkcemi setter/showComponent */
+    const otherclass = () => {
+        if (t === ""){
+            setT("actived")
+            setButtonShow("Hide stats!")
+        } else {
+            setT("")
+            setButtonShow("Show stats!")
+        }
+        
+    }
     
     return(
         <div className="container__profile">
             <img className="profile-img" src={charImg} alt="" />
             <div className="box__user-info">
-                <h3>Name: {currentUser.username}</h3>
-                <h3>Lokalita: home</h3>
-                <div>
-                    <h3>Badges: </h3>
-                    <figure>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </figure>
+                <div className="left">
+                    <div className="about">
+                        <ul>
+                            <li>Name: {currentUser.username}</li>
+                            <li>Lokalita: Home</li>
+                        </ul>
+                    </div>
+                    
+                    <BoxBadges />
                 </div>
+                <div className="right">
+                    <article>
+                        <h2>Stats</h2>
+                        <p>
+                            Lorem, ipsum dolor.
+                        </p>
+                    </article>
+                </div>
+                
                 <img ref={arrowRef} className="arrow" src={arrow} alt="" onClick={showComponent}/>
             </div>
-            <div r className={`box__user-inventory ${myClass}`} >
+            <div className={`box__user-inventory ${myClass} ${i === 1 ? "fast-opacity" : ""}`} >
+                <span>Bag</span>
+                <hr />
+                <BoxInventory 
+                />
                 <img ref={arrowRef2} className="arrow" src={arrow} alt="" onClick={setter}/>
             </div>
             <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>
                 <h2>Pokemons:</h2>
+                <button onClick={otherclass}>{buttonShow}</button>
                 <div>     
                 {       
                     pokemons.map((pokemon, index) => {
@@ -87,11 +125,15 @@ const Profile = () => {
                         const {level, attack, hp, abilities } = pokemon.skills
                         return(
                             <figure key={index}>
-                                <img src={onePokemon.img} alt="" />
-                                <article>
+                                <img src={onePokemon.img} alt=""/>
+                                <article className={`${t}`}>
                                     <h3>{pokemon.name}</h3>
+                                    <p>level: {level}</p>
+                                    <p>hp: {hp}</p>
+                                    <p>attack: {attack}</p>
+                                    <p>abilities: {abilities}</p>
                                 </article>
-                                <p>{attack}</p>
+                                
                             </figure>
                         )
                     })

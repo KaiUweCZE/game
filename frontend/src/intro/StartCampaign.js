@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addPokemon, firstChoice } from '../redux/user/userSlice';
-import { checkCampaign, renderSkills, useCompleteCampaign } from '../components/Functions';
+import { setImage } from '../redux/user/userSlice';
+import { checkCampaign, renderSkills, useCompleteCampaign, useLoader } from '../components/Functions';
 import UserApi from '../services/api'
 import ImagePainter from '../components/ImagePainter';
 import professorImage from '../styles/images/profbloom.webp'
@@ -10,6 +10,7 @@ import eevee from "../styles/images/eevee.png"
 import teddiursa from "../styles/images/teddiursa.png"
 import { char1, char3 } from '../data/charImages';
 import {store} from '../redux/store'
+import Loader from '../components/Loader';
 
 
 const StartCampaign = () => {
@@ -17,14 +18,17 @@ const StartCampaign = () => {
     const [page, setPage] = useState(0)
     const [completed, setCompleted] = useState(false)
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const { completeCampaign } = useCompleteCampaign(currentUser.username)
+    const {loading, setLoading} = useLoader();
+    const dispatch = useDispatch();
 
     useEffect(() => {
+        setLoading(true);
         checkCampaign(currentUser.username, 'firstChoice')
         .then(isCompleted => {
             setCompleted(isCompleted); // Aktualizace stavu podle odpovědi
-        });
+        })
+        .finally(() => setLoading(false));
     }, []);
 
     // to pak hodit do lightData
@@ -57,8 +61,6 @@ const StartCampaign = () => {
         }
     ]
 
-    console.log(pokemons);
-
     const trainers = [
         {
             name: "char1",
@@ -71,6 +73,7 @@ const StartCampaign = () => {
     ]
     // až posud
 
+    //šité horkou jehlou, někdy přeladit
     const nextPage = (e, trainer) => {
         e.preventDefault()
         if (page <= 2) {
@@ -81,6 +84,9 @@ const StartCampaign = () => {
                 img: trainer
             }
             UserApi.profileImage(data)
+            .then(res => {
+                dispatch(setImage(trainer));
+            }).catch( err => console.error('faile with image', err))
             setPage(newPage)
         } else {
             setPage(0)
@@ -99,8 +105,6 @@ const StartCampaign = () => {
         try {
             const thePokemon = pokemons.find(e => e.name === newPokemon.name);
             catchPokemon(e, thePokemon)
-            dispatch(firstChoice())
-            dispatch(addPokemon(newPokemon))
         } catch (error) {
             console.error("Something went error", error);
         }
@@ -108,6 +112,7 @@ const StartCampaign = () => {
         navigate(`/profile?name=${name}&image=${image}`)
     }
 
+    //tohle silně předělat, zatím to plní funkci jen pro eevee a teddiursu
     const catchPokemon = (e, pokemon) => {
         e.preventDefault()
         const skills = pokemon.name === "Eevee" ? eSkills : tSkills
@@ -123,8 +128,16 @@ const StartCampaign = () => {
         UserApi.obtainPokemon(data)
         .then( res => {
             console.log("pokemon was added");
-        }
-        )
+            const lastAddedPokemon = res.data.newPokemonId;
+            console.log(lastAddedPokemon);
+            const nextData = {
+                pokemon: lastAddedPokemon,
+                username: currentUser.username
+            }
+            UserApi.addToSix(nextData)
+            .then(res => console.log('Pokemon added', res))
+            .catch(err => console.error('Error occurs', err))
+        }) 
         .catch( err => {
             console.log(err);
         }
@@ -132,12 +145,10 @@ const StartCampaign = () => {
     }
 
 
-
-
-
     return(
         <div className='container__firstChoice'>
-
+        { loading ? <Loader /> :
+        <>
            { completed ?
             <h2>je třeba jít dál</h2>
             :
@@ -192,6 +203,8 @@ const StartCampaign = () => {
             }
            
             </> }
+            </>
+        }
         </div>
     )
 }

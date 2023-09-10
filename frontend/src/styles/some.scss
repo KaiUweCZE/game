@@ -1,0 +1,10 @@
+@import './addons/variables', './addons/mixins';
+
+/*stylování battlegroundu*/
+
+
+.container__battle{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: red;
+}

@@ -52,7 +52,7 @@ export const addPokemon = async (req, res, next) => {
         if (user) {
             user.pokemon.push(newPokemon);
             await user.save()
-            res.status(200).json(user);
+            res.status(200).json({ user, newPokemonId: newPokemon._id });
         } else{
             res.status(404).json({ message: "User not found"})
         }
@@ -98,6 +98,20 @@ export const checkCampaign = async (req,res, next) => {
     }
 }
 
+export const getUser = async (req, res, next) => {
+    const { username } = req.query;
+    try{
+        const user = await User.findOne({ username })
+        if (user) {
+            return res.status(200).json({ user })
+        } else {
+            return res.status(404).json({ message: 'get user failed'})
+        }
+    } catch(error){
+        next(error)
+    }
+}
+
 
 export const getYourPokemons = async (req, res, next) => {
     const {username} = req.query;
@@ -109,6 +123,82 @@ export const getYourPokemons = async (req, res, next) => {
             return res.status(404).json({ message: 'false'})
         }
     } catch(error){
+        next(error)
+    }
+}
+
+
+//funcs for pokemon's six
+export const addToSix = async (req, res, next) => {
+    console.log('Request body:', req.body);
+    const _id = req.body.pokemon;
+    const { username } = req.body;
+    try{
+        const pokemon = await Pokemon.findById(_id)
+        const user = await User.findOne({username: username})
+
+        if (!user) {
+            console.log('User not found:', username);
+            return res.status(404).json({ message: "Upsss, user" });
+        }
+
+        if (!pokemon) {
+            console.log('Pokemon not found:', _id);
+            return res.status(404).json({ message: "Upsss, pokemon" });
+        }
+
+        if (user.mySix.includes(_id) || user.mySix.length >= 6){
+            return res.status(400).json({message: 'you cannot add this pokemon'})
+        }
+
+        user.mySix.push(_id);
+        await user.save()
+
+        res.status(200).json({ message:'Pokemon was added!'})
+    } catch (error){
+        next(error)
+    }
+
+}
+
+export const getSix = async (req, res, next) => {
+    const {username} = req.query;
+    console.log('Method getSix was called');
+    console.log('Query Parameters:', req.query);
+    try {
+        const user = await User.findOne({username}).populate('mySix')
+        if(user){
+            return res.status(200).json({ mySix: user.mySix})
+        } else {
+            return res.status(404).json({ message: 'Ouha getSix failed'})
+        }
+    } catch (error) {
+        next(error)
+    }
+
+}
+
+export const removeFromSix = async (req, res, next) => {
+    const {username} = req.body;
+    const _id = req.body.mySix;
+    console.log("Methods removeFromSix was called");
+    try {
+        const user = await User.findOne({username}).populate('mySix')
+
+        if(!user){
+            return res.status(404).json({ message: "User not found"})
+        }
+
+        if(!user.mySix.some(pokemon => pokemon._id.toString() === _id)){
+            return res.status(404).json({message: "Pokemon not found"})
+        }
+
+        user.mySix.pull(_id);
+
+        await user.save()
+
+        res.status(200).json({message: "Pokemon was removed from Six"})
+    } catch (error) {
         next(error)
     }
 }

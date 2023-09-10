@@ -25,8 +25,14 @@ class UserApi{
     nextCampaign(data){
         return axios.post(`${URL}nextCampaign`, data)
     }
+    aboutUser(data){
+        return axios.get(`${URL}user`, { params: data })
+    }
     getYourPokemons(data){
         return axios.get(`${URL}myPokemons`, {params: data})
+    }
+    addToSix(data){
+        return axios.post(`${URL}addToSix`, data)
     }
 }
 

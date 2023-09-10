@@ -6,8 +6,12 @@ import Register from "./pages/Register"
 import SharedLayouts from './pages/SharedLayouts';
 import PrivateRoute from './components/PrivateRoute';
 import StartCampaign from './intro/StartCampaign'
-import SlideTwo from './intro/SlideTwo'
 import Profile from './pages/Profile';
+import Crossroad from './pages/countries/Crossroad';
+import MagicalForest from './pages/countries/MagicalForest';
+import Cave from './pages/countries/Cave';
+import Battleground from './pages/Battleground';
+
 
 const App = () => {
     return(
@@ -20,7 +24,10 @@ const App = () => {
                     <Route element={<PrivateRoute/>}>
                         <Route path='/start' element={<StartCampaign />}/>
                         <Route path='/profile' element={<Profile />}/>
-                        <Route path='/2' element={<SlideTwo />} />
+                        <Route path='/crossroad' element={<Crossroad/>} />
+                        <Route path='/magicalforest' element={<MagicalForest/>}/>
+                        <Route path='/cave' element={<Cave />}/>
+                        <Route path='/battle' element={<Battleground />} />
                     </Route>
                 </Route>
                 

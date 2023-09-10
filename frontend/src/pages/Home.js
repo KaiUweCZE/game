@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ButtonA from "../components/ButtonA";
-import { renderSkills } from "../components/Functions";
+import Loader from "../components/Loader";
+import { useLoader } from "../components/Functions";
 
 const Home = () => {
+    const {loading} = useLoader()
 
     return(
         
         <div className="container__home">
+           { 
+           loading ? <Loader/> :
             <main className="home">
                 <article>
                     <h2>Úvod</h2>
@@ -23,6 +27,7 @@ const Home = () => {
                     
                 </article>
             </main>
+            }
         </div>
         
         

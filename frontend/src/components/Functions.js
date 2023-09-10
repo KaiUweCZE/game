@@ -1,7 +1,54 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../redux/user/userSlice';
 import UserApi from "../services/api"
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+
+
+
+export const useLoader = () => {
+    const [loading, setLoading] = useState(true)
+    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false)
+        }, 1000)   
+    }, [])
+    
+    return { loading, setLoading }
+}
+
+export const useMyPokemon = () => {
+    const [pokemons, setPokemons] = useState([])
+    const [loading, setLoading] = useState(true);
+    const {currentUser} = useSelector((state)=> state.user)
+
+    const getPokemons = () => {
+        UserApi.getYourPokemons({username: currentUser.username})
+        .then((res) => {
+            setPokemons(res.data.pokemon)
+            setLoading(false);
+        })
+        .catch((err) => console.error(err));
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        getPokemons() 
+    }, []);
+
+    return {pokemons, loading}
+}
+
+export const useToBattle = (name) => {
+    const navigate = useNavigate()
+
+    const toBattle = () => {
+        navigate("/battle", { state: { from: name }});
+    }
+    
+    return toBattle
+};
 
 export const useLogOut = () => {
     const dispatch = useDispatch();

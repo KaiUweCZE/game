@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pokemon'
     }],
+    mySix: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Pokemon'
+    }],
     campaigns:{
         type: Map,
         of: Boolean,

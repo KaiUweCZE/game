@@ -28,20 +28,14 @@ const userSlice = createSlice({
             state.loading = false;
             state.error = false;
         },
-        addPokemon: (state, action) =>{
+        setImage: (state, action) => {
             if (state.currentUser) {
-                if (!state.currentUser.pokemons){
-                    state.currentUser.pokemons = [];
-                }
-                state.currentUser.pokemons.push(action.payload)
+                state.currentUser.img = action.payload;
             }
-        },
-        firstChoice: (state) => {
-            state.hasMadeFirstChoice = true;           
         }
     }
 });
 
-export const { signInStart, signInSuccess, signInFailure, signOut, addPokemon, firstChoice } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, signOut, setImage } = userSlice.actions;
 
 export default userSlice.reducer;

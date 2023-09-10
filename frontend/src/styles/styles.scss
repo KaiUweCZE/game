@@ -101,7 +101,7 @@ header{
 .container__profile{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, minmax(15em, 1fr));
     grid-template-areas: 
     "img stats ."
     "img inventory pokemons";
@@ -121,15 +121,16 @@ header{
         @include profile-card;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        color: rgb(60,60,60);
         padding: 1em;
         overflow-y: scroll;
         z-index: 2;
+        width: clamp(20em, 25vw, 35em);
+        max-height: 20em;
         .arrow{
             position: absolute;
             bottom: 0;
             right: 50%;
-            margin-bottom: 1em;
+            margin-bottom: 0.25em;
         }
         h3{
             grid-column: 1;
@@ -160,15 +161,47 @@ header{
         grid-area: inventory;
         position: relative;
         @include profile-card;
+        place-items: center;
+        padding-block: 2em;
         overflow-y: scroll;
         transform: translateY(-110%);
         opacity: 0;
-        transition: transform 0.7s, opacity 0.8s;
+        transition: transform 0.7s, opacity 0.3s;
         z-index: 1;
+        width:100%;
+        max-height: 20em;
+        span{
+            font-size: 2em;
+            font-weight: bold;
+            padding-bottom: 0.2em;
+        }
+        hr{       
+            width: 70%;
+            margin-bottom: 1em;
+        }
+        .item-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+            margin-inline: 10%;
+        }
+        .item{
+            margin: 0;
+            padding: 0;
+            img{
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+                transition: 0.3s;
+                &:hover{
+                    transform:scale(1.1);
+                }
+            }
+            
+        }
         .arrow{
-            position: absolute;
-            bottom: 0;
-            right: 0;
+            position: sticky;
+            bottom: 1em;
+            left: 100%;
             margin: 1em;
             transform: rotate(-90deg);
             &:hover{
@@ -180,18 +213,60 @@ header{
         transform: translateY(0);
         opacity: 1;
     }
+    .box__user-inventory.fast-opacity{
+        transition: transform 0.7s, opacity 0.5s 0.1s;
+    }
     .box__user-pokemons{
         grid-area: pokemons;
         @include profile-card;
         width: 40vw;
+        height: fit-content;
         margin-left: 1em;
         padding: 1em;
         transform: translateX(-100%);
         opacity: 0;
         transition: transform 0.8s, opacity 0.4s 0.3s;
+        button{
+            display: flex;
+            width: fit-content;
+            padding: 0.25em;
+            overflow: hidden;
+            background-color: rgba(70,70,70, 0.2);
+            border: 1px solid black;
+            border-radius: 0.25em;
+            transition: 0.5s;
+            &:hover{
+                background-color: white;
+            }
+        }
         div{
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+            column-gap: 1em;
+            overflow: hidden;
+            img{
+                width: 100%;
+                cursor: pointer;
+                transition: 0.5s;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+            article{
+                display: none;
+                background-color: rgba(0,0,0, 0.3);
+                padding: 0.5em;
+                border: 1px solid black;
+                border-radius: 0.5em;
+                box-shadow: 0 0 5px black;
+                transform: translateY(10em);
+                transition: 0.5s;
+            }
+            article.actived{
+                display: flex;
+                flex-direction: column;
+                transform: translateY(0);
+            }
         }
     }
     .box__user-pokemons.active{
