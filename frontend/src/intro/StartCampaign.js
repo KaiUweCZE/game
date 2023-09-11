@@ -2,13 +2,13 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setImage } from '../redux/user/userSlice';
-import { checkCampaign, renderSkills, useCompleteCampaign, useLoader } from '../components/Functions';
+import { checkCampaign, renderSkills, useCompleteCampaign, useLoader } from '../Functions/Functions';
 import UserApi from '../services/api'
 import ImagePainter from '../components/ImagePainter';
 import professorImage from '../styles/images/profbloom.webp'
 import eevee from "../styles/images/eevee.png"
 import teddiursa from "../styles/images/teddiursa.png"
-import { char1, char3 } from '../data/charImages';
+import { char1, char3 } from '../data/importedImages';
 import {store} from '../redux/store'
 import Loader from '../components/Loader';
 
@@ -22,16 +22,17 @@ const StartCampaign = () => {
     const {loading, setLoading} = useLoader();
     const dispatch = useDispatch();
 
+    // is this part completed?
     useEffect(() => {
         setLoading(true);
         checkCampaign(currentUser.username, 'firstChoice')
         .then(isCompleted => {
-            setCompleted(isCompleted); // Aktualizace stavu podle odpovědi
+            setCompleted(isCompleted);
         })
         .finally(() => setLoading(false));
     }, []);
 
-    // to pak hodit do lightData
+    // structer of data will be diferent, this data will be in .js file
         const eSkills = renderSkills({
             level:5,
             abilities: ["grower", "macho"],
@@ -46,6 +47,7 @@ const StartCampaign = () => {
             attack: [7,10]
         });
 
+    // only for imagine
     const pokemons = [
         {
             image: eevee,
@@ -61,6 +63,7 @@ const StartCampaign = () => {
         }
     ]
 
+    //this will be in trainersData
     const trainers = [
         {
             name: "char1",
@@ -71,7 +74,6 @@ const StartCampaign = () => {
             image: char3,
         }
     ]
-    // až posud
 
     //šité horkou jehlou, někdy přeladit
     const nextPage = (e, trainer) => {
@@ -112,7 +114,7 @@ const StartCampaign = () => {
         navigate(`/profile?name=${name}&image=${image}`)
     }
 
-    //tohle silně předělat, zatím to plní funkci jen pro eevee a teddiursu
+    //this need to be re edit
     const catchPokemon = (e, pokemon) => {
         e.preventDefault()
         const skills = pokemon.name === "Eevee" ? eSkills : tSkills
@@ -153,6 +155,7 @@ const StartCampaign = () => {
             <h2>je třeba jít dál</h2>
             :
             <>
+            {/* this will be component */}
             <h2>Welcome Here! {currentUser.username}</h2>
             <p>
                 Now when you start with your journey, so you can

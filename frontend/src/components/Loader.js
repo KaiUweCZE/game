@@ -1,5 +1,5 @@
 import React from "react";
-import { pika } from '../data/charImages'
+import { pika } from '../data/importedImages'
 
 const Loader = () => {
 

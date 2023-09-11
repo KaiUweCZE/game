@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserApi from '../services/api'
 import { pokemonsData } from "../data/pokemons";
-import { char1, char3, arrow, elixirOne } from "../data/charImages";
+import { char1, char3, arrow, elixirOne } from "../data/importedImages";
 import  { BoxBadges, BoxInventory } from "../components/light-component/LightComponent";
 
 
@@ -19,6 +19,7 @@ const Profile = () => {
     const charImg = currentUser.img === "char1" ? char1 : char3
 
 
+    // fetch user Img (string in databes, img is import in .js file)
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -34,6 +35,7 @@ const Profile = () => {
     }, []);
     
 
+    // fetch pokemons from six
     const getMySix = () => {
         UserApi.getSix({username: currentUser.username})
         .then( (res) => {
@@ -47,6 +49,7 @@ const Profile = () => {
         getMySix()     
     }, []);
 
+    //apply transform effects 
     const showComponent = () =>{
         if (myClass === "" && i === 0) {
             arrowRef.current.style.transform = "rotate(180deg)";
@@ -62,6 +65,7 @@ const Profile = () => {
         }     
     }
 
+    //second arrow func
     const setter = () => {
         if (i === 1) {
             arrowRef2.current.style.transform = "rotate(-270deg)";
@@ -86,6 +90,7 @@ const Profile = () => {
     
     return(
         <div className="container__profile">
+            {/* this will be componenta */}
             <img className="profile-img" src={charImg} alt="" />
             <div className="box__user-info">
                 <div className="left">
@@ -106,7 +111,8 @@ const Profile = () => {
                         </p>
                     </article>
                 </div>
-                
+
+                {/*this will be component */}
                 <img ref={arrowRef} className="arrow" src={arrow} alt="" onClick={showComponent}/>
             </div>
             <div className={`box__user-inventory ${myClass} ${i === 1 ? "fast-opacity" : ""}`} >
@@ -114,6 +120,7 @@ const Profile = () => {
                 <hr />
                 <BoxInventory 
                 />
+                {/*this will be component */}
                 <img ref={arrowRef2} className="arrow" src={arrow} alt="" onClick={setter}/>
             </div>
             <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>

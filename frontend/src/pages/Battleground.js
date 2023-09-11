@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import { useMySix } from "../components/Functions";
+import { useMySix } from "../Functions/Functions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { pokemonsData } from "../data/pokemons";
+import { fieldOne } from "../data/importedImages";
+import HpComponent from "../components/battle-components/HpComponent";
 
 const Battleground = () => {
     const location = useLocation()
@@ -13,12 +15,14 @@ const Battleground = () => {
     const [activeEnemy, setActiveEnemy] = useState({})
 
  
-        const chooseThis = (enemy) => {
-          const poke = pokemonsData.find(poke => poke.name.toLocaleLowerCase() === enemy.name);
-          console.log("toto: ", poke);
-          setActiveEnemy(poke)
-        };
-    // hrubě předělat, jen zkouším funkcionality
+    //img for 
+    const enemyImg = (enemy) => {
+        const poke = pokemonsData.find(poke => poke.name.toLocaleLowerCase() === enemy.name);
+        console.log("toto: ", poke);
+        setActiveEnemy(poke)
+    };
+
+    // this will be in dataCountry file
     const country = [
         {
             countryName: "magicalforest",
@@ -30,16 +34,18 @@ const Battleground = () => {
         }
     ]
 
+    //encounter random pokemon
     const enemies = country.find(e => e.countryName === from)
     useEffect(() => {
         const getEnemy = () => {
             const enemy = GetMob(enemies.names)
-            chooseThis(enemy)
+            enemyImg(enemy)
          }        
          getEnemy()
 
     },[])
 
+    // func will be in funcions
     const chooseYou = (pokeName) =>{
         const poke = pokemonsData.find((e) => e.name === pokeName)
         console.log(pokeName);
@@ -51,10 +57,12 @@ const Battleground = () => {
         <div className="container__battle">
             {
                 loading ? <Loader /> : 
-                <div className="container__battle--user">
-                    <div>
+                <div className="box__battle--user">
+                    {/* this will be component*/}
+                    <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
                         <img src={activePokemon.img} alt="" />
                     </div>
+                    <HpComponent />
                     <div className="box-battle">
                         <h2>Your Pokemons</h2>
                     {
@@ -67,13 +75,17 @@ const Battleground = () => {
                     </div>
                 </div>
             }
-                <div className="container__battle--middle">
+                <div className="box__battle--middle">
 
                 </div>
-                <div className="container__battle--enemy">
-                    <img src={activeEnemy.img} alt="" />
-                    <p>{activeEnemy.name}</p>
-
+                <div className="box__battle--enemy">
+                    {/* this will be component*/}
+                    <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
+                        <img src={activeEnemy.img} alt="" />                        
+                    </div>
+                    <span>{activeEnemy.name}</span>              
+                    <HpComponent />
+                    
                 </div>
         </div>
     )

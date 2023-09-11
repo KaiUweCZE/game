@@ -310,6 +310,7 @@ header {
 }
 .container__profile .box__user-pokemons div img {
   width: 100%;
+  max-width: 15em;
   cursor: pointer;
   transition: 0.5s;
 }

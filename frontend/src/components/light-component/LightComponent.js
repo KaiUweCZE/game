@@ -1,5 +1,5 @@
 import React from "react";
-import { elixirOne } from "../../data/charImages";
+import { elixirOne } from "../../data/importedImages";
 
 const BoxBadges = () => {
 

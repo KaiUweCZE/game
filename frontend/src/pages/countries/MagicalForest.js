@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import Wallpaper from '../../components/Wallpaper'
-import { magicalForestBg } from '../../data/charImages'
+import { magicalForestBg } from '../../data/importedImages'
 import BoxAction from '../../components/BoxAction'
-import { useToBattle } from '../../components/Functions'
+import { useToBattle } from '../../Functions/Functions'
 
 
 
 const MagicalForest = () => {
+    // It sends message about where it was redirected from.
     const toBattle = useToBattle("magicalforest")
-    //funkce při přesměrování na stránku záznam odku
 
     return(
         <>

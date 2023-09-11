@@ -1,5 +1,5 @@
 import React from "react";
-import { crossroadBg } from "../../data/charImages";
+import { crossroadBg } from "../../data/importedImages";
 import Wallpaper from "../../components/Wallpaper";
 import BoxAction from "../../components/BoxAction";
 

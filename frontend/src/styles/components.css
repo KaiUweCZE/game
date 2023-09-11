@@ -241,13 +241,13 @@ div.login {
 /*battle ground*/
 .container__battle {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 25em 1fr 25em;
 }
-.container__battle .container__battle--user {
+.container__battle .box__battle--user {
   display: flex;
   flex-direction: column;
 }
-.container__battle .container__battle--user .box-battle {
+.container__battle .box__battle--user .box-battle {
   display: flex;
   flex-direction: column;
   background-color: rgba(230, 230, 230, 0.7);
@@ -257,12 +257,78 @@ div.login {
   border: 1px solid grey;
   border-radius: 0.25em;
 }
-.container__battle .container__battle--user span {
+.container__battle .box__battle--user span {
   font-size: 1.25em;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
-.container__battle .container__battle--user span:hover {
+.container__battle .box__battle--user span:hover {
   text-shadow: 0 0 2px rgb(60, 60, 60);
+}
+
+.battle-field {
+  display: flex;
+  width: 100%;
+  height: 18em;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.battle-field img {
+  height: clamp(10em, 85%, 16em);
+  opacity: 0;
+  animation: toPlay 1s ease 0.2s forwards;
+}
+
+.hp {
+  display: flex;
+  margin-left: 10%;
+  width: 80%;
+  height: 1em;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid goldenrod;
+  border-radius: 0.35em;
+}
+
+.your-hp {
+  display: flex;
+  background-color: rgb(85, 212, 0);
+  height: 90%;
+  width: 100%;
+  border-radius: 0.5em;
+}
+
+@keyframes toPlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/*MyBox*/
+.prevent-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.box__pc--pokemons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-template-rows: 15em;
+  width: 30%;
+  margin: 2em;
+  padding: 2em;
+  border: 2px solid white;
+  border-radius: 0.5em;
+  box-shadow: 0 0 15px black;
+  height: -moz-fit-content;
+  height: fit-content;
+  background-color: rgba(0, 0, 0, 0.6);
 }/*# sourceMappingURL=components.css.map */

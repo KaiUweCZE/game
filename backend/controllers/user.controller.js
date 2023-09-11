@@ -18,6 +18,7 @@ export const regist = async (req, res, next) => {
     
 }
 
+//choice img profile
 export const addImageProfile = async (req, res, next) => {
     const { username, img } = req.body;
     try{
@@ -35,7 +36,7 @@ export const addImageProfile = async (req, res, next) => {
 }
 
 
-//need to reconfig
+//add pokemon to all of your's pokemons
 export const addPokemon = async (req, res, next) => {
     const {name, image, skills } = req.body.pokemon;
     const { trainer } = req.body;
@@ -113,6 +114,7 @@ export const getUser = async (req, res, next) => {
 }
 
 
+//gets all of your pokemons
 export const getYourPokemons = async (req, res, next) => {
     const {username} = req.query;
     try{
@@ -129,6 +131,7 @@ export const getYourPokemons = async (req, res, next) => {
 
 
 //funcs for pokemon's six
+//add pokemon to your six
 export const addToSix = async (req, res, next) => {
     console.log('Request body:', req.body);
     const _id = req.body.pokemon;
@@ -161,6 +164,7 @@ export const addToSix = async (req, res, next) => {
 
 }
 
+//get pokemons from six(0-6)
 export const getSix = async (req, res, next) => {
     const {username} = req.query;
     console.log('Method getSix was called');
@@ -178,6 +182,7 @@ export const getSix = async (req, res, next) => {
 
 }
 
+//remove pokemon from six to pokemon box(something that)
 export const removeFromSix = async (req, res, next) => {
     const {username} = req.body;
     const _id = req.body.mySix;

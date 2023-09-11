@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ButtonA from "../components/ButtonA";
 import Loader from "../components/Loader";
-import { useLoader } from "../components/Functions";
+import { useLoader } from "../Functions/Functions";
 
 const Home = () => {
     const {loading} = useLoader()

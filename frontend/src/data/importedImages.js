@@ -6,5 +6,7 @@ import pika from '../styles/images/load.gif'
 import crossroadBg from '../styles/images/crossroad.webp';
 import magicalForestBg from '../styles/images/magical-forest2.webp'
 import caveBg from '../styles/images/cave2.webp'
+import fieldOne from '../styles/images/field2.webp'
+import labBg from '../styles/images/lab.webp'
 
-export {char1, char3, arrow, elixirOne, pika, crossroadBg, magicalForestBg, caveBg}
+export {char1, char3, arrow, elixirOne, pika, crossroadBg, magicalForestBg, labBg, caveBg, fieldOne}

@@ -1,8 +1,8 @@
 import React from "react";
-import { caveBg } from "../../data/charImages";
+import { caveBg } from "../../data/importedImages";
 import Wallpaper from "../../components/Wallpaper";
 import BoxAction from "../../components/BoxAction";
-import { useToBattle } from "../../components/Functions";
+import { useToBattle } from "../../Functions/Functions";
 
 
 
