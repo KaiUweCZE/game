@@ -282,6 +282,7 @@ div.login {
   animation: toPlay 1s ease 0.2s forwards;
 }
 
+/*hpComponenta*/
 .hp {
   display: flex;
   margin-left: 10%;
@@ -303,6 +304,53 @@ div.login {
   width: 100%;
   border-radius: 0.5em;
   transition: width 0.75s;
+}
+
+/*battle controller component*/
+.box__battle-controll {
+  display: grid;
+  grid-template-areas: "attack attack" "attack attack" "avoid switch";
+  align-self: center;
+  width: 90%;
+  margin: 1em;
+  color: black;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 0.5em;
+  box-shadow: 0 0 8px black;
+  overflow: hidden;
+}
+.box__battle-controll .attacks {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid grey;
+}
+.box__battle-controll .attacks:hover {
+  background-color: gray;
+}
+.box__battle-controll .avoid {
+  grid-area: avoid;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid grey;
+}
+.box__battle-controll .avoid:hover {
+  background-color: gray;
+}
+.box__battle-controll .switch {
+  grid-area: switch;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5em;
+  border: 1px solid grey;
+}
+.box__battle-controll .switch:hover {
+  background-color: gray;
 }
 
 @keyframes toPlay {

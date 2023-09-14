@@ -55,3 +55,14 @@
             display: none;
         }
 }
+
+@mixin battleButtons{
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0.5em;
+    border: 1px solid grey;
+    &:hover{
+        background-color: darken(white, 50%);
+    }
+}

@@ -282,6 +282,7 @@ div.login{
     }
 }
 
+/*hpComponenta*/
 .hp{
     display: flex;
     margin-left: 10%;
@@ -303,6 +304,35 @@ div.login{
     width: 100%;
     border-radius: 0.5em;
     transition: width 0.75s;
+}
+
+/*battle controller component*/
+.box__battle-controll{
+    display: grid;
+    grid-template-areas: 
+    "attack attack"
+    "attack attack"
+    "avoid switch";
+    align-self: center;
+    width: 90%;
+    margin: 1em;
+    color: black;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 0.5em;
+    box-shadow: 0 0 8px black;
+    overflow: hidden;
+    .attacks{
+        @include battleButtons;
+    }
+    .avoid{
+        grid-area: avoid;
+        @include battleButtons;      
+    }
+    .switch{
+        grid-area: switch;
+        @include battleButtons;  
+    }
 }
 
 @keyframes toPlay {
