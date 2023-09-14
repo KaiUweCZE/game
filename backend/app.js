@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import {User} from './models/user.model.js';
 import userRoutes from './routes/user.route.js'
 import authRoutes from './routes/auth.route.js';
+import attackRoutes from './routes/attack.route.js'
+
 import cors from 'cors'
 
 const app = express();
@@ -29,6 +31,7 @@ app.get("/", (req, res) => {
 app.use(cors())
 app.use("/api", userRoutes)
 app.use("/api", authRoutes)
+app.use("/api", attackRoutes)
 
 app.use((err, req, res, next) => {
     const statusCode = err.statusCode || 500;

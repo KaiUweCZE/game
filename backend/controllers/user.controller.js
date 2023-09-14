@@ -5,19 +5,6 @@ export const test_message = (req, res) => {
     })
 }
 
-export const regist = async (req, res, next) => {
-    const { username, password } = req.body;
-    const hashedPassword = bcryptjs.hashSync(password, 10)
-    const newUser = new User({ username, password: hashedPassword })
-    try {
-        await newUser.save();
-        res.status(201).json({message: "Successfully created"})
-    } catch (error) {
-        next(error)
-    }
-    
-}
-
 //choice img profile
 export const addImageProfile = async (req, res, next) => {
     const { username, img } = req.body;

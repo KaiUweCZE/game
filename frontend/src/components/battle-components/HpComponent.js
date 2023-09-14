@@ -23,7 +23,7 @@ const HpComponent = () => {
             <div className="your-hp" style={{ width: `${actualHp}%` }}>
             </div>
         </div>
-        <button onClick={handleAttack}>attack</button>
+        <button onClick={handleAttack} style={{ width: '3em'}}>attack</button>
         </>
     )
 }

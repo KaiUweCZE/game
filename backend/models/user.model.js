@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
 }, {timestamps: true})
 
-const SkillsSchema = new mongoose.Schema({
+const skillSchema = new mongoose.Schema({
     level: Number,
     abilities: String,
     hp: Number,
@@ -37,12 +37,37 @@ const SkillsSchema = new mongoose.Schema({
 const pokemonSchema = new mongoose.Schema({
     name: String,
     image: String,
-    skills: SkillsSchema,
+    skills: skillSchema,
+    attacks: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Attack'
+    },
     trainer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 });
 
+const attackSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        unique: true
+    },
+    type: String,
+    reload: {
+        type: Number,
+        default: 0.5
+    },
+    speed: {
+        type: Number,
+        default: 1
+    },
+    dmg: {
+        type: Number,
+        default: 10
+    }
+})
+
 export const User = new mongoose.model('User', userSchema)
 export const Pokemon = new mongoose.model('Pokemon', pokemonSchema)
+export const Attack = new mongoose.model('Attack', attackSchema)
