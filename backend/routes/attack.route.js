@@ -1,8 +1,9 @@
 import express from 'express';
-import { postAttack } from '../controllers/attack.controller.js'
+import { attackToPokemon, postAttack } from '../controllers/attack.controller.js'
 
 const router = express.Router()
 
-router.post('/addAttack', postAttack)
+router.post('/createAttack', postAttack)
+router.post('/addAttack', attackToPokemon)
 
 export default router

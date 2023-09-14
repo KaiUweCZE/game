@@ -38,10 +38,10 @@ const pokemonSchema = new mongoose.Schema({
     name: String,
     image: String,
     skills: skillSchema,
-    attacks: {
+    attacks: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Attack'
-    },
+    }],
     trainer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
