@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 
-const HpComponent = () => {
+const HpComponent = ( props ) => {
     const [actualHp, setActualHp] = useState(100)
     /*funcs: how many hp does a pokemon have? */
     // attack and hp will be parameters
-    const hp = 100
-    const attack = 10
-    
+    const damage = props.damage
 
-    //sketch of a attack func
-    const handleAttack = () => {
-        console.log(attack);
-        const damage = actualHp - attack
-        setActualHp(damage)
-    }
+    console.log("tohle se dostane do HpComponenty: ", damage);
+    
+    useEffect(() => {
+        const newHp = actualHp - damage
+        setActualHp(newHp)
+    },[damage])
+    
 
 
     return (
@@ -23,7 +22,6 @@ const HpComponent = () => {
             <div className="your-hp" style={{ width: `${actualHp}%` }}>
             </div>
         </div>
-        <button onClick={handleAttack} style={{ width: '3em'}}>attack</button>
         </>
     )
 }

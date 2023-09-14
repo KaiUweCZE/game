@@ -15,12 +15,17 @@ const Battleground = () => {
     const {pokemons, loading} = useMySix()
     const [activePokemon, setActivePokemon] = useState({name: ""})
     const [activeEnemy, setActiveEnemy] = useState({})
+    const [dmg, setDmg] = useState(0)
 
+
+    const updateDmg = (newDmg) => {
+        setDmg(newDmg)
+        console.log("Rodič obdržel: ", newDmg);
+    }
 
     //img for 
     const enemyImg = (enemy) => {
         const poke = pokemonsData.find(poke => poke.name.toLocaleLowerCase() === enemy.name);
-        console.log("toto: ", poke);
         setActiveEnemy(poke)
     };
 
@@ -57,6 +62,7 @@ const Battleground = () => {
         console.log("active pokemon is: ", activePokemon);
     }
 
+
     return(
         <div className="container__battle">
             {
@@ -66,10 +72,12 @@ const Battleground = () => {
                     <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
                         <img src={activePokemon.pokemonImg} alt="" />
                     </div>
-                    <HpComponent />
+                    <HpComponent 
+                    />
                     { 
                     activePokemon.name === "" ? "" : <BoxAttacks 
                     id= {activePokemon}
+                    updateDmg = {updateDmg}
                      /> 
                     }
                                 
@@ -94,7 +102,7 @@ const Battleground = () => {
                         <img src={activeEnemy.img} alt="" />                        
                     </div>
                     <span>{activeEnemy.name}</span>              
-                    <HpComponent />
+                    <HpComponent damage = {dmg}/>
                     
                 </div>
         </div>
