@@ -132,6 +132,7 @@ const Profile = () => {
                     pokemons.map((pokemon, index) => {
                         const onePokemon = pokemonsData.find((e) => e.name === pokemon.name)
                         const {level, attack, hp, abilities } = pokemon.skills
+                        
                         return(
                             <figure key={index}>
                                 <img src={onePokemon.img} alt=""/>
@@ -141,6 +142,8 @@ const Profile = () => {
                                     <p>hp: {hp}</p>
                                     <p>attack: {attack}</p>
                                     <p>abilities: {abilities}</p>
+                                    <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
+
                                 </article>
                                 
                             </figure>

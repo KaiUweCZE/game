@@ -1,5 +1,23 @@
 import { Attack, Pokemon } from "../models/user.model.js";
 
+
+//get attack
+export const getAttack = async (req, res, next) => {
+    const {name} = req.query;
+    
+    try {
+        const attack = await Attack.findOne({name})
+        if (attack){
+            return res.status(200).json({ attack})
+        }else{
+            return res.status(404).json({ message: 'false'})
+        }
+    } catch(error){
+        next(error)
+    }
+} 
+
+
 export const postAttack = async (req, res, next) => {
     const { name, type, reload, speed, dmg } = req.body;
     const newAttack = new Attack({ name, type, reload, speed, dmg })

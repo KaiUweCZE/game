@@ -105,7 +105,11 @@ export const getUser = async (req, res, next) => {
 export const getYourPokemons = async (req, res, next) => {
     const {username} = req.query;
     try{
-        const user = await User.findOne({username}).populate('pokemon')
+        const user = await User.findOne({username})
+                    .populate({
+                      path: 'pokemon',
+                      populate: { path: 'attacks' }
+                    });
         if (user){
             return res.status(200).json({ pokemon: user.pokemon})
         }else{
@@ -157,7 +161,10 @@ export const getSix = async (req, res, next) => {
     console.log('Method getSix was called');
     console.log('Query Parameters:', req.query);
     try {
-        const user = await User.findOne({username}).populate('mySix')
+        const user = await User.findOne({username}).populate({
+            path: 'mySix',
+            populate: { path: 'attacks' }
+          })
         if(user){
             return res.status(200).json({ mySix: user.mySix})
         } else {
