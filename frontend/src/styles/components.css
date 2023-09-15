@@ -352,7 +352,37 @@ div.login {
 .box__battle-controll .switch:hover {
   background-color: gray;
 }
+.box__battle-controll .reloader {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.box__battle-controll .deactive {
+  position: relative;
+}
+.box__battle-controll .deactive::before {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  animation: reload forwards;
+  animation-timing-function: linear;
+  animation-duration: var(--duration, 1s);
+  z-index: -1;
+}
 
+@keyframes reload {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
 @keyframes toPlay {
   from {
     opacity: 0;

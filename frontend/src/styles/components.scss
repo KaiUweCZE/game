@@ -306,6 +306,7 @@ div.login{
     transition: width 0.75s;
 }
 
+
 /*battle controller component*/
 .box__battle-controll{
     display: grid;
@@ -333,6 +334,37 @@ div.login{
         grid-area: switch;
         @include battleButtons;  
     }
+    .reloader{
+        grid-column: span 2;
+        display: flex; 
+        justify-content: center;
+        //padding-left: 2em;
+        color: white;    
+    }
+    .deactive{     
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            background-color: rgba(0,0,0,0.6);
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+            animation: reload forwards;
+            animation-timing-function: linear;
+            animation-duration: var(--duration, 1s);
+            z-index: -1;
+        }
+    }
+}
+
+
+
+@keyframes reload {
+    from { transform: translateX(0)}
+    to { transform: translateX(100%)}
+    
 }
 
 @keyframes toPlay {
