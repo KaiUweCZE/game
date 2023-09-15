@@ -102,8 +102,7 @@ const Battleground = () => {
                         <img src={activeEnemy.img} alt="" />                        
                     </div>
                     <span>{activeEnemy.name}</span>              
-                    <HpComponent damage = {dmg}/>
-                    
+                    <HpComponent damage = {dmg}/>                
                 </div>
         </div>
     )

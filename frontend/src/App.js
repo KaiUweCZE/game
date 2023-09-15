@@ -12,6 +12,7 @@ import MagicalForest from './pages/countries/MagicalForest';
 import Cave from './pages/countries/Cave';
 import Battleground from './pages/Battleground';
 import MyBox from './pages/UserPages/MyBox';
+import Mountains from './pages/countries/Mountains';
 
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                         <Route path='/cave' element={<Cave />}/>
                         <Route path='/battle' element={<Battleground />} />
                         <Route path='/mybox' element={<MyBox/>} />
+                        <Route path='/mountains' element={<Mountains />} />
                     </Route>
                 </Route>
                 

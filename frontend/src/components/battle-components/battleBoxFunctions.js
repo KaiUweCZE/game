@@ -1,7 +1,7 @@
-import HpComponent from "./HpComponent";
+
 
 export const handlerAttack = (attack) =>{
-    return attack.dmg
+    return attack
     //calculateHp(attack.dmg)
 }
 export const handlerAvoid = () =>{
@@ -13,4 +13,9 @@ export const handlerSwitch = () =>{
 
 export const calculateHp = (attack) => {
     console.log("attack is: ", attack);
+}
+
+/* who knows if I need to use it */
+export const reloadAttack = (attack) => {
+    return attack.reload;
 }
