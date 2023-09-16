@@ -18,6 +18,7 @@ const Battleground = () => {
     const [activePokemon, setActivePokemon] = useState({name: ""})
     const [activeEnemy, setActiveEnemy] = useState({})
     const [dmg, setDmg] = useState(0)
+    const [enemyDmg, setEnemyDmg] = useState(0)
 
 
     const updateDmg = (newDmg) => {
@@ -37,19 +38,19 @@ const Battleground = () => {
          }      
          getEnemy()
     },[])
-
-    const enemyFight = () => {
-        console.log("hello");
-    }
     
-    useEffect(() => {
-        if (startBattle){ 
-            enemyFight()
-        } else {
-            console.log("dobojováno jest");
+    useTimer(() => {
+        if (startBattle) {
+            setEnemyDmg(activeEnemy.attack)
         }
+    }, 2000)
 
-    }, [startBattle])
+    useTimer(() => {
+        if(startBattle && enemyDmg !== 0){
+            setEnemyDmg(0)
+        }
+    }, 2000)
+
 
 
     return(
@@ -61,10 +62,13 @@ const Battleground = () => {
                     <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
                         <img src={activePokemon.pokemonImg} alt="" />
                     </div>
-                    <HpComponent 
-                     hp= {activePokemon.hp}
-                     dmg= {activeEnemy.dmg}
-                    />
+                    { activePokemon && activePokemon.pokemon && activePokemon.pokemon.skills ?
+                        <HpComponent 
+                            hp= {activePokemon?.pokemon?.skills?.hp}
+                            damage= {enemyDmg}
+                        />
+                        : null
+                    }
                     { 
                     activePokemon.name === "" ? "" : <BoxAttacks 
                     id= {activePokemon}

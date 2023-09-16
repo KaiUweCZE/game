@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 
 
 const HpComponent = ( { hp, damage } ) => {
-    const [actualHp, setActualHp] = useState(hp)
+    const [actualHp, setActualHp] = useState(200)
 
-    console.log("tohle je props: ", hp, damage);
     
-    useEffect(() => {
+    /*useEffect(() => {
         //hp setting is ilustrative
-        setActualHp(hp*10);
-    }, [hp]);
+        setActualHp(hp);
+    }, [hp]);*/
 
     useEffect(() => {
         if (damage !== undefined && damage !== null) {
@@ -28,7 +27,7 @@ const HpComponent = ( { hp, damage } ) => {
     return (
         <>
         <div className="hp">
-            <div className="your-hp" style={{ width: `${actualHp/(hp*0.1)}%` }}>
+            <div className="your-hp" style={{ width: `${(actualHp/200)*100}%` }}>
             </div>
         </div>
         </>
