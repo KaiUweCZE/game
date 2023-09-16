@@ -1,18 +1,20 @@
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import { useMySix } from "../Functions/Functions";
+import { choosePokemon, useMySix, useTimer } from "../Functions/Functions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { pokemonsData } from "../data/pokemons";
 import { fieldOne } from "../data/importedImages";
 import HpComponent from "../components/battle-components/HpComponent";
 import BoxAttacks from "../components/battle-components/BoxAttacks";
+import { countryData } from "../data/countryData";
 import userApi from "../services/api"
 
 const Battleground = () => {
     const location = useLocation()
     const from = location.state.from || "Nope"
     const {pokemons, loading} = useMySix()
+    const [startBattle, setStartBattle] = useState(false)
     const [activePokemon, setActivePokemon] = useState({name: ""})
     const [activeEnemy, setActiveEnemy] = useState({})
     const [dmg, setDmg] = useState(0)
@@ -23,44 +25,31 @@ const Battleground = () => {
         console.log("Rodič obdržel: ", newDmg);
     }
 
-    //img for 
-    const enemyImg = (enemy) => {
-        const poke = pokemonsData.find(poke => poke.name.toLocaleLowerCase() === enemy.name);
-        setActiveEnemy(poke)
-    };
-
-    // this will be in dataCountry file
-    const country = [
-        {
-            countryName: "magicalforest",
-            names: ["scyther", "bulbasaur", "butterfree"]
-        },
-        {
-            countryName: "cave",
-            names: ["geodude", "zubat", "hypno"]
-        }
-    ]
-    console.log(pokemons);
     //encounter random pokemon
-    const enemies = country.find(e => e.countryName === from)
+    const enemies = countryData.find(e => e.countryName === from)
     useEffect(() => {
         const getEnemy = () => {
             const enemy = GetMob(enemies.names)
-            enemyImg(enemy)
-         }        
+            console.log("tohle jsou jeho staty: ", enemy);
+            //enemyImg(enemy)
+            setActiveEnemy(enemy)
+            console.log("tohle jsou jeho staty: ", enemy);
+         }      
          getEnemy()
-
     },[])
 
-    // func will be in funcions
-    const chooseYou = (pokemon) =>{
-        const pokemonData = pokemonsData.find(e => e.name === pokemon.name)
-        const pokemonImg = pokemonData.img
-        console.log("img is: ", pokemonImg);
-        const onePokemon = { pokemon, pokemonImg }
-        setActivePokemon(onePokemon)
-        console.log("active pokemon is: ", activePokemon);
+    const enemyFight = () => {
+        console.log("hello");
     }
+    
+    useEffect(() => {
+        if (startBattle){ 
+            enemyFight()
+        } else {
+            console.log("dobojováno jest");
+        }
+
+    }, [startBattle])
 
 
     return(
@@ -73,6 +62,8 @@ const Battleground = () => {
                         <img src={activePokemon.pokemonImg} alt="" />
                     </div>
                     <HpComponent 
+                     hp= {activePokemon.hp}
+                     dmg= {activeEnemy.dmg}
                     />
                     { 
                     activePokemon.name === "" ? "" : <BoxAttacks 
@@ -86,7 +77,7 @@ const Battleground = () => {
                     {
                         pokemons.map((pokemon, index) => {
                             return(
-                                <span key={index} onClick={() => chooseYou(pokemon)}>{pokemon.name}</span>
+                                <span key={index} onClick={() => choosePokemon(pokemon, setActivePokemon, setStartBattle)}>{pokemon.name}</span>
                             )
                         })
                     }
@@ -102,7 +93,9 @@ const Battleground = () => {
                         <img src={activeEnemy.img} alt="" />                        
                     </div>
                     <span>{activeEnemy.name}</span>              
-                    <HpComponent damage = {dmg}/>                
+                    <HpComponent 
+                    hp = {activeEnemy.hp}
+                    damage = {dmg}/>                
                 </div>
         </div>
     )

@@ -19,3 +19,14 @@ export const calculateHp = (attack) => {
 export const reloadAttack = (attack) => {
     return attack.reload;
 }
+
+export const useStartBattle = (boolean) => {
+    
+    useEffect(() => {
+        const timer = setTimeout(() => {
+
+        }, 1000)   
+    }, [])
+    
+    return dmg
+}

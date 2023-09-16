@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 
-const HpComponent = ( props ) => {
-    const [actualHp, setActualHp] = useState(100)
-    /*funcs: how many hp does a pokemon have? */
-    // attack and hp will be parameters
-    const damage = props.damage
-    console.log("tohle jde &&&@&&: ", damage);
+const HpComponent = ( { hp, damage } ) => {
+    const [actualHp, setActualHp] = useState(hp)
+
+    console.log("tohle je props: ", hp, damage);
     
+    useEffect(() => {
+        //hp setting is ilustrative
+        setActualHp(hp*10);
+    }, [hp]);
+
     useEffect(() => {
         if (damage !== undefined && damage !== null) {
             const newHp = actualHp - damage;
@@ -25,7 +28,7 @@ const HpComponent = ( props ) => {
     return (
         <>
         <div className="hp">
-            <div className="your-hp" style={{ width: `${actualHp}%` }}>
+            <div className="your-hp" style={{ width: `${actualHp/(hp*0.1)}%` }}>
             </div>
         </div>
         </>

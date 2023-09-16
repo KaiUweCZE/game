@@ -1,10 +1,40 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { signOut } from '../redux/user/userSlice';
 import UserApi from "../services/api"
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { pokemonsData } from '../data/pokemons';
 
 
+
+//timer
+
+export const useTimer = (callback, interval) => {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+        const tick = () => {
+            savedCallback.current()
+        }
+
+        if (interval !== null){
+            const id = setInterval(tick,interval);
+            return () => clearInterval(id)
+        }
+    }, [interval])
+}
+
+export const choosePokemon = (pokemon, setActivePokemon, setStartBattle) => {
+    const pokemonData = pokemonsData.find(e => e.name === pokemon.name);
+    const pokemonImg = pokemonData.img;
+    const onePokemon = { pokemon, pokemonImg };
+    setActivePokemon(onePokemon);
+    setStartBattle(true);
+}
 
 export const useLoader = () => {
     const [loading, setLoading] = useState(true)
