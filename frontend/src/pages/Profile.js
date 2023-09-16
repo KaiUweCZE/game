@@ -33,6 +33,13 @@ const Profile = () => {
         console.log(charImg);
         fetchData();
     }, []);
+
+    const removePokemonFromSix = (pokemon) => {
+        console.log("tohle je id pokemona: ", pokemon);
+        UserApi.removeFromSix({username: currentUser.username, mySix: pokemon })
+        .then((res) => console.log(res.data))
+        .catch((err) => console.error(err))  
+    }
     
 
     // fetch pokemons from six
@@ -145,7 +152,7 @@ const Profile = () => {
                                     <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
 
                                 </article>
-                                
+                                <button onClick={() => removePokemonFromSix(pokemon._id)}>vrátit do boxu</button>
                             </figure>
                         )
                     })

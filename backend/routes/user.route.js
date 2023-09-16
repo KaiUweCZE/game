@@ -1,5 +1,5 @@
 import express from 'express';
-import { test_message, addPokemon, campaignProgress, checkCampaign, getYourPokemons, addImageProfile, getUser, addToSix, getSix, removeFromSix} from '../controllers/user.controller.js';
+import { test_message, addPokemon, campaignProgress, checkCampaign, getYourPokemons, addImageProfile, getUser, addToSix, getSix, removeFromSix, pokemonsInBox} from '../controllers/user.controller.js';
 
 const router = express.Router();
 
@@ -17,6 +17,7 @@ router.get("/checkCampaign", checkCampaign)
 router.get("/user", getUser)
 router.get("/myPokemons", getYourPokemons)
 router.get("/mySix", getSix)
+router.get("/pokemonsInBox", pokemonsInBox)
 //remove
 router.delete("/removeFromSix", removeFromSix)
 export default router

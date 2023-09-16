@@ -120,6 +120,27 @@ export const getYourPokemons = async (req, res, next) => {
     }
 }
 
+//pokemon whose are not in six
+export const pokemonsInBox = async (req, res, next) => {
+    const {username} = req.query;
+    try {
+        const user = await User.findOne({username})
+                            .populate({
+                                path: 'pokemon',
+                                populate: { path: 'attacks' }
+                            });
+        
+        if (user) {
+            const sixPokemonIds = user.mySix.map(p => p.toString());
+            const pokemonsInBox = user.pokemon.filter(p => !sixPokemonIds.includes(p._id.toString()));
+            return res.status(200).json({ pokemon: pokemonsInBox });
+        } else {
+            return res.status(404).json({ message: "User not found"});
+        }
+    } catch (error) {
+        next(error);
+    }
+};
 
 //funcs for pokemon's six
 //add pokemon to your six
@@ -178,12 +199,11 @@ export const getSix = async (req, res, next) => {
 
 //remove pokemon from six to pokemon box(something that)
 export const removeFromSix = async (req, res, next) => {
-    const {username} = req.body;
-    const _id = req.body.mySix;
+    const { username, mySix: _id } = req.query;
     console.log("Methods removeFromSix was called");
     try {
         const user = await User.findOne({username}).populate('mySix')
-
+        console.log(user);
         if(!user){
             return res.status(404).json({ message: "User not found"})
         }

@@ -37,8 +37,11 @@ class UserApi{
     getSix(data){
         return axios.get(`${URL}mySix`, { params: data })
     }
+    getBoxPokemon(data){
+        return axios.get(`${URL}pokemonsInBox`, { params: data })
+    }
     removeFromSix(data){
-        return axios.delete(`${URL}removeFromSix`, data)
+        return axios.delete(`${URL}removeFromSix`, { params: data})
     }
 }
 

@@ -11,7 +11,7 @@ const MyBox = () => {
     const [pokemons, setPokemons] = useState([])
 
     const getPokemons = () => {
-        UserApi.getYourPokemons({username: currentUser.username})
+        UserApi.getBoxPokemon({username: currentUser.username})
         .then((res) => {
             setPokemons(res.data.pokemon)
             console.log(res.data);
@@ -23,8 +23,7 @@ const MyBox = () => {
         getPokemons()
     }, []);
 
-    const addPokemon = (pokemon) =>{
-        
+    const addPokemon = (pokemon) =>{     
         console.log(pokemon);
         
         var data = {
@@ -33,9 +32,10 @@ const MyBox = () => {
         }
         UserApi.addToSix(data)
         .then((res) => console.log(res.data))
-        .catch((err) => console.error(err))
-        
+        .catch((err) => console.error(err))    
     }
+
+    
     return(
         
         <Wallpaper background={labBg}>
