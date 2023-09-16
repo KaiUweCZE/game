@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { handlerAttack, handlerSwitch, handlerAvoid, reloadAttack } from "./battleBoxFunctions";
+import { handlerAttack, handlerSwitch, handlerAvoid } from "./battleBoxFunctions";
 
 
 const BoxAttacks = (props) => {
@@ -10,6 +10,7 @@ const BoxAttacks = (props) => {
     const [duration, setDuration] = useState(0)
     const [displayReload, setDisplayReload] = useState(0);
     const pokemon = props.id.pokemon
+    const battle = props.startBattle
     const attacks = pokemon.attacks
   
     // attack reload
@@ -20,8 +21,6 @@ const BoxAttacks = (props) => {
         setReload(reload);
         props.updateDmg(dmg);
     }, [currentAttack, clickCounter])
-
-
 
     useEffect(() => {
     let timer;
@@ -37,7 +36,9 @@ const BoxAttacks = (props) => {
         //console.log("animation duration is: ", remaining);
         if (remaining > 0) {
             timer = setTimeout(updateReload, 10);
-        } else{
+        } else if (!battle) {
+            setClickable(false)
+        } else {
             setClickable(true)
         }
     };

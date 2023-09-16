@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 
-const HpComponent = ( { hp, damage } ) => {
-    const [actualHp, setActualHp] = useState(200)
+const HpComponent = ( { who, hp, damage, itIsOver } ) => {
+    const [actualHp, setActualHp] = useState(100)
 
     
     /*useEffect(() => {
@@ -13,13 +13,14 @@ const HpComponent = ( { hp, damage } ) => {
     useEffect(() => {
         if (damage !== undefined && damage !== null) {
             const newHp = actualHp - damage;
-            if (newHp < 0) {
+            if (newHp <= 0) {
                 setActualHp(0);
+                itIsOver(who);
             } else {
                 setActualHp(newHp);
             }
         }
-        console.log(actualHp);
+        
     }, [damage]);
     
 
@@ -27,7 +28,7 @@ const HpComponent = ( { hp, damage } ) => {
     return (
         <>
         <div className="hp">
-            <div className="your-hp" style={{ width: `${(actualHp/200)*100}%` }}>
+            <div className="your-hp" style={{ width: `${(actualHp/100)*100}%` }}>
             </div>
         </div>
         </>
