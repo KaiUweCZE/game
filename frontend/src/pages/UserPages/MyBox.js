@@ -4,26 +4,23 @@ import { useSelector } from "react-redux";
 import { pokemonsData } from "../../data/pokemons";
 import Wallpaper from '../../components/Wallpaper'
 import { labBg } from "../../data/importedImages";
+import { getBoxPokemons } from "../../Functions/Functions";
 
 
 const MyBox = () => {
     const {currentUser} = useSelector((state) => state.user)
     const [pokemons, setPokemons] = useState([])
 
-    const getPokemons = () => {
-        UserApi.getBoxPokemon({username: currentUser.username})
-        .then((res) => {
-            setPokemons(res.data.pokemon)
-            console.log(res.data);
-        })
-        .catch((err) => console.error(err));
-    }
-
     useEffect(() => {
-        getPokemons()
+        getBoxPokemons(currentUser.username).then((receivedPokemons) => {
+            if (receivedPokemons) {
+                setPokemons(receivedPokemons)
+            }
+        })
     }, []);
 
-    const addPokemon = (pokemon) =>{     
+    //this will be move to Functions file
+    const addPokemonToSix = (pokemon) =>{     
         console.log(pokemon);
         
         var data = {
@@ -50,7 +47,7 @@ const MyBox = () => {
                             <figure key={index}>
                                 <img src={onePokemon.img} alt=""  />
                                 <h2>{pokemon.name}</h2>
-                                <button onClick={() => addPokemon(pokemon._id)}>vybrat</button>
+                                <button onClick={() => addPokemonToSix(pokemon._id)}>vybrat</button>
                             </figure>
                         )
                     })

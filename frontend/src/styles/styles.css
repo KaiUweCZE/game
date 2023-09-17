@@ -283,23 +283,46 @@ header {
   transform: translateX(-100%);
   opacity: 0;
   transition: transform 0.8s, opacity 0.4s 0.3s;
+  /*Button Profila B*/
 }
 .container__profile .box__user-pokemons::-webkit-scrollbar {
   display: none;
 }
 .container__profile .box__user-pokemons button {
+  /*common button*/
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
+  color: white;
   padding: 0.25em;
-  overflow: hidden;
-  background-color: rgba(70, 70, 70, 0.2);
+  margin: 0.25em;
+  background-color: rgba(0, 0, 0, 0.6);
   border: 1px solid black;
   border-radius: 0.25em;
   transition: 0.5s;
+  font-weight: bold;
+  /**/
+  position: relative;
+  isolation: isolate;
 }
-.container__profile .box__user-pokemons button:hover {
-  background-color: white;
+.container__profile .box__user-pokemons button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.8);
+  inset: 0;
+  scale: 0 1;
+  transform-origin: right;
+  transition: scale 0.5s;
+}
+.container__profile .box__user-pokemons button:hover::after, .container__profile .box__user-pokemons button:focus-visible::after {
+  transform-origin: left;
+  scale: 1 1;
+}
+.container__profile .box__user-pokemons .box__flex-row {
+  display: flex;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .container__profile .box__user-pokemons div {
   display: grid;

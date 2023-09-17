@@ -1,0 +1,12 @@
+1. Potřebuji protřídit stylování
+    a. začít se media query
+    b. mixins, variables
+    c. přejmenovat
+
+2. dodělat komponenty a obecnější funkce
+
+3. Return to Box a pick to the six by měly být vyobrazeny na hned
+
+4. Začít s vytvořením 10 pokémonů + jejich evoluce + vývoje & exps i abilities, rozpracovat
+
+5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů

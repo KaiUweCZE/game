@@ -5,6 +5,7 @@ import UserApi from '../services/api'
 import { pokemonsData } from "../data/pokemons";
 import { char1, char3, arrow, elixirOne } from "../data/importedImages";
 import  { BoxBadges, BoxInventory } from "../components/light-component/LightComponent";
+import ButtonProfileB from "../components/light-component/ButtonProfileB";
 
 
 const Profile = () => {
@@ -132,8 +133,11 @@ const Profile = () => {
             </div>
             <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>
                 <h2>Pokemons:</h2>
-                <button onClick={otherclass}>{buttonShow}</button>
-                <button><Link to="/mybox">do boxu!</Link></button>
+                <div className="box__flex-row">
+                    <ButtonProfileB content={buttonShow} func={otherclass} path=""/>
+                    <ButtonProfileB content="Do Boxu!" func= "" path="/mybox"/>
+                </div>
+                
                 <div>     
                 {       
                     pokemons.map((pokemon, index) => {
@@ -152,7 +156,8 @@ const Profile = () => {
                                     <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
 
                                 </article>
-                                <button onClick={() => removePokemonFromSix(pokemon._id)}>vrátit do boxu</button>
+                                <ButtonProfileB content="Return" func={()=>removePokemonFromSix(pokemon._id)}/>
+
                             </figure>
                         )
                     })

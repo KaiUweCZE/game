@@ -184,3 +184,19 @@ export const checkCampaign = (username, campaignName) =>{
         return false
     })
 }
+
+/*get pokemons whose are in box */
+export const getBoxPokemons = (username) => {
+    console.log("tohle je ", username);
+    return new Promise((resolve, reject) => {
+        UserApi.getBoxPokemon({username})
+        .then((res) => {
+        resolve(res.data.pokemon)
+    })
+        .catch((err) => {
+        console.error(err)
+        reject(null)
+    });
+    })
+   
+}
