@@ -11,3 +11,7 @@
 4. Začít s vytvořením 10 pokémonů + jejich evoluce + vývoje & exps i abilities, rozpracovat
 
 5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů
+
+/*kroky*/
+atomizování Profile.js a jeho funkcí, nastavení více mixins i variables, přidání badges a items k uživateli
+navíc i samostatný model Items.

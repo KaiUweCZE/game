@@ -5,7 +5,6 @@ import ErrorMessage from "../components/ErrorMessage";
 
 const Register = () => {
     const [user, setUser] = useState({ username: "", password: ""});
-    const [loading, setLoading] = useState(false)
     const [registred, setRegistred] = useState(false)
     const [error, setError] = useState(false)
 

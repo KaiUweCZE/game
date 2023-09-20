@@ -1,5 +1,6 @@
 import express from 'express';
 import { test_message, addPokemon, campaignProgress, checkCampaign, getYourPokemons, addImageProfile, getUser, addToSix, getSix, removeFromSix, pokemonsInBox} from '../controllers/user.controller.js';
+import { addBadge } from '../controllers/item.controller.js';
 
 const router = express.Router();
 
@@ -12,6 +13,7 @@ router.post("/imageProfile", addImageProfile)
 router.post("/addPokemon", addPokemon)
 router.post("/nextCampaign", campaignProgress)
 router.post("/addToSix", addToSix)
+router.post("/addBadge", addBadge)
 //get methods
 router.get("/checkCampaign", checkCampaign)
 router.get("/user", getUser)

@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import LoginForm from "../components/LoginForm";
 import UserApi from "../services/api";
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import ErrorMessage from "../components/ErrorMessage";
 import { signInStart, signInSuccess, signInFailure } from "../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
     const [user, setUser] = useState({username: "", password: ""})
-    const [login, setLogin] = useState(false)
     const { loading, error } = useSelector((state) => state.user)
 
     const navigate = useNavigate();

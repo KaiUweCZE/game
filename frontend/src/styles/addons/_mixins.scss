@@ -66,3 +66,15 @@
         background-color: darken(white, 50%);
     }
 }
+
+@mixin small-window {
+    @media (max-width: 62.5em) {
+        @content;
+    }
+}
+
+@mixin tiny-window{
+    @media (max-width: 400px){
+        @content;
+    }
+}

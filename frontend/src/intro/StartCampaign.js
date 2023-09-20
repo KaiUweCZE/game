@@ -9,7 +9,6 @@ import professorImage from '../styles/images/profbloom.webp'
 import eevee from "../styles/images/eevee.png"
 import teddiursa from "../styles/images/teddiursa.png"
 import { char1, char3 } from '../data/importedImages';
-import {store} from '../redux/store'
 import Loader from '../components/Loader';
 
 
@@ -22,7 +21,7 @@ const StartCampaign = () => {
     const {loading, setLoading} = useLoader();
     const dispatch = useDispatch();
 
-    // is this part completed?
+    //Checl if is this part completed?
     useEffect(() => {
         setLoading(true);
         checkCampaign(currentUser.username, 'firstChoice')
@@ -59,7 +58,7 @@ const StartCampaign = () => {
             image: teddiursa,
             name: "Teddiursa",
             content:  "Tak tady to je Teddiursa, jeho tvrdohlavost je vykoupena bojem do poslední kapky krve!",
-            skills: tSkills
+            skills: tSkills,
         }
     ]
 

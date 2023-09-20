@@ -1,19 +1,16 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserApi from '../services/api'
-import { pokemonsData } from "../data/pokemons";
-import { char1, char3, arrow, elixirOne } from "../data/importedImages";
-import  { BoxBadges, BoxInventory } from "../components/light-component/LightComponent";
-import ButtonProfileB from "../components/light-component/ButtonProfileB";
+import { char1, char3, arrow} from "../data/importedImages";
+import  { Arrow } from "../components/light-component/LightComponent";
+import UserInfoBox from "../components/ProfileComp/UserInfoBox";
+import UserInventoryBox from "../components/ProfileComp/UserInventoryBox";
+import UserPokemonsBox from "../components/ProfileComp/UserPokemonsBox";
 
 
 const Profile = () => {
     const {currentUser} = useSelector((state) => state.user)
-    const [pokemons, setPokemons] = useState([])
     const [myClass, setMyClass] = useState("");
-    const [t,setT] = useState("")
-    const [buttonShow, setButtonShow] = useState("Show stats!")
     const arrowRef = useRef(null);
     const arrowRef2 = useRef(null)
     const [i, setI] = useState(0)
@@ -35,27 +32,6 @@ const Profile = () => {
         fetchData();
     }, []);
 
-    const removePokemonFromSix = (pokemon) => {
-        console.log("tohle je id pokemona: ", pokemon);
-        UserApi.removeFromSix({username: currentUser.username, mySix: pokemon })
-        .then((res) => console.log(res.data))
-        .catch((err) => console.error(err))  
-    }
-    
-
-    // fetch pokemons from six
-    const getMySix = () => {
-        UserApi.getSix({username: currentUser.username})
-        .then( (res) => {
-            setPokemons(res.data.mySix)
-            console.log(res.data);
-        })
-        .catch((err) => console.error(err))
-    }
-
-    useEffect(() => {
-        getMySix()     
-    }, []);
 
     //apply transform effects 
     const showComponent = () =>{
@@ -84,86 +60,27 @@ const Profile = () => {
         }
     }
 
-    /* Nutné přejmenovat a opravit s ostatními funkcemi setter/showComponent */
-    const otherclass = () => {
-        if (t === ""){
-            setT("actived")
-            setButtonShow("Hide stats!")
-        } else {
-            setT("")
-            setButtonShow("Show stats!")
-        }
-        
-    }
     
     return(
         <div className="container__profile">
-            {/* this will be componenta */}
+            
             <img className="profile-img" src={charImg} alt="" />
-            <div className="box__user-info">
-                <div className="left">
-                    <div className="about">
-                        <ul>
-                            <li>Name: {currentUser.username}</li>
-                            <li>Lokalita: Home</li>
-                        </ul>
-                    </div>
-                    
-                    <BoxBadges />
-                </div>
-                <div className="right">
-                    <article>
-                        <h2>Stats</h2>
-                        <p>
-                            Lorem, ipsum dolor.
-                        </p>
-                    </article>
-                </div>
+            {/* this will be componenta */}
+            <UserInfoBox
+            name={currentUser.username}
+            location= "Home"
+            abilities= "none"
+            statistics="lorem, ipsum dolor."
+            >
+            <Arrow ref={arrowRef} src={arrow} fun={showComponent} />
+            </UserInfoBox>
+            
+            <UserInventoryBox myClass={myClass} i={i}>
+                <Arrow ref={arrowRef2} src={arrow} fun={setter} />
+            </UserInventoryBox>
 
-                {/*this will be component */}
-                <img ref={arrowRef} className="arrow" src={arrow} alt="" onClick={showComponent}/>
-            </div>
-            <div className={`box__user-inventory ${myClass} ${i === 1 ? "fast-opacity" : ""}`} >
-                <span>Bag</span>
-                <hr />
-                <BoxInventory 
-                />
-                {/*this will be component */}
-                <img ref={arrowRef2} className="arrow" src={arrow} alt="" onClick={setter}/>
-            </div>
-            <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>
-                <h2>Pokemons:</h2>
-                <div className="box__flex-row">
-                    <ButtonProfileB content={buttonShow} func={otherclass} path=""/>
-                    <ButtonProfileB content="Do Boxu!" func= "" path="/mybox"/>
-                </div>
-                
-                <div>     
-                {       
-                    pokemons.map((pokemon, index) => {
-                        const onePokemon = pokemonsData.find((e) => e.name === pokemon.name)
-                        const {level, attack, hp, abilities } = pokemon.skills
-                        
-                        return(
-                            <figure key={index}>
-                                <img src={onePokemon.img} alt=""/>
-                                <article className={`${t}`}>
-                                    <h3>{pokemon.name}</h3>
-                                    <p>level: {level}</p>
-                                    <p>hp: {hp}</p>
-                                    <p>attack: {attack}</p>
-                                    <p>abilities: {abilities}</p>
-                                    <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
+            <UserPokemonsBox myClass={myClass} i={i} />
 
-                                </article>
-                                <ButtonProfileB content="Return" func={()=>removePokemonFromSix(pokemon._id)}/>
-
-                            </figure>
-                        )
-                    })
-                }
-                </div>  
-            </div>
         </div>
     )
 }

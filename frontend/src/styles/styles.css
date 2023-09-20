@@ -127,14 +127,22 @@ header {
   margin: 1em;
   padding-inline: 5vw;
 }
-.container__profile .profile-img {
+@media (max-width: 62.5em) {
+  .container__profile {
+    grid-template-columns: 1f max-content;
+    grid-template-areas: "img stats" "img inventory" ". pokemons";
+  }
+}
+
+.profile-img {
   grid-area: img;
   display: flex;
   height: auto;
   width: 15em;
   z-index: 1;
 }
-.container__profile .box__user-info {
+
+.box__user-info {
   grid-area: stats;
   position: relative;
   display: flex;
@@ -152,24 +160,25 @@ header {
   width: clamp(20em, 25vw, 35em);
   max-height: 20em;
 }
-.container__profile .box__user-info::-webkit-scrollbar {
+.box__user-info::-webkit-scrollbar {
   display: none;
 }
-.container__profile .box__user-info .arrow {
+.box__user-info .arrow {
   position: absolute;
   bottom: 0;
   right: 50%;
   margin-bottom: 0.25em;
 }
-.container__profile .box__user-info h3 {
+.box__user-info h3 {
   grid-column: 1;
 }
-.container__profile .box__user-info div {
+
+.box__badges {
   display: flex;
   flex-direction: column;
   row-gap: 1em;
 }
-.container__profile .box__user-info div figure {
+.box__badges figure {
   display: grid;
   width: -moz-max-content;
   width: max-content;
@@ -177,16 +186,14 @@ header {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
 }
-.container__profile .box__user-info div figure div {
+.box__badges figure img {
   display: flex;
-  width: 2.5em;
-  height: 2.5em;
-  background-color: transparent;
-  border: 2px solid black;
+  width: 3em;
+  background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
-  box-shadow: 0 0 3px black;
 }
-.container__profile .box__user-inventory {
+
+.box__user-inventory {
   grid-area: inventory;
   position: relative;
   display: flex;
@@ -196,6 +203,7 @@ header {
   border-radius: 0.5em;
   box-shadow: 0 0 8px black;
   scrollbar-width: 0px;
+  visibility: hidden;
   place-items: center;
   padding-block: 2em;
   overflow-y: scroll;
@@ -206,54 +214,63 @@ header {
   width: 100%;
   max-height: 20em;
 }
-.container__profile .box__user-inventory::-webkit-scrollbar {
+.box__user-inventory::-webkit-scrollbar {
   display: none;
 }
-.container__profile .box__user-inventory span {
+@media (max-width: 62.5em) {
+  .box__user-inventory {
+    width: 22em;
+  }
+}
+.box__user-inventory span {
   font-size: 2em;
   font-weight: bold;
   padding-bottom: 0.2em;
 }
-.container__profile .box__user-inventory hr {
+.box__user-inventory hr {
   width: 70%;
   margin-bottom: 1em;
 }
-.container__profile .box__user-inventory .item-list {
+.box__user-inventory .item-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
   margin-inline: 10%;
 }
-.container__profile .box__user-inventory .item {
+.box__user-inventory .item {
   margin: 0;
   padding: 0;
 }
-.container__profile .box__user-inventory .item img {
+.box__user-inventory .item img {
   height: 100%;
   width: 100%;
   cursor: pointer;
   transition: 0.3s;
 }
-.container__profile .box__user-inventory .item img:hover {
+.box__user-inventory .item img:hover {
   transform: scale(1.1);
 }
-.container__profile .box__user-inventory .arrow {
+.box__user-inventory .arrow {
   position: sticky;
   bottom: 1em;
   left: 100%;
   margin: 1em;
   transform: rotate(-90deg);
 }
-.container__profile .box__user-inventory .arrow:hover {
+.box__user-inventory .arrow:hover {
   transform: rotate(-90deg);
 }
-.container__profile .box__user-inventory.active {
+
+.box__user-inventory.active {
+  visibility: visible;
   transform: translateY(0);
   opacity: 1;
 }
-.container__profile .box__user-inventory.fast-opacity {
+
+.box__user-inventory.fast-opacity {
   transition: transform 0.7s, opacity 0.5s 0.1s;
 }
-.container__profile .box__user-pokemons {
+
+.box__user-pokemons {
   grid-area: pokemons;
   display: flex;
   flex-direction: column;
@@ -262,6 +279,7 @@ header {
   border-radius: 0.5em;
   box-shadow: 0 0 8px black;
   scrollbar-width: 0px;
+  visibility: hidden;
   width: 40vw;
   height: -moz-fit-content;
   height: fit-content;
@@ -272,10 +290,17 @@ header {
   transition: transform 0.8s, opacity 0.4s 0.3s;
   /*Button Profila B*/
 }
-.container__profile .box__user-pokemons::-webkit-scrollbar {
+.box__user-pokemons::-webkit-scrollbar {
   display: none;
 }
-.container__profile .box__user-pokemons button {
+@media (max-width: 62.5em) {
+  .box__user-pokemons {
+    transform: translateY(-100%);
+    width: 20em;
+    margin-left: 0;
+  }
+}
+.box__user-pokemons button {
   /*common button*/
   display: flex;
   width: -moz-fit-content;
@@ -292,7 +317,7 @@ header {
   position: relative;
   isolation: isolate;
 }
-.container__profile .box__user-pokemons button::after {
+.box__user-pokemons button::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -302,32 +327,32 @@ header {
   transform-origin: right;
   transition: scale 0.5s;
 }
-.container__profile .box__user-pokemons button:hover::after, .container__profile .box__user-pokemons button:focus-visible::after {
+.box__user-pokemons button:hover::after, .box__user-pokemons button:focus-visible::after {
   transform-origin: left;
   scale: 1 1;
 }
-.container__profile .box__user-pokemons .box__flex-row {
+.box__user-pokemons .box__flex-row {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
 }
-.container__profile .box__user-pokemons div {
+.box__user-pokemons div {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
   -moz-column-gap: 1em;
        column-gap: 1em;
   overflow: hidden;
 }
-.container__profile .box__user-pokemons div img {
+.box__user-pokemons div img {
   width: 100%;
   max-width: 15em;
   cursor: pointer;
   transition: 0.5s;
 }
-.container__profile .box__user-pokemons div img:hover {
+.box__user-pokemons div img:hover {
   transform: scale(1.1);
 }
-.container__profile .box__user-pokemons div article {
+.box__user-pokemons div article {
   display: none;
   background-color: rgba(0, 0, 0, 0.3);
   padding: 0.5em;
@@ -337,20 +362,29 @@ header {
   transform: translateY(10em);
   transition: 0.5s;
 }
-.container__profile .box__user-pokemons div article.actived {
+.box__user-pokemons div article.actived {
   display: flex;
   flex-direction: column;
   transform: translateY(0);
 }
-.container__profile .box__user-pokemons.active {
+
+.box__user-pokemons.active {
   transform: translateX(0);
+  visibility: visible;
   opacity: 1;
   transition: transform 0.8s, opacity 0.4s 0.3s;
 }
-.container__profile .box__user-pokemons.fast-opacity {
+@media (max-width: 62.5em) {
+  .box__user-pokemons.active {
+    transform: translateY(0);
+  }
+}
+
+.box__user-pokemons.fast-opacity {
   transition: transform 0.8s, opacity 0.2s 0.1s;
 }
-.container__profile .arrow {
+
+.arrow {
   display: flex;
   height: 1.25em;
   width: 1.25em;
@@ -361,7 +395,7 @@ header {
   cursor: pointer;
   transition: 0.3s;
 }
-.container__profile .arrow:hover {
+.arrow:hover {
   transform: scale(1.1);
 }
 
@@ -369,6 +403,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 130vh;
 }
 .container__firstChoice a {
   color: black;
@@ -378,7 +413,8 @@ header {
 .container__firstChoice a:hover {
   font-weight: bold;
 }
-.container__firstChoice .animation-professor {
+
+.animation-professor {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -386,16 +422,16 @@ header {
   position: relative;
   overflow: hidden;
 }
-.container__firstChoice .animation-professor:hover article {
+.animation-professor:hover article {
   transform: translateY(0);
   opacity: 1;
   transition-delay: 0.2s;
 }
-.container__firstChoice .animation-professor:hover .img-wrapper::before {
+.animation-professor:hover .img-wrapper::before {
   background-color: rgba(0, 0, 0, 0.6);
   transform: translateY(0);
 }
-.container__firstChoice .animation-professor article {
+.animation-professor article {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -411,15 +447,16 @@ header {
   color: white;
   z-index: 2;
 }
-.container__firstChoice .animation-professor .img-wrapper {
+
+.img-wrapper {
   opacity: 0;
   animation: intro 0.5s ease-in forwards;
   position: relative;
 }
-.container__firstChoice .animation-professor .img-wrapper img {
+.img-wrapper img {
   width: 100%;
 }
-.container__firstChoice .animation-professor .img-wrapper::before {
+.img-wrapper::before {
   content: "";
   display: flex;
   position: absolute;

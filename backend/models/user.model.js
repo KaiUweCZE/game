@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     img: String,
+    badges:[String],
+    items: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Item'
+    }],
     pokemon: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pokemon'
@@ -68,6 +73,16 @@ const attackSchema = new mongoose.Schema({
     }
 })
 
+const itemSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        unique: true
+    },
+    // code string to be used in frontend
+    effect: String
+})
+
 export const User = new mongoose.model('User', userSchema)
 export const Pokemon = new mongoose.model('Pokemon', pokemonSchema)
 export const Attack = new mongoose.model('Attack', attackSchema)
+export const Item = new mongoose.model('Item', itemSchema)
