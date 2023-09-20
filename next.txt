@@ -2,6 +2,7 @@
     a. začít se media query
     b. mixins, variables
     c. přejmenovat
+    d. trochu přeskládat vnořování, někde není taková míra specifičnosti zapotřebí.
 
 2. dodělat komponenty a obecnější funkce
 
