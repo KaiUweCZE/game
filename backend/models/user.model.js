@@ -34,15 +34,20 @@ const userSchema = new mongoose.Schema({
 
 const skillSchema = new mongoose.Schema({
     level: Number,
-    abilities: String,
+    abilities: [String],
     hp: Number,
-    attack: Number
+    damage: Number,
+    speed: Number,
+    energy: Number
 });
 
 const pokemonSchema = new mongoose.Schema({
     name: String,
-    image: String,
     skills: skillSchema,
+    expToNextLevel: {
+        type: Number,
+        default: 100
+    },
     attacks: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Attack'
@@ -70,6 +75,11 @@ const attackSchema = new mongoose.Schema({
     dmg: {
         type: Number,
         default: 10
+    },
+    energyCost: Number,
+    sideEf: {
+        type: String,
+        default: null
     }
 })
 

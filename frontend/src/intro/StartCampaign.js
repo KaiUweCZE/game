@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setImage } from '../redux/user/userSlice';
-import { checkCampaign, renderSkills, useCompleteCampaign, useLoader } from '../Functions/Functions';
+import { checkCampaign, useCompleteCampaign, useLoader } from '../Functions/Functions';
 import UserApi from '../services/api'
 import ImagePainter from '../components/ImagePainter';
 import professorImage from '../styles/images/profbloom.webp'
@@ -10,6 +10,7 @@ import eevee from "../styles/images/eevee.png"
 import teddiursa from "../styles/images/teddiursa.png"
 import { char1, char3 } from '../data/importedImages';
 import Loader from '../components/Loader';
+import { renderSkills } from '../Functions/RenderStats';
 
 
 const StartCampaign = () => {
@@ -32,19 +33,11 @@ const StartCampaign = () => {
     }, []);
 
     // structer of data will be diferent, this data will be in .js file
-        const eSkills = renderSkills({
-            level:5,
-            abilities: ["grower", "macho"],
-            hp: [10,16],
-            attack: [5,8]
-        });
+        const eSkills = renderSkills("Eevee", 10);
 
-        const tSkills = renderSkills({
-            level:5,
-            abilities: ["hungry", "berseker"],
-            hp: [8,12],
-            attack: [7,10]
-        });
+        const tSkills = renderSkills("Teddiursa", 10);
+
+        const Attempt = renderSkills("Eevee", 25)
 
     // only for imagine
     const pokemons = [
@@ -100,8 +93,7 @@ const StartCampaign = () => {
         console.log(name);
         /* tady někde by měl být kód pro odeslání pokémona do databáze */
         const newPokemon = {
-            name,
-            image,
+            name
         }
         try {
             const thePokemon = pokemons.find(e => e.name === newPokemon.name);
@@ -120,7 +112,6 @@ const StartCampaign = () => {
         var data= {
             pokemon: {
                 name: pokemon.name,
-                image: pokemon.image,
                 skills: skills,
             },
             trainer: currentUser.username

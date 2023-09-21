@@ -117,6 +117,7 @@ export const useLogOut = () => {
     return logOut;
 }
 
+// will be deleted
 export const renderSkills = ({level, abilities, hp, attack}) => {
     const randomNumber = (range) => {
         let min = range[0]

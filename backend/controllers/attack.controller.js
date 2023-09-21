@@ -19,8 +19,8 @@ export const getAttack = async (req, res, next) => {
 
 
 export const postAttack = async (req, res, next) => {
-    const { name, type, reload, speed, dmg } = req.body;
-    const newAttack = new Attack({ name, type, reload, speed, dmg })
+    const { name, type, reload, speed, dmg, sideEf, energyCost } = req.body;
+    const newAttack = new Attack({ name, type, reload, speed, dmg, sideEf, energyCost })
     try {
         await newAttack.save()
         res.status(201).json({message: "attack was successfully created"})

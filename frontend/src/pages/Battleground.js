@@ -51,7 +51,7 @@ const Battleground = () => {
     
     useTimer(() => {
         if (startBattle) {
-            setEnemyDmg(activeEnemy.attack)
+            setEnemyDmg(activeEnemy.dmg)
         }
     }, 2000)
 

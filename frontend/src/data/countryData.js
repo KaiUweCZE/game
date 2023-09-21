@@ -1,14 +1,14 @@
 export const countryData = [
     {
         countryName: "magicalforest",
-        names: ["scyther", "bulbasaur", "butterfree"]
+        names: ["Heracross", "Pinsir", "Oranguru", "Hawlucha"]
     },
     {
         countryName: "cave",
-        names: ["geodude", "zubat", "hypno"]
+        names: ["Mimikyu", "Lapras", "Durant", "Tauros"]
     },
     {
         countryName: "mountains",
-        names: ["aerodactyl", "donphan", "talonflame"]
+        names: ["Skarmory", "Drampa", "Absol", "Zangoose"]
     }
 ]
