@@ -78,3 +78,14 @@
         @content;
     }
 }
+
+@mixin stats-bar{
+    display: flex;
+    justify-self: left;
+    align-self: left;
+    height: 90%;
+    width: 100%;
+    border-radius: 0.35em;
+    transition: width 0.75s;
+    filter: blur(3px);
+}

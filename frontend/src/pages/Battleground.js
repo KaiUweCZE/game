@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { fieldOne } from "../data/importedImages";
 import HpComponent from "../components/battle-components/HpComponent";
+import EnergyComponent from "../components/battle-components/EnergyComponent";
 import BoxAttacks from "../components/battle-components/BoxAttacks";
 import { countryData } from "../data/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
@@ -73,12 +74,17 @@ const Battleground = () => {
                         <img src={activePokemon.pokemonImg} alt="" />
                     </div>
                     { activePokemon && activePokemon.pokemon && activePokemon.pokemon.skills ? (
+                        <>
                         <HpComponent 
                             who= "user"
                             hp= {activePokemon?.pokemon?.skills?.hp}
                             damage= {enemyDmg}
                             itIsOver= {itIsOver}
                         />
+                        <EnergyComponent 
+                        energy= {activePokemon.pokemon.skills.energy}
+                        />
+                        </>
                     ) : null}
                     { 
                     activePokemon.name === "" ? "" : ( <BoxAttacks 
@@ -113,7 +119,7 @@ const Battleground = () => {
                     hp= {activeEnemy.hp}
                     damage = {dmg}
                     itIsOver= {itIsOver}
-                    />                
+                    />           
                 </div>
                 </>
             )

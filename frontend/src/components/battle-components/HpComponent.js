@@ -2,13 +2,7 @@ import React, { useEffect, useState } from "react";
 
 
 const HpComponent = ( { who, hp, damage, itIsOver } ) => {
-    const [actualHp, setActualHp] = useState(100)
-
-    
-    /*useEffect(() => {
-        //hp setting is ilustrative
-        setActualHp(hp);
-    }, [hp]);*/
+    const [actualHp, setActualHp] = useState(hp)
 
     useEffect(() => {
         if (damage !== undefined && damage !== null) {
@@ -27,8 +21,8 @@ const HpComponent = ( { who, hp, damage, itIsOver } ) => {
 
     return (
         <>
-        <div className="hp">
-            <div className="your-hp" style={{ width: `${(actualHp/100)*100}%` }}>
+        <div className="background__bar">
+            <div className="your-hp" style={{ width: `${(actualHp/hp)*100}%` }}>
             </div>
         </div>
         </>

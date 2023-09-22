@@ -7,7 +7,7 @@
 2. dodělat komponenty a obecnější funkce
 
 
-5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů
+5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů... začlenit energy componentu
 
 
 v procesu:

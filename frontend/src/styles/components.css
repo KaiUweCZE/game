@@ -283,15 +283,15 @@ div.login {
 }
 
 /*hpComponenta*/
-.hp {
+.background__bar {
   display: flex;
   margin-left: 10%;
   width: 80%;
-  height: 1em;
+  height: 0.65em;
   justify-content: left;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  border: 1px solid goldenrod;
+  background-color: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(100, 100, 100, 0.4);
   border-radius: 0.35em;
 }
 
@@ -299,11 +299,24 @@ div.login {
   display: flex;
   justify-self: left;
   align-self: left;
-  background-color: rgb(85, 212, 0);
   height: 90%;
   width: 100%;
-  border-radius: 0.5em;
+  border-radius: 0.35em;
   transition: width 0.75s;
+  filter: blur(3px);
+  background-color: rgb(216, 48, 26);
+}
+
+.your-energy {
+  display: flex;
+  justify-self: left;
+  align-self: left;
+  height: 90%;
+  width: 100%;
+  border-radius: 0.35em;
+  transition: width 0.75s;
+  filter: blur(3px);
+  background-color: rgb(2, 177, 153);
 }
 
 /*battle controller component*/
