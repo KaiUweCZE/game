@@ -6,7 +6,6 @@
 
 2. dodělat komponenty a obecnější funkce
 
-3. Return to Box a pick to the six by měly být vyobrazeny na hned
 
 5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů
 

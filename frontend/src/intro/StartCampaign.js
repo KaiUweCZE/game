@@ -22,7 +22,7 @@ const StartCampaign = () => {
     const {loading, setLoading} = useLoader();
     const dispatch = useDispatch();
 
-    //Checl if is this part completed?
+    //Check if is this part completed?
     useEffect(() => {
         setLoading(true);
         checkCampaign(currentUser.username, 'firstChoice')
@@ -37,8 +37,6 @@ const StartCampaign = () => {
 
         const tSkills = renderSkills("Teddiursa", 10);
 
-        const Attempt = renderSkills("Eevee", 25)
-
     // only for imagine
     const pokemons = [
         {
@@ -51,7 +49,7 @@ const StartCampaign = () => {
             image: teddiursa,
             name: "Teddiursa",
             content:  "Tak tady to je Teddiursa, jeho tvrdohlavost je vykoupena bojem do poslední kapky krve!",
-            skills: tSkills,
+            skills: tSkills
         }
     ]
 
@@ -105,7 +103,7 @@ const StartCampaign = () => {
         navigate(`/profile?name=${name}&image=${image}`)
     }
 
-    //this need to be re edit
+    //this need to be re-edit
     const catchPokemon = (e, pokemon) => {
         e.preventDefault()
         const skills = pokemon.name === "Eevee" ? eSkills : tSkills

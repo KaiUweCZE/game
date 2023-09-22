@@ -41,7 +41,7 @@ export const renderSkills = (pokemonName, pokemonLevel) => {
     const skills = {
         level: pokemonLevel,
         hp: currentStats.hp,
-        dmg: currentStats.dmg,
+        damage: currentStats.dmg,
         speed: currentStats.speed,
         energy: currentStats.energy,
         abilities: "none",
