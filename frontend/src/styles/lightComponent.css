@@ -1,0 +1,86 @@
+/*Backgrounds and colors*/
+/*Font setting*/
+/*Basic set up*/
+/*pokemons Starter*/
+.box__starter {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.card__starter {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 8px black;
+  transition: 0.5s;
+  cursor: pointer;
+  border-radius: 8% 92% 7% 93%/99% 7% 93% 1%;
+  height: 12.5rem;
+}
+.card__starter:hover {
+  height: 20rem;
+}
+.card__starter:hover .info__starter {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.3s 0.15s, opacity 0.5s 0.3s;
+}
+.card__starter:hover img {
+  transform: scale(1.15);
+  filter: contrast(1);
+}
+.card__starter figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18rem;
+  max-height: 25rem;
+}
+.card__starter figure h2 {
+  position: relative;
+  top: -20%;
+}
+.card__starter figure img {
+  width: clamp(10rem, 100%, 14rem);
+  position: relative;
+  top: -22%;
+  filter: contrast(0.1) blur(2px);
+  transition: 0.5s;
+}
+
+.info__starter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  position: relative;
+  top: -20%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  transition: 0s;
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+}
+.info__starter p {
+  max-height: 12rem;
+}
+
+.mission-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 80vh;
+}
+.mission-complete h2 {
+  color: rgb(40, 40, 40);
+  font-size: 2rem;
+}
+.mission-complete .button__classic {
+  color: rgb(40, 40, 40);
+}/*# sourceMappingURL=lightComponent.css.map */

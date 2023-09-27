@@ -25,10 +25,10 @@ export const addImageProfile = async (req, res, next) => {
 
 //add pokemon to all of your's pokemons
 export const addPokemon = async (req, res, next) => {
-    const {name, skills, expToNextLevel } = req.body.pokemon;
+    const {name, skills, attacks, expToNextLevel } = req.body.pokemon;
     const { trainer } = req.body;
     console.log('Request body:', req.body);
-    const newPokemon = new Pokemon({name, skills})
+    const newPokemon = new Pokemon({name, skills, attacks})
     try {
         console.log('New Pokemon:', newPokemon);
 

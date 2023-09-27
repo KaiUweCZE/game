@@ -1,4 +1,3 @@
-import React from "react";
 import { pokemonsData } from "../data/pokemons";
 import { pokemonStats } from "../data/pokemonStats";
 

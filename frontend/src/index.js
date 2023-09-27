@@ -1,13 +1,3 @@
-/*import React from 'react';
-import { createRoot } from 'react-dom/client';
-import './styles/styles.css'
-import App from './App';
-import { Provider } from 'react-redux';
-
-const container = document.getElementById('result')
-const root = createRoot(container)
-root.render(<App tab="home" />)
-*/
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

@@ -1,6 +1,7 @@
 /*Backgrounds and colors*/
 /*Font setting*/
 /*Basic set up*/
+/*form-styles file*/
 .form__login {
   display: grid;
   grid-template-areas: "user . " "password submit";
@@ -71,7 +72,7 @@ div.login {
   display: flex;
   width: -moz-fit-content;
   width: fit-content;
-  color: black;
+  color: rgb(40, 40, 40);
   font-weight: bold;
 }
 
@@ -136,7 +137,7 @@ div.login {
   background-color: red;
 }
 
-/*animation*/
+/*animations file*/
 .animation-translate {
   transform: translateX(-55vw);
   opacity: 0;
@@ -149,7 +150,7 @@ div.login {
     opacity: 1;
   }
 }
-/*loading*/
+/*loading or loading file... ?*/
 .loader {
   display: flex;
   flex-direction: column;

@@ -1,6 +1,6 @@
 @import './addons/variables', './addons/mixins';
 
-
+/*form-styles file*/
 .form__login{
     display: grid;
     grid-template-areas: 
@@ -137,7 +137,7 @@ div.login{
     }
 }
 
-/*animation*/
+/*animations file*/
 .animation-translate{
     transform: translateX(-55vw);
     opacity: 0;
@@ -152,7 +152,7 @@ div.login{
 }
 
 
-/*loading*/
+/*loading or loading file... ?*/
 .loader{
     display: flex;
     flex-direction: column;

@@ -26,6 +26,7 @@ const Home = () => {
                     </p>
                     
                 </article>
+
             </main>
             }
         </div>

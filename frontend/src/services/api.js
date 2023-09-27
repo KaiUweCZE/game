@@ -1,7 +1,6 @@
 import axios from "axios";
 
 const URL = process.env.REACT_APP_BACKEND_API
-console.log(process.env.REACT_APP_BACKEND_API)
 
 class UserApi{
     createUser(data){
@@ -42,6 +41,9 @@ class UserApi{
     }
     removeFromSix(data){
         return axios.delete(`${URL}removeFromSix`, { params: data})
+    }
+    learnAttack(data){
+        return axios.post(`${URL}addAttack`, data)
     }
 }
 

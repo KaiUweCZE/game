@@ -1,4 +1,5 @@
 import React, {useState, useRef} from "react";
+import { pokemonsData } from "../data/pokemons";
 
 const showComponent = () =>{
     const [myClass, setMyClass] = useState()
@@ -31,4 +32,10 @@ export const findImg = (nameOfImage) => {
     console.log(currentUser.img);
     console.log(charImg);
     fetchData();
+}
+
+
+export const findImgOfPokemon = (pokemon) => {
+    const pokemonImg = pokemonsData.find(e => e.name.toLocaleLowerCase() === pokemon.toLocaleLowerCase())
+
 }
