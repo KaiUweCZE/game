@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import { pokemonsData } from '../data/pokemons';
 import { pokemonStats } from '../data/pokemonStats';
 
-
-export const renderLevel = (min, max) => {
+// func generate random level of pokemon
+export const generateRandomLevel = (min, max) => {
     const level = Math.floor(Math.random() * (max-min) + min)
     return level
 }
+
+const generateRandomInRange = (min,max) => Math.random() * (max - min) + min;
 
 export const renderRandomConstant = () => {
     const attackCon = Math.random() * (1.5 - 0.5) + 0.5
@@ -46,7 +48,6 @@ export const renderSkills = (pokemonName, pokemonLevel) => {
         energy: currentStats.energy,
         abilities: "none",
     }
-    console.log(skills);
     
     return skills;
 }

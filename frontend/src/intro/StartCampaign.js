@@ -10,7 +10,7 @@ import eevee from "../styles/images/eevee.png"
 import teddiursa from "../styles/images/teddiursa.png"
 import { char1, char3 } from '../data/importedImages';
 import Loader from '../components/Loader';
-import { renderSkills } from '../Functions/RenderStats';
+import { generateSkills } from '../Functions/RenderStats2';
 
 
 const StartCampaign = () => {
@@ -33,9 +33,9 @@ const StartCampaign = () => {
     }, []);
 
     // structer of data will be diferent, this data will be in .js file
-        const eSkills = renderSkills("Eevee", 10);
+        const eSkills = generateSkills("Eevee", 10);
 
-        const tSkills = renderSkills("Teddiursa", 10);
+        const tSkills = generateSkills("Teddiursa", 10);
 
     // only for imagine
     const pokemons = [

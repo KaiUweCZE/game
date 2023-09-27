@@ -5,8 +5,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { pokemonsData } from '../data/pokemons';
 
-
-
 //timer
 
 export const useTimer = (callback, interval) => {
@@ -205,5 +203,5 @@ export const getBoxPokemons = (username) => {
 export const counterI = () => {
     const [i, setI] = useState(0)
 
-    
+
 }
