@@ -18,15 +18,17 @@ const Battleground = () => {
     const [activePokemon, setActivePokemon] = useState({name: ""})
     const [activeEnemy, setActiveEnemy] = useState({})
     const [dmg, setDmg] = useState(0)
+    const [energy, setEnergy] = useState(0)
     const [enemyDmg, setEnemyDmg] = useState(0)
     const [isOver, setIsOver] = useState(false)
     const [who, setWho] = useState()
     //const [stopFight, setStopFight] = useState(false)
 
-
-    const updateDmg = (newDmg) => {
-        setDmg(newDmg)
-        console.log("Rodič obdržel: ", newDmg);
+    //updateDmg
+    const afterAttack = (dmg, energy) => {
+        setDmg(dmg)
+        setEnergy(energy)
+        console.log("Rodič obdržel: ", dmg, "energie: ", energy);
     }
 
     const itIsOver = (who) => {
@@ -83,13 +85,14 @@ const Battleground = () => {
                         />
                         <EnergyComponent 
                         energy= {activePokemon.pokemon.skills.energy}
+                        costEnergy = {energy}
                         />
                         </>
                     ) : null}
                     { 
                     activePokemon.name === "" ? "" : ( <BoxAttacks 
                     id= {activePokemon}
-                    updateDmg= {updateDmg}
+                    afterAttack= {afterAttack}
                     startBattle= {startBattle}
                      /> 
                     )}

@@ -201,3 +201,9 @@ export const getBoxPokemons = (username) => {
     })
    
 }
+
+export const counterI = () => {
+    const [i, setI] = useState(0)
+
+    
+}

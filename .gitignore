@@ -41,3 +41,9 @@ jspm_packages
 public/
 
 .env
+
+#my styles
+cssStyles.css
+cssSamples.html
+math.html
+mathStyle.css

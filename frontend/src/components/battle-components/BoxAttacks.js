@@ -18,14 +18,15 @@ const BoxAttacks = (props) => {
         const dmg = currentAttack.dmg;
         // only because of editing * 3 
         const reload = currentAttack.reload;
+        const spentEnergy = currentAttack.energyCost;
+        console.log("TOHLE SE PROVEDLO!!",currentAttack.energyCost);
         setReload(reload);
-        props.updateDmg(dmg);
+        props.afterAttack(dmg, spentEnergy);
     }, [currentAttack, clickCounter])
 
     useEffect(() => {
     let timer;
     let start = Date.now();
-    
 
     const updateReload = () => {
         const timout = (Date.now() - start) / 1000;
