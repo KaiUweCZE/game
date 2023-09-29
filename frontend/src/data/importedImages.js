@@ -8,7 +8,7 @@ import magicalForestBg from '../styles/images/magical-forest2.webp'
 import caveBg from '../styles/images/cave2.webp'
 import fieldOne from '../styles/images/field2.webp'
 import labBg from '../styles/images/lab.webp'
-import mountains from '../styles/images/mountains2.webp'
+import mountains from '../styles/images/mountain2.webp'
 import missionCompleted from '../styles/images/cheerUp2.webp'
 
 export {char1, char3, arrow, elixirOne, pika, crossroadBg, missionCompleted, magicalForestBg, labBg, caveBg, mountains,fieldOne}

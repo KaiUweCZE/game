@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import usePokemonActions from "../../Functions/usePokemonAction";
-import ButtonProfileB from "../light-component/ButtonProfileB";
+import ButtonProfile from "../light-component/ButtonProfile";
 import {pokemonsData} from "../../data/pokemons"
 import { render } from "react-dom";
 
@@ -21,12 +21,15 @@ const UserPokemonsBox = ({myClass, i}) => {
     }
 
     return(
-        <div className={`box__user-pokemons ${i === 2 ? myClass : ""} ${i === 1 ? "fast-opacity" : ""}`}>
-        <h2>Pokemons:</h2>
-        <div className="box__flex-row">
-            <ButtonProfileB content={buttonShow} func={otherclass} path=""/>
-            <ButtonProfileB content="Do Boxu!" func= "" path="/mybox"/>
-        </div>
+        <div className={`box__user-pokemons ${i === 1 ? myClass : ""} ${i === 0 ? "fast-opacity" : ""}`}>
+            <div className="box__user-headline">
+                <h2>Pokemons</h2>
+                <hr />
+                <div className="box__buttons">
+                    <ButtonProfile content={buttonShow} func={otherclass} path=""/>
+                    <ButtonProfile content="Do Boxu!" func= "" path="/mybox"/>
+                </div>
+            </div>
         
         <div>     
         {       
@@ -46,7 +49,7 @@ const UserPokemonsBox = ({myClass, i}) => {
                             <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
 
                         </article>
-                        <ButtonProfileB content="Return" func={()=>removeFromSix(pokemon._id)}/>
+                        <ButtonProfile content="Return" func={()=>removeFromSix(pokemon._id)}/>
 
                     </figure>
                 )

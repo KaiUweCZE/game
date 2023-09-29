@@ -277,8 +277,8 @@ div.login{
     background-position: bottom;
     img{
         height: clamp(10em, 85%, 16em);
-        opacity: 0;
-        animation: toPlay 1s ease 0.2s forwards;
+        //opacity: 0;
+        //animation: toPlay 1s ease 0.2s forwards;
     }
 }
 
@@ -381,10 +381,9 @@ div.login{
     width: 100%;
     height: 100%;
 }
-.box__pc--pokemons{
+.container__pc--pokemons{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
-    grid-template-rows: 15em;
+    grid-template-rows: minmax(1fr, 15rem);
     width: 30%;
     margin: 2em;
     padding: 2em;
@@ -392,9 +391,23 @@ div.login{
     border-radius: 0.5em;
     box-shadow: 0 0 15px black;
     height: fit-content;
-    background-color: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+}
 
+.grid__layout-auto{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
+}
 
+.box__headline{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    hr{
+        width: 100%;
+    }
 }
 
 .GameOver{

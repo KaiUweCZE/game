@@ -11,11 +11,11 @@ import { updateProfileImage } from '../Functions/IntroFunctions';
 import ProfesorPainter from '../components/introComponent/ProfesorPainter';
 import CompletedMission from '../components/introComponent/CompletedMission';
 import { pokemonForEvents } from '../data/giftsData';
+import { useStatePage } from '../Functions/myHooks';
 
 
 const StartCampaign = () => {
     const {currentUser} = useSelector((state) => state.user)
-    const [page, setPage] = useState(0)
     const [completed, setCompleted] = useState(false)
     const navigate = useNavigate();
     const { completeCampaign } = useCompleteCampaign(currentUser.username)
@@ -32,65 +32,59 @@ const StartCampaign = () => {
         .finally(() => setLoading(false));
     }, []);
 
-
-    //šité horkou jehlou, někdy přeladit
-    const nextPage = (e, trainer) => {
-        e.preventDefault()
-        if (page <= 2) {
-            setPage(page + 1)
+    //send functions to custom hooks (useStatePage), I set the number of pages and created a function for each page, etc.
+    const actions = {
+        0: () => console.log("clicked on start", page),
+        1: (e, trainer) => {
             updateProfileImage(currentUser.username, trainer, dispatch)
-        } else {
-            setPage(0)
-        }
-    }
-
-    const toNextPage= (e, name, image) => {
-        e.preventDefault()
-        try {
-            //from gift Pokemons, there are pokemons that you can obtain during a game
+            console.log("clicked on trainer image", trainer, pokemonForEvents.starterPokemon);
+        },
+        2: (e, name, image) => {
             const basicPokemonInfo = pokemonForEvents.starterPokemon.find(p => p.name === name);
             const generatedPokemon = generateSkills(name, 10);
             const completePokemon = { ...basicPokemonInfo, ...generatedPokemon };
-            console.log("Tohle je basic Info: ", basicPokemonInfo);
-            console.log("Tohle je Pokemon:   ",completePokemon);
             catchPokemon(completePokemon, currentUser.username, currentUser.mySix)
-            completeCampaign('firstChoice')
-            navigate(`/profile?name=${name}&image=${image}`)
-        } catch (error) {
-            console.error("Something went error", error);
-        }
+            ,completeCampaign('firstChoice')
+            ,navigate(`/profile?name=${name}&image=${image}`)}
     }
+
+    //first argument is initialPage => -1 because I want to run the function manually
+    const [page, incrementPage, decrementPage] = useStatePage(-1, actions)
 
 
     return (
         <>
+            {/*Mission is completed? so you will see wallpaper and you will be redirected to profile */}
             {completed ? 
                 <CompletedMission />
                 :
                 <div className='container__firstChoice'>
                     {loading ? <Loader /> :
                         <>
+                        {/*Introduction to game... Welcome page */}
                             <ProfesorPainter name={currentUser.username} />
-                            {page === 0 ?
-                                <a href="#" className='animation-translate button__classic' onClick={nextPage}>Start</a>
+                            {page === -1 ?
+                                <a href="#" className='animation-translate button__classic' onClick={incrementPage}>Start</a>
                                 :
-                                <a href="#" className='animation-translate button__classic' onClick={(e) => { e.preventDefault(); setPage(page - 1) }}>Go Back</a>
+                                <a href="#" className='animation-translate button__classic' onClick={decrementPage}>Go Back</a>
                             }
-                            {page === 1 && 
+                            {page === 0 && 
                                 <div className='box__classic'>
                                     <h2>Let's go make a first choice!</h2>
+                                    {/*after click on start => pick one of characters images */}
                                     <CharPainter
                                         characters={trainers}
-                                        fun={nextPage}
+                                        fun={incrementPage}
                                     />
                                 </div>
                             }
-                            {page === 2 && 
+                            {page === 1 && 
                                 <>
                                     <h2 className='margin'>Continue</h2>
+                                    {/*after click on character image => choice your pokemon*/}
                                     <PokemonPainter
                                         characters={pokemonForEvents.starterPokemon}
-                                        fun={toNextPage}
+                                        fun={incrementPage}
                                     />
                                 </>
                             }

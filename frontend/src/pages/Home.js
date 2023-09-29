@@ -6,6 +6,7 @@ import { useLoader } from "../Functions/Functions";
 const Home = () => {
     const {loading} = useLoader()
 
+
     return(
         
         <div className="container__home">
@@ -26,7 +27,6 @@ const Home = () => {
                     </p>
                     
                 </article>
-
             </main>
             }
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const ButtonProfileB = ({content, func, path}) => {
+const ButtonProfile = ({content, func, path}) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
@@ -13,10 +13,13 @@ const ButtonProfileB = ({content, func, path}) => {
         }
     }
 
-    console.log(content, func, path);
     return(
-        <button className="button__profile" onClick={handleClick}>{content}</button>
+        <button className="btn__primary" onClick={handleClick}>
+            <span></span>
+                {content}
+            <span></span>
+        </button>
     )
 }
 
-export default ButtonProfileB
+export default ButtonProfile

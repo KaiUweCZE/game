@@ -19,6 +19,10 @@ const Arrow = forwardRef(({src, fun}, ref) => {
     return <img className="arrow" ref={ref} src={src} onClick={fun} />
 })
 
+const Arrow2 = ({src, fun}) => {
+    return <img className="arrow" src={src} onClick={fun} />
+}
+
 const BoxBadges = ({name}) => {
     const [badges, setBadges] = useState([])
 

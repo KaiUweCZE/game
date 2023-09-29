@@ -34,6 +34,12 @@
         border: none;
     }
     button{
+        display: flex;
+        border: none;
+        @include important-font;
+        background-color: $bgc-primary;
+        color: $bgc-secondary;
+        padding: .25rem;
         cursor: pointer;
     }
     ::-webkit-scrollbar {
@@ -107,4 +113,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+@mixin important-font{
+    font-weight: bold;
 }

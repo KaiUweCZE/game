@@ -73,7 +73,7 @@ const Battleground = () => {
                 <div className="box__battle--user">
                     {/* this will be component*/}
                     <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
-                        <img src={activePokemon.pokemonImg} alt="" />
+                        <img className={activePokemon.pokemonImg ? "combined-animation" : ""} src={activePokemon.pokemonImg} alt="" />
                     </div>
                     { activePokemon && activePokemon.pokemon && activePokemon.pokemon.skills ? (
                         <>
@@ -114,7 +114,7 @@ const Battleground = () => {
                 <div className="box__battle--enemy">
                     {/* this will be component*/}
                     <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
-                        <img src={activeEnemy.img} alt="" />                        
+                        <img className="combined-animation" src={activeEnemy.img} alt="" />                        
                     </div>
                     <span>{activeEnemy.name}</span>              
                     <HpComponent 

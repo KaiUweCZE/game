@@ -106,25 +106,27 @@ header{
     width: 15rem;
     z-index: 1;
 }
+
 .box__user-info{
     grid-area: stats;
     position: relative;
     @include profile-card;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: min-content;
     padding: $standard-unit;
     overflow-y: scroll;
     z-index: 2;
     width: clamp(20rem, 25vw, 35rem);
     max-height: 20rem;
+    .box__user-headline{
+        grid-column: span 2;
+    }
     .arrow{
         position: absolute;
         bottom: 0;
         right: 50%;
         margin-bottom: 0.25rem;
-    }
-    h3{
-        grid-column: 1;
     }
 }
 
@@ -201,6 +203,7 @@ header{
         &:hover{
             transform: rotate(-90deg);
         }
+        
     }
 }
 .box__user-inventory.active{
@@ -228,37 +231,6 @@ header{
         width: 20rem;
         margin-left: 0;
     }
-    button{
-        /*common button*/
-        display: flex;
-        width: fit-content;
-        color: white;
-        padding: 0.25rem;
-        margin: 0.25rem;
-        background-color: rgba(0,0,0,0.6);
-        border: 1px solid black;
-        border-radius: 0.25rem;
-        transition: 0.5s;
-        font-weight: bold;
-        /**/
-        position: relative;
-        isolation: isolate;
-        &::after{
-            content: '';
-            position: absolute;
-            z-index: -1;
-            background-color: rgba(0,0,0,0.8);
-            inset: 0;
-            scale: 0 1;
-            transform-origin: right;
-            transition: scale .5s;
-        }
-        
-        &:hover::after,&:focus-visible::after{
-            transform-origin: left;
-            scale: 1 1;
-        }
-    }
     /*Button Profila B*/
     .box__flex-row{
         display: flex;
@@ -270,29 +242,44 @@ header{
         grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
         column-gap: 1rem;
         overflow: hidden;
-        img{
-            width: 100%;
-            max-width: 15rem;
-            cursor: pointer;
-            transition: 0.5s;
-            &:hover{
-                transform: scale(1.1);
+        figure{
+            display: flex;
+            flex-direction: column;              
+            img{
+                width: 100%;
+                max-width: 15rem;
+                cursor: pointer;
+                transition: 0.5s;
+                &:hover{
+                    transform: scale(1.1);
+                }
             }
         }
         article{
-            display: none;
-            background-color: rgba(0,0,0, 0.3);
-            padding: 0.5rem;
+            max-width: 15rem;
+            height: 0;
+            background: rgba(220, 220, 220, 0.5);
             border: 1px solid black;
             border-radius: 0.5rem;
             box-shadow: 0 0 5px black;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             transform: translateY(10rem);
-            transition: 0.5s;
+            transition: height 0.6s, transform 0.4s;
+            overflow: hidden;
+            z-index: -1; 
+            p, h3 {
+                margin-inline: 0.5rem;
+            }
+            h3{
+                margin-top: 0.5rem;
+            }
         }
         article.actived{
-            display: flex;
             flex-direction: column;
             transform: translateY(0);
+            transition: transform 0.5s, height 0.5s 0.4s;
+            height: 8rem;
         }
     }
 }
@@ -309,14 +296,31 @@ header{
 .box__user-pokemons.fast-opacity{
     transition: transform 0.8s, opacity 0.2s 0.1s;
 }
+
+div.box__user-headline{
+    display: flex;
+    flex-direction: column;
+    h2, hr{
+        align-self: center;
+    }
+    hr{       
+        width: 70%;
+        margin-bottom: 1rem;
+    }
+}
+
+div.box__buttons{
+    display: flex;
+    align-self: center;
+    padding-inline: 1rem;
+}
+
 .arrow{
     display: flex;
     height: 1.25rem;
     width: 1.25rem;
-    background-color: rgba(250,250,250, 0.6);
     padding: 0.25rem;
     border-radius: 50%;
-    box-shadow: 0 0 6px black;
     cursor: pointer;
     transition: 0.3s;
     &:hover{
@@ -388,13 +392,78 @@ header{
     }
 }
 
-
+//@
 @keyframes intro {
     to {opacity: 1;}
  }
 
 
- /*often used*/
+
+//button setting
+.btn__primary {
+    color: white;
+    font-weight: bold;
+    max-width: fit-content;
+    font-size: 1rem;
+    padding: .5rem;
+    background-color: $button-first;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.25s, transform 0.5s;
+    position: relative;
+    overflow: hidden;
+    :first-child {
+        inset: 0;
+    }
+    
+    :last-child{
+        right: 0;
+        top: 0;
+    }
+    span {
+        position: absolute;
+        z-index: 1;
+        width: 33%;
+        height: 100%;
+        background-color: transparent;
+        opacity: 0.5; 
+    }
+    &:hover, &:focus-visible{
+        transform: scale(1.05);
+        background-color: $button-third;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        z-index: -1;
+        background-color: $button-second;
+        width: 10%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        inset: 0;
+        margin: auto;
+        opacity: 0;
+    }
+    &:active::before{
+        transform: scale(20);
+        opacity: 1;
+        transition: transform 1s, opacity .5s;
+    }
+    &:has(:first-child:active)::before {
+        margin-left: 0;
+        transition: transform 0.5s, opacity .5s;
+    }
+    &:has(:last-child:active)::before {
+        margin-right: 0;
+        transition: transform 0.5s, opacity .5s;
+    }
+}
+
+
+ //often used
+
+
  .pokemon__type{
     background-color: rgb(201, 177, 70);
     width: fit-content;
@@ -431,3 +500,21 @@ header{
         transform: translate(60%, -60%);
     }
 }
+
+//animation
+
+.bounce-in-bck{animation:bounce-in-bck .6s both}
+@keyframes bounce-in-bck{0%{transform:scale(7);animation-timing-function:ease-in;opacity:0}38%{transform:scale(1);animation-timing-function:ease-out;opacity:1}55%{transform:scale(1.5);animation-timing-function:ease-in}72%{transform:scale(1);animation-timing-function:ease-out}81%{transform:scale(1.24);animation-timing-function:ease-in}89%{transform:scale(1);animation-timing-function:ease-out}95%{transform:scale(1.04);animation-timing-function:ease-in}100%{transform:scale(1);animation-timing-function:ease-out}}
+
+.focus-in-expand{animation:focus-in-expand .8s cubic-bezier(.25,.46,.45,.94) both}
+@keyframes focus-in-expand{0%{letter-spacing:-.5em;filter:blur(12px);opacity:0}100%{filter:blur(0);opacity:1}}
+
+.travel{animation: travel 4s infinite}
+@keyframes travel {0%{transform: translate(0) rotate(0)} 25%{transform: translate(-.5rem, -.5rem) rotate(-5deg)} 50%{transform: translate(0) rotate(0)} 75%{transform: translate(0.5rem, .5rem) rotate(5deg)} 100%{transform: translate(0) rotate(0)}}
+
+.jello-vertical{animation:jello-vertical .9s both}
+@keyframes jello-vertical{0%{transform:scale3d(1,1,1)}30%{transform:scale3d(.75,1.25,1)}40%{transform:scale3d(1.25,.75,1)}50%{transform:scale3d(.85,1.15,1)}65%{transform:scale3d(1.05,.95,1)}75%{transform:scale3d(.95,1.05,1)}100%{transform:scale3d(1,1,1)}}
+
+.combined-animation {
+    animation: bounce-in-bck 0.6s both, travel 12s 1s infinite;
+  }
