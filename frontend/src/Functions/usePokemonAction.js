@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import UserApi from '../services/api';
 import { useSelector } from "react-redux";
 
+
 const usePokemonActions = () => {
     const [pokemons, setPokemons] = useState([]);
     const {currentUser} = useSelector((state) => state.user)

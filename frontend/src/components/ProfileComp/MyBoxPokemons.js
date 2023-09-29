@@ -8,7 +8,7 @@ const MyBoxPokemons = (props) => {
     return(
         <div className="container__pc--pokemons">
             <div className="box__headline">
-                <h2>YOUR POKEMONS</h2>
+                <h2>{props.title}</h2>
                 <hr />
             </div>
             <div className="grid__layout-auto">

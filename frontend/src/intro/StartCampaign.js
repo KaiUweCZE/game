@@ -22,7 +22,7 @@ const StartCampaign = () => {
     const {loading, setLoading} = useLoader();
     const dispatch = useDispatch();
 
-    //Check if is this part completed?
+    //Check if is this part completed? => will be custom hook @
     useEffect(() => {
         setLoading(true);
         checkCampaign(currentUser.username, 'firstChoice')

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import UserApi from '../../services/api'
+import { addPokemonToSix } from "../../Functions/AddToSix";
 import { useSelector } from "react-redux";
 import Wallpaper from '../../components/Wallpaper'
 import { labBg } from "../../data/importedImages";
@@ -19,25 +20,17 @@ const MyBox = () => {
         })
     }, []);
 
-    //this will be move to Functions file
-    const addPokemonToSix = (pokemon) =>{     
-        console.log(pokemon);
-        
-        var data = {
-            username: currentUser.username,
-            pokemon: pokemon
-        }
-        UserApi.addToSix(data)
-        .then((res) => console.log(res.data))
-        .catch((err) => console.error(err))    
-    }
-
+    const addPokemon = addPokemonToSix(currentUser.username)
     
     return(
         
         <Wallpaper background={labBg}>
             <div className="prevent-wrap">
-                <MyBoxPokemons pokemons={pokemons} function={addPokemonToSix}/>
+                <MyBoxPokemons
+                    title="YOUR POKEMONS"
+                    pokemons={pokemons}
+                    function={addPokemon}
+                   />
             </div>
         </Wallpaper>
           
