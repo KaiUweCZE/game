@@ -62,39 +62,3 @@ export const learnNewAttack = async (attacks, pokemonId) => {
         }
     }
 }
-
-export const catchPokemon = async (pokemon, username, mySix) => { 
-        var data= {
-            pokemon: {
-                name: pokemon.name,
-                skills: {
-                    level: pokemon.level,
-                    abilities: pokemon.abilities,
-                    hp: pokemon.hp,
-                    damage: pokemon.damage,
-                    speed: pokemon.speed,
-                    energy: pokemon.energy
-
-                }
-            },
-            trainer: username
-        };
-    try {       
-        const response = await UserApi.obtainPokemon(data);
-        const lastAddedPokemon = response.data.newPokemonId;
-        await learnNewAttack(pokemon.attacks, lastAddedPokemon)
-
-        if (mySix.length < 6){
-            const nextData = {
-                pokemon: lastAddedPokemon,
-                username,
-            };
-            await UserApi.addToSix(nextData)
-            console.log('Pokemon successfully added');
-        } else {
-            console.log('You already have 6 Pokemons, so this one will be sent to the box');
-        }
-    } catch (error) {
-        console.error('Error while catching Pokemon:', error);
-    }  
-}

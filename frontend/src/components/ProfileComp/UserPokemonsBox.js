@@ -1,13 +1,18 @@
 import React, {useState} from "react";
-import usePokemonActions from "../../Functions/usePokemonAction";
+import {usePokemonActions} from "../../Functions/usePokemonAction";
 import ButtonProfile from "../light-component/ButtonProfile";
 import {pokemonsData} from "../../data/pokemons"
-import { render } from "react-dom";
+import LoaderLight from "../LoaderLight";
+import { useDispatch, useSelector } from "react-redux";
+import { updateMySix } from "../../redux/user/userSlice";
 
 const UserPokemonsBox = ({myClass, i}) => {
     const [t,setT] = useState("")
     const [buttonShow, setButtonShow] = useState("Show stats!")
     const { pokemons, removeFromSix, getMySix} = usePokemonActions()
+    const [loading, setLoading] = useState(false);
+    const {currentUser} = useSelector((state) => state.user)
+    const dispatch = useDispatch()
 
     const otherclass = () => {
         if (t === ""){
@@ -17,8 +22,17 @@ const UserPokemonsBox = ({myClass, i}) => {
             setT("")
             setButtonShow("Show stats!")
         }
-        
     }
+
+    const handleRemove = async (id) => {
+        setLoading(true); // Start loader
+        const success = await removeFromSix(id); // Remove Pokemon
+        if (success) {
+            const updatedSix = await getMySix();
+            dispatch(updateMySix(updatedSix || []))
+            setLoading(false); // Stop loader
+        }
+    };
 
     return(
         <div className={`box__user-pokemons ${i === 1 ? myClass : ""} ${i === 0 ? "fast-opacity" : ""}`}>
@@ -31,8 +45,9 @@ const UserPokemonsBox = ({myClass, i}) => {
                 </div>
             </div>
         
-        <div>     
-        {       
+        <div>
+
+       { loading ? <LoaderLight/> : (       
             pokemons.map((pokemon, index) => {
                 const onePokemon = pokemonsData.find((e) => e.name === pokemon.name)
                 const {level, damage, hp, abilities } = pokemon.skills
@@ -49,12 +64,12 @@ const UserPokemonsBox = ({myClass, i}) => {
                             <p>attacks: {pokemon.attacks.map(attack => attack.name).join(", ")}</p>
 
                         </article>
-                        <ButtonProfile content="Return" func={()=>removeFromSix(pokemon._id)}/>
+                        <ButtonProfile content="Return" func={() => handleRemove(pokemon._id)}/>
 
                     </figure>
                 )
             })
-        }
+        )}
         </div>  
     </div>
     )

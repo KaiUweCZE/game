@@ -32,10 +32,15 @@ const userSlice = createSlice({
             if (state.currentUser) {
                 state.currentUser.img = action.payload;
             }
+        },
+        updateMySix: (state, action) => {
+            if (state.currentUser) {
+                state.currentUser.mySix = action.payload;
+            }
         }
     }
 });
 
-export const { signInStart, signInSuccess, signInFailure, signOut, setImage } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, signOut, setImage, updateMySix } = userSlice.actions;
 
 export default userSlice.reducer;

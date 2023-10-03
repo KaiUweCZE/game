@@ -2,7 +2,7 @@ import React from 'react'
 import Wallpaper from '../../components/Wallpaper'
 import { magicalForestBg } from '../../data/importedImages'
 import BoxAction from '../../components/BoxAction'
-import { useToBattle } from '../../Functions/Functions'
+import { useToBattle } from "../../Functions/BattleFunctions";
 
 
 

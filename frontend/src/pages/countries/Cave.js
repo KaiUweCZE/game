@@ -2,7 +2,7 @@ import React from "react";
 import { caveBg } from "../../data/importedImages";
 import Wallpaper from "../../components/Wallpaper";
 import BoxAction from "../../components/BoxAction";
-import { useToBattle } from "../../Functions/Functions";
+import { useToBattle } from "../../Functions/BattleFunctions";
 
 
 

@@ -1,17 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { checkCampaign, useCompleteCampaign, useLoader } from '../Functions/Functions';
+import { isCampaignCompleted, useCompleteCampaign } from '../Functions/CampaignFunc';
+import { useLoader } from '../Functions/myHooks';
 import CharPainter from '../components/introComponent/CharPainter';
 import PokemonPainter from '../components/introComponent/PokemonPainter';
 import { trainers } from '../data/charactersData';
 import Loader from '../components/Loader';
-import { generateSkills, catchPokemon } from '../Functions/GeneratorFunctions';
+import { generateSkills } from '../Functions/GeneratorFunctions';
+import { addPokemonToSix, catchPokemon } from '../Functions/CatchFunc';
 import { updateProfileImage } from '../Functions/IntroFunctions';
 import ProfesorPainter from '../components/introComponent/ProfesorPainter';
 import CompletedMission from '../components/introComponent/CompletedMission';
 import { pokemonForEvents } from '../data/giftsData';
 import { useStatePage } from '../Functions/myHooks';
+import { updateMySix } from '../redux/user/userSlice';
+import { addPokemon } from '../../../backend/controllers/user.controller';
 
 
 const StartCampaign = () => {
@@ -19,13 +23,13 @@ const StartCampaign = () => {
     const [completed, setCompleted] = useState(false)
     const navigate = useNavigate();
     const { completeCampaign } = useCompleteCampaign(currentUser.username)
-    const {loading, setLoading} = useLoader();
+    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
     //Check if is this part completed? => will be custom hook @
     useEffect(() => {
         setLoading(true);
-        checkCampaign(currentUser.username, 'firstChoice')
+        isCampaignCompleted(currentUser.username, 'firstChoice')
         .then(isCompleted => {
             setCompleted(isCompleted);
         })
@@ -43,9 +47,12 @@ const StartCampaign = () => {
             const basicPokemonInfo = pokemonForEvents.starterPokemon.find(p => p.name === name);
             const generatedPokemon = generateSkills(name, 10);
             const completePokemon = { ...basicPokemonInfo, ...generatedPokemon };
-            catchPokemon(completePokemon, currentUser.username, currentUser.mySix)
-            ,completeCampaign('firstChoice')
-            ,navigate(`/profile?name=${name}&image=${image}`)}
+            const myNewSix = [...(currentUser.mySix || []), completePokemon.name]
+            dispatch(updateMySix(myNewSix))
+            catchPokemon(completePokemon, currentUser)
+            //addPokemonToSix(currentUser.username, currentUser.mySix)
+            completeCampaign('firstChoice')
+            navigate(`/profile?name=${name}&image=${image}`)}
     }
 
     //first argument is initialPage => -1 because I want to run the function manually

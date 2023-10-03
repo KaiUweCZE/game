@@ -39,6 +39,7 @@ jspm_packages
 
 #Excluding build directory
 public/
+bin-game/
 
 .env
 

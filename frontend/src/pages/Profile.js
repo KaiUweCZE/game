@@ -30,6 +30,7 @@ const Profile = () => {
     return (
         <div className="container__profile">
             <img className="profile-img" src={charImg} alt="" />
+            <h2>moje: {currentUser.mySix}</h2>
             <UserInfoBox
                 name={currentUser.username}
                 location="Home"

@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useLocation } from "react-router-dom";
-import { choosePokemon, useMySix, useTimer } from "../Functions/Functions";
+import { useMySix } from "../Functions/usePokemonAction";
+import { useTimer } from "../Functions/myHooks";
+import { choosePokemon } from "../Functions/BattleFunctions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { fieldOne } from "../data/importedImages";

@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useLogOut } from "../Functions/Functions";
+import { useLogOut } from "../Functions/userHooks/formHooks";
 
 const Navbar = () => {
     const {currentUser} = useSelector((state) => state.user)

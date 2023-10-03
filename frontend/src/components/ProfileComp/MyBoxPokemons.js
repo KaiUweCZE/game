@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { pokemonsData } from "../../data/pokemons";
 
 
 const MyBoxPokemons = (props) => {
-
-
+    
     return(
         <div className="container__pc--pokemons">
             <div className="box__headline">

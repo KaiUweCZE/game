@@ -1,7 +1,8 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import UserApi from '../services/api'
 
-
+// receives a page number and list of functions
+// executes a function according ti a page
 export const useStatePage = (initialPage = -1, actions = {}) => {
     const [page, setPage] = useState(initialPage);
   
@@ -44,3 +45,37 @@ export const useUserData = (username) => {
     }, [username])
     return userData
 }
+
+export const useTimer = (callback, interval) => {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+      savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+      const tick = () => {
+          savedCallback.current()
+      }
+
+      if (interval !== null){
+          const id = setInterval(tick,interval);
+          return () => clearInterval(id)
+      }
+  }, [interval])
+}
+
+export const useLoader = () => {
+  const [loading, setLoading] = useState(false);
+
+  const startLoading = () => {
+    console.log("startLoading is called");
+    setLoading(true);
+  };
+  const stopLoading = () => {
+    console.log("stopLoading is called");
+    setLoading(false);
+  };
+
+  return [loading, startLoading, stopLoading];
+};
