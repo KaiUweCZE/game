@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isCampaignCompleted, useCompleteCampaign } from '../Functions/CampaignFunc';
-import { useLoader } from '../Functions/myHooks';
 import CharPainter from '../components/introComponent/CharPainter';
 import PokemonPainter from '../components/introComponent/PokemonPainter';
 import { trainers } from '../data/charactersData';
@@ -15,7 +14,6 @@ import CompletedMission from '../components/introComponent/CompletedMission';
 import { pokemonForEvents } from '../data/giftsData';
 import { useStatePage } from '../Functions/myHooks';
 import { updateMySix } from '../redux/user/userSlice';
-import { addPokemon } from '../../../backend/controllers/user.controller';
 
 
 const StartCampaign = () => {

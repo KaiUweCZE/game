@@ -1,17 +1,14 @@
 import React from "react";
 import ButtonA from "../components/ButtonA";
-import Loader from "../components/Loader";
-import { useLoader } from "../Functions/myHooks";
+
 
 const Home = () => {
-    const {loading} = useLoader()
 
 
     return(
         
         <div className="container__home">
-           { 
-           loading ? <Loader/> :
+          
             <main className="home">
                 <article>
                     <h2>Úvod</h2>
@@ -28,7 +25,7 @@ const Home = () => {
                     
                 </article>
             </main>
-            }
+            
         </div>
         
         

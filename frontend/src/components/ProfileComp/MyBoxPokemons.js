@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { pokemonsData } from "../../data/pokemons";
+import LoaderLight from "../LoaderLight";
 
 
 const MyBoxPokemons = (props) => {
@@ -10,6 +11,7 @@ const MyBoxPokemons = (props) => {
                 <h2>{props.title}</h2>
                 <hr />
             </div>
+            { props.loading ? <LoaderLight /> : ( 
             <div className="grid__layout-auto">
                 {
                 props.pokemons.map((pokemon,index) => {
@@ -27,7 +29,9 @@ const MyBoxPokemons = (props) => {
                     )
                 })
                 }
+            
             </div>
+            )}
         </div>
     )
 }

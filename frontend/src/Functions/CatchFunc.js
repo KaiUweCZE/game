@@ -1,24 +1,27 @@
-import { useDispatch } from 'react-redux';
+
 import UserApi from '../services/api'
 import { learnNewAttack } from './GeneratorFunctions'
-import { useState } from 'react';
-import { updateMySix } from '../redux/user/userSlice';
 
 
-//Pokemon will be add to six
+
 export const addPokemonToSix = (username) => (pokemon) => {
-    /*if (mySix.length > 6) {
-        console.log('You already have 6 pokemons');
-        return;
-    }*/
-    let data = {
+    return new Promise((resolve, reject) => {
+      let data = {
         username: username,
-        pokemon: pokemon
-    }
-    UserApi.addToSix(data)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.error("You already have 6 pokemon", err))    
-}
+        pokemon: pokemon,
+      };
+      UserApi.addToSix(data)
+        .then((res) => {
+          console.log(res.data);
+          resolve(res.data);
+        })
+        .catch((err) => {
+          console.error("You already have 6 pokemon", err);
+          reject(err);
+        });
+    });
+  };
+
 
 export const catchPokemon = async (pokemon, user) => { 
     let data= {

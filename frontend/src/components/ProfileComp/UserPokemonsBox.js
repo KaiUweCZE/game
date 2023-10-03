@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {usePokemonActions} from "../../Functions/usePokemonAction";
 import ButtonProfile from "../light-component/ButtonProfile";
 import {pokemonsData} from "../../data/pokemons"
@@ -23,6 +23,7 @@ const UserPokemonsBox = ({myClass, i}) => {
             setButtonShow("Show stats!")
         }
     }
+
 
     const handleRemove = async (id) => {
         setLoading(true); // Start loader
