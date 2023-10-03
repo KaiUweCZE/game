@@ -399,6 +399,12 @@ div.login{
 .grid__layout-auto{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
+    @include small-window{
+        grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+    }
+    img{
+        max-width: 100%;
+    }
 }
 
 .box__headline{

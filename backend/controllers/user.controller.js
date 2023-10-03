@@ -163,7 +163,7 @@ export const addToSix = async (req, res, next) => {
         }
 
         if (user.mySix.includes(_id) || user.mySix.length >= 6){
-            return res.status(400).json({message: 'you cannot add this pokemon'})
+            return res.status(400).json({message: 'you cannot add this pokemon, you already have 6 popkemons'})
         }
 
         user.mySix.push(_id);

@@ -87,6 +87,7 @@
 
 .loader-light {
   width: 50px;
+  margin: 0 auto;
   padding: 8px;
   aspect-ratio: 1;
   border-radius: 50%;

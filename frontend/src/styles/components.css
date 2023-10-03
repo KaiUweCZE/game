@@ -431,6 +431,14 @@ div.login {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(28%, 1fr));
 }
+@media (max-width: 62.5em) {
+  .grid__layout-auto {
+    grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  }
+}
+.grid__layout-auto img {
+  max-width: 100%;
+}
 
 .box__headline {
   display: flex;
