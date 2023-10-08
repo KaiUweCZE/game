@@ -5,7 +5,6 @@ import Wallpaper from '../../components/Wallpaper'
 import { labBg } from "../../data/importedImages";
 import { getBoxPokemons } from "../../Functions/usePokemonAction";
 import MyBoxPokemons from "../../components/ProfileComp/MyBoxPokemons";
-import LoaderLight from "../../components/LoaderLight"
 
 const MyBox = () => {
     const {currentUser} = useSelector((state) => state.user)

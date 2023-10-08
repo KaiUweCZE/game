@@ -1,9 +1,10 @@
 import React from "react";
 import ButtonA from "../components/ButtonA";
+import BoxTalks from "../components/BoxTalks";
 
 
 const Home = () => {
-
+    const content ="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id hic unde facere vitae eveniet? Impedit nulla facilis ratione reprehenderit consequuntur a odio assumenda reiciendis tenetur. Reprehenderit in quia veritatis ducimus."
 
     return(
         
@@ -26,6 +27,10 @@ const Home = () => {
                 </article>
             </main>
             
+            <BoxTalks
+            talker = "Bloom"
+            content = {content} 
+            />
         </div>
         
         
