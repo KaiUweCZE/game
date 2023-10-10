@@ -13,6 +13,9 @@ import Cave from './pages/countries/Cave';
 import Battleground from './pages/Battleground';
 import MyBox from './pages/UserPages/MyBox';
 import Mountains from './pages/countries/Mountains';
+import Map from './pages/Map';
+import NPC from './pages/NPC'
+import ActionNPC from './pages/subPages/ActionNPC';
 
 
 const App = () => {
@@ -32,6 +35,9 @@ const App = () => {
                         <Route path='/battle' element={<Battleground />} />
                         <Route path='/mybox' element={<MyBox/>} />
                         <Route path='/mountains' element={<Mountains />} />
+                        <Route path='/map' element={<Map/>} />
+                        <Route path="/npc" element={<NPC/>}/>
+                        <Route path="/npc/:id" element={<ActionNPC />} />
                     </Route>
                 </Route>
                 

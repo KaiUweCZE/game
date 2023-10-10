@@ -121,6 +121,10 @@
   flex-direction: column;
   padding: 1rem 2rem;
 }
+.box__talks article p {
+  max-height: 8rem;
+  overflow-y: scroll;
+}
 .box__talks article hr {
   background-color: rgb(50, 50, 50);
   color: rgb(50, 50, 50);
@@ -131,4 +135,29 @@
   bottom: 0.5rem;
   right: 0.7rem;
   padding: 0 0.5rem;
+}
+
+.container__npc {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.box__NPC {
+  display: grid;
+  grid-template-areas: "img" "img" "article";
+}
+.box__NPC img {
+  grid-area: img;
+  display: flex;
+  margin: 0 auto;
+  max-height: 25rem;
+}
+.box__NPC article {
+  grid-area: article;
+  display: flex;
+  flex-direction: column;
+  background-color: beige;
+  align-items: center;
 }/*# sourceMappingURL=lightComponent.css.map */

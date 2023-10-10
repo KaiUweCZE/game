@@ -27,9 +27,9 @@ const BoxBadges = ({name}) => {
     const [badges, setBadges] = useState([])
 
     const getAboutUser = async () => {
-        const userBadges = (await UserApi.aboutUser({ username: name})).data.user.badges
+        const userBadges = (await UserApi.aboutUser({ username: name})).data.user?.badges || [];
         console.log("Nějaká ta data: ", userBadges);
-        setBadges(userBadges)
+        userBadges ? setBadges(userBadges) : setBadges([])
     }
 
     useEffect(() => {

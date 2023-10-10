@@ -115,6 +115,11 @@
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;
+    p{
+    max-height: 8rem;
+    overflow-y: scroll;  
+    }
+    
     hr{
         background-color: rgba(50,50,50);
         color: rgba(50,50,50);
@@ -129,3 +134,30 @@
     }
   }
 
+//NPC setting
+.container__npc{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    column-gap: 2rem;
+}
+.box__NPC{
+    display: grid;
+    grid-template-areas: 
+    "img"
+    "img"
+    "article";
+    img{
+        grid-area: img;
+        display: flex;
+        margin: 0 auto;
+        max-height: 25rem;
+    }
+    article{
+        grid-area: article;
+        display: flex;
+        flex-direction: column;
+        background-color: beige;
+        align-items: center;
+    
+    }
+}

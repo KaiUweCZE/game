@@ -2,7 +2,7 @@ import React from "react";
 import { BoxBadges } from "../light-component/LightComponent";
 
 
-const UserInfoBox = ({name, location, abilities, statistics, children}) => {
+const UserInfoBox = ({name, badges, location, abilities, statistics, children}) => {
     
 
     return(
@@ -21,8 +21,10 @@ const UserInfoBox = ({name, location, abilities, statistics, children}) => {
                         <li>Abilities: {abilities}</li>
                     </ul>
                 </article>
-                    
-                <BoxBadges name={name}/>
+                {
+                    badges ? <BoxBadges name={name}/> : ""
+                }
+                
             </div>
             <div className="part">
                 <article>
