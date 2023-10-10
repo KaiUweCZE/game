@@ -9,18 +9,21 @@ const BoxTalks = (props) => {
     let timer;
 
     const handleGenerateText = () => {
-        let i = -1
-        //let localIndex = index
+        let i = -1;
         timer = setInterval(() => {
             i++;
-            if (i === 30) clearInterval(timer);
-            if ( index <= dummyText.length){
-                setText((prev) => prev + dummyText[index + i]);
-                setIndex(index+30 >= dummyText.length ? dummyText.length + 1 : index + 30)      
-                console.log(index, dummyText.length, index % 100);           
-            } else{
+            let remainingLength = dummyText.length - index;
+            let charactersToAdd = Math.min(49, remainingLength -1 );
+            if (i >= charactersToAdd) clearInterval(timer);
+            if( index === -1 ){
                 setText(dummyText)
-            }           
+            } else if ( index + 50 < dummyText.length){
+                setText((prev) => prev + dummyText[index + i]);
+                setIndex(index + 50)          
+            } else if( index + 50 >= dummyText.length){
+                setText((prev) => prev + dummyText[index + i]);
+                setIndex(-1)
+            } 
         }, 10);
     };
 

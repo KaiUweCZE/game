@@ -107,30 +107,14 @@
   isolation: isolate;
   position: relative;
   width: 25rem;
-  background: rgba(0, 0, 0, 0.81);
-  border-radius: 1rem;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   border: 0.1rem solid #ffe4c4;
+  border-radius: 0.5rem;
   box-shadow: 0 0 8px #808080;
   backdrop-filter: blur(8.3px);
   -webkit-backdrop-filter: blur(8.3px);
   font-size: 1rem;
-  color: whitesmoke;
-}
-.box__talks:before {
-  position: absolute;
-  content: "";
-  inset: 0.0625rem;
-  border-radius: 0.9375rem;
-  z-index: -1;
-}
-.box__talks:after {
-  position: absolute;
-  content: "";
-  width: 0.25rem;
-  inset: 0.65rem auto 0.65rem 0.5rem;
-  border-radius: 0.125rem;
-  background: linear-gradient(180deg, #939cc5 0%, #caaac8 46%, #FFCC70 100%);
-  z-index: 1;
+  color: rgb(50, 50, 50);
 }
 .box__talks article {
   display: flex;
@@ -138,7 +122,9 @@
   padding: 1rem 2rem;
 }
 .box__talks article hr {
-  width: 4rem;
+  background-color: rgb(50, 50, 50);
+  color: rgb(50, 50, 50);
+  width: 100%;
 }
 .box__talks button {
   position: absolute;

@@ -4,7 +4,8 @@ import BoxTalks from "../components/BoxTalks";
 
 
 const Home = () => {
-    const content ="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id hic unde facere vitae eveniet? Impedit nulla facilis ratione reprehenderit consequuntur a odio assumenda reiciendis tenetur. Reprehenderit in quia veritatis ducimus."
+    const content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In ex esse commodi non quaerat, sed repudiandae ullam ab. Repudiandae molestiae perferendis amet quasi illum sit enim earum officia laboriosam sint?"
+    const content2 ="Ahoj šéfe, chtěl bych tě přivítat na tvé nové cestě po oblasti Goloa, buď ve střehu a vždy pamatuj, že úspěch je cesta dlouhá."
 
     return(
         

@@ -102,45 +102,30 @@
     position: relative;
     width: 25rem;
     //height: 8rem;
-    background: rgba(0, 0, 0, 0.81); //#29292c
-    border-radius: 1rem;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
     border: 0.1rem solid #ffe4c4;
+    border-radius: .5rem;
     box-shadow: 0 0 8px #808080;
     backdrop-filter: blur(8.3px);
     -webkit-backdrop-filter: blur(8.3px);
     //overflow: hidden;
     font-size: 1rem;
-    color: whitesmoke;
-    &:before {
-        position: absolute;
-        content: "";
-        inset: 0.0625rem;
-        border-radius: 0.9375rem;
-        //background: #18181b;
-        z-index: -1;
-      }
-    &:after {
-        position: absolute;
-        content: "";
-        width: 0.25rem;
-        inset: 0.65rem auto 0.65rem 0.5rem;
-        border-radius: 0.125rem;
-        background: linear-gradient(180deg, #939cc5 0%, #caaac8 46%, #FFCC70 100%);;
-        z-index: 1;
-      }
-      article{
-        display: flex;
-        flex-direction: column;
-        padding: 1rem 2rem;
-        hr{
-            width: 4rem;
-        }
-      }
-      button{
-        position: absolute;
-        bottom: .5rem;
-        right: .7rem;
-        padding: 0 0.5rem;
-      }
+    color: rgba(50,50,50);
+    article{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 2rem;
+    hr{
+        background-color: rgba(50,50,50);
+        color: rgba(50,50,50);
+        width: 100%;
+    }
+    }
+    button{
+    position: absolute;
+    bottom: .5rem;
+    right: .7rem;
+    padding: 0 0.5rem;
+    }
   }
 
