@@ -91,7 +91,7 @@
   margin-block: 2rem;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: radial-gradient(farthest-side, rgba(39, 182, 226, 0.8) 94%, rgba(0, 0, 0, 0)) top/8px 8px no-repeat, conic-gradient(rgba(0, 0, 0, 0) 30%, rgba(39, 182, 226, 0.8));
+  background: radial-gradient(farthest-side, #3d9183 94%, rgba(0, 0, 0, 0)) top/8px 8px no-repeat, conic-gradient(rgba(0, 0, 0, 0) 30%, #3d9183);
   -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 8px), #000 0);
   animation: l13 1s infinite linear;
 }
@@ -108,6 +108,7 @@
   position: relative;
   width: 25rem;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  opacity: 0.8;
   border: 0.1rem solid #ffe4c4;
   border-radius: 0.5rem;
   box-shadow: 0 0 8px #808080;
@@ -125,16 +126,13 @@
   max-height: 8rem;
   overflow-y: scroll;
 }
-.box__talks article hr {
-  background-color: rgb(50, 50, 50);
-  color: rgb(50, 50, 50);
-  width: 100%;
-}
-.box__talks button {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.7rem;
-  padding: 0 0.5rem;
+
+.menu__options {
+  display: flex;
+  justify-content: flex-start;
+  width: 25rem;
+  padding: 0.25rem;
+  gap: 0.25rem;
 }
 
 .container__npc {

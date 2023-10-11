@@ -199,9 +199,10 @@ header{
         bottom: 1rem;
         left: 100%;
         margin: 1rem;
-        transform: rotate(-90deg);
+        //transform: rotate(-90deg);
         &:hover{
-            transform: rotate(-90deg);
+            filter: brightness(1);
+            transform: rotate(0deg);
         }
         
     }
@@ -322,14 +323,16 @@ div.box__buttons{
 
 .arrow{
     display: flex;
-    height: 1.25rem;
-    width: 1.25rem;
+    height: 2rem;
+    width: 2rem;
     padding: 0.25rem;
     border-radius: 50%;
     cursor: pointer;
     transition: 0.3s;
+    filter: brightness(0.3);
     &:hover{
-        transform: scale(1.1);
+        filter: brightness(1);
+        transform: scale(1.1) rotate(90deg);
     }
 }
 
@@ -443,7 +446,7 @@ div.box__buttons{
         position: absolute;
         z-index: -1;
         background-color: $button-second;
-        width: 10%;
+        width: 11%;
         aspect-ratio: 1;
         border-radius: 50%;
         inset: 0;

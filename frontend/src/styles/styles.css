@@ -266,10 +266,10 @@ header {
   bottom: 1rem;
   left: 100%;
   margin: 1rem;
-  transform: rotate(-90deg);
 }
 .box__user-inventory .arrow:hover {
-  transform: rotate(-90deg);
+  filter: brightness(1);
+  transform: rotate(0deg);
 }
 
 .box__user-inventory.active {
@@ -406,15 +406,17 @@ div.box__buttons {
 
 .arrow {
   display: flex;
-  height: 1.25rem;
-  width: 1.25rem;
+  height: 2rem;
+  width: 2rem;
   padding: 0.25rem;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
+  filter: brightness(0.3);
 }
 .arrow:hover {
-  transform: scale(1.1);
+  filter: brightness(1);
+  transform: scale(1.1) rotate(90deg);
 }
 
 .container__firstChoice {
@@ -495,7 +497,7 @@ div.box__buttons {
   max-width: fit-content;
   font-size: 1rem;
   padding: 0.5rem;
-  background-color: rgb(60, 60, 60);
+  background-color: #2f6b61;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -520,14 +522,14 @@ div.box__buttons {
 }
 .btn__primary:hover, .btn__primary:focus-visible {
   transform: scale(1.05);
-  background-color: rgba(39, 182, 226, 0.8);
+  background-color: #3d9183;
 }
 .btn__primary::before {
   content: "";
   position: absolute;
   z-index: -1;
-  background-color: rgba(0, 0, 0, 0.85);
-  width: 10%;
+  background-color: rgba(0, 50, 50, 0.85);
+  width: 11%;
   aspect-ratio: 1;
   border-radius: 50%;
   inset: 0;

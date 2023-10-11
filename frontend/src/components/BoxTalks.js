@@ -53,22 +53,36 @@ const BoxTalks = (props) => {
     };
 
     return(
+        <>
         <div className="box__talks">
             <article>
                 <h2>{props.talker}</h2>
-                <hr />
                 <p>
                     {text ? text : "Let's talk!"}
                 </p>
             </article>
-
-            { clickable ? <ButtonProfile
+        </div>
+        <ul className="menu__options">
+        <li>{ clickable ? <ButtonProfile
             content = {props.answer}
             func = {handleGenerateText}
             path = ""
-            /> : <ButtonProfile content="..."/>}
-            
-        </div>
+            /> : <ButtonProfile content="..."/>}</li>
+            { /*props.answer.map(answer, index => {
+
+                return(
+                    <li><ButtonProfile /></li>
+                )
+            })
+            <li>{ clickable ? <ButtonProfile
+            content = {props.answer}
+            func = {handleGenerateText}
+            path = ""
+            /> : <ButtonProfile content="..."/>}</li>
+            */}
+        </ul>
+        
+        </>
     )
 }
 

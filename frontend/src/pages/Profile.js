@@ -15,13 +15,13 @@ const Profile = () => {
     const userData = useUserData(currentUser.username);
 
     const actions = {
-        0: () => arrowRef.current.style.transform = "rotate(180deg)",
+        0: () => {},
         1: () => {
-            arrowRef.current.style.transform = "rotate(0deg)";
-            arrowRef2.current.style.transform = "rotate(-90deg)";
+            ;
+            ;
         },
         2: () => {
-            arrowRef2.current.style.transform = "rotate(-270deg)";
+            ;
         }
     };
 

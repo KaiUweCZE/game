@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { isCampaignCompleted, useCompleteCampaign } from '../Functions/CampaignFunc';
 import CharPainter from '../components/introComponent/CharPainter';
 import PokemonPainter from '../components/introComponent/PokemonPainter';
-import { trainers } from '../data/charactersData';
+import { trainers } from '../data/mainCharactersData';
 import Loader from '../components/Loader';
 import { generateSkills } from '../Functions/GeneratorFunctions';
 import { addPokemonToSix, catchPokemon } from '../Functions/CatchFunc';

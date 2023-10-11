@@ -14,11 +14,14 @@ const ActionNPC = () => {
         <div className="container__profile">
             <img className="profile-img" src={character.images[0]} alt="" />
             <UserInfoBox 
-            name={character.name}
-            
-            />
+            name={character.name}>
+                <div className="your-contact">
+                    <h3>Known pokemons: </h3>
+                </div>
+                
+            </UserInfoBox>
         </div>
-        <BoxTalks talker={character.name}/>
+        <BoxTalks talker={character.name} content = {character.action?.about.talks} answer = {character.action?.about.name}/>
         </>
     )
 }
