@@ -2,21 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const ButtonProfile = ({content, func, path}) => {
+const ButtonProfile = (props) => {
     const navigate = useNavigate()
 
     const handleClick = () => {
-        if(func) {
-            func()
-        } else if (path){
-            navigate(path)
+        if(props.func) {
+            props.func()
+        } else if (props.path){
+            navigate(props.path)
         }
     }
 
     return(
         <button className="btn__primary" onClick={handleClick}>
             <span></span>
-                {content}
+                {props.content}
             <span></span>
         </button>
     )

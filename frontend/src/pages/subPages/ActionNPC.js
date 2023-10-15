@@ -21,7 +21,10 @@ const ActionNPC = () => {
                 
             </UserInfoBox>
         </div>
-        <BoxTalks talker={character.name} content = {character.action?.about.talks} answer = {character.action?.about.name}/>
+        {
+            character.action? <BoxTalks talker={character.name} contents = {character.action?.map(action => action.talks)} answers = {character.action?.map(action => action.name)}/> : ""
+        }
+        
         </>
     )
 }

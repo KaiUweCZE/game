@@ -16,6 +16,7 @@ import Mountains from './pages/countries/Mountains';
 import Map from './pages/Map';
 import NPC from './pages/NPC'
 import ActionNPC from './pages/subPages/ActionNPC';
+import CoralTown from './pages/countries/towns/CoralTown';
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                         <Route path='/crossroad' element={<Crossroad/>} />
                         <Route path='/magicalforest' element={<MagicalForest/>}/>
                         <Route path='/cave' element={<Cave />}/>
+                        <Route path='/coralTown' element={<CoralTown />} />
                         <Route path='/battle' element={<Battleground />} />
                         <Route path='/mybox' element={<MyBox/>} />
                         <Route path='/mountains' element={<Mountains />} />

@@ -5,15 +5,15 @@ import ButtonProfile from "./light-component/ButtonProfile";
 const BoxTalks = (props) => {
     const [text, setText] = useState("")
     const [index, setIndex] = useState(0)
-    const [dummyText] = useState(props.content)
+    const [dummyText] = useState(props.contents)
     const [clickable, setClickable] = useState(true)
-    
+    console.log("props: ", props);
 
-    const handleGenerateText = () => {
+    const handleGenerateText = (content) => {
         let i = -1;
         let timer;
         // get array of dummyText's words
-        let words = dummyText.split(' ');
+        let words = content.split(' ');
         // check how many words remain
         let remainingLength = words.length - index;
         // each click adds 10 words or less if fewer words remain
@@ -37,7 +37,7 @@ const BoxTalks = (props) => {
                 setClickable(true);
             }
             if( index === -1 ){
-                setText(dummyText)
+                setText(content)
             } else if ( index + 10 < words.length){
                 // generate 10 words by letters
                 setText((prev) => prev + joinedWords[i]);
@@ -52,6 +52,14 @@ const BoxTalks = (props) => {
         }, 30);
     };
 
+    /*const letsTalk = (index) => {
+        console.log("click", index);
+        const content = props.contents[index]
+        console.log(content);
+        setDummyText(content)
+        handleGenerateText()
+    }*/
+
     return(
         <>
         <div className="box__talks">
@@ -63,23 +71,23 @@ const BoxTalks = (props) => {
             </article>
         </div>
         <ul className="menu__options">
-        <li>{ clickable ? <ButtonProfile
-            content = {props.answer}
-            func = {handleGenerateText}
-            path = ""
-            /> : <ButtonProfile content="..."/>}</li>
-            { /*props.answer.map(answer, index => {
-
-                return(
-                    <li><ButtonProfile /></li>
-                )
-            })
-            <li>{ clickable ? <ButtonProfile
-            content = {props.answer}
-            func = {handleGenerateText}
-            path = ""
-            /> : <ButtonProfile content="..."/>}</li>
-            */}
+            {
+                props.answers.map( (answer, index) => {
+                    return(  
+                        <li key={index}>
+                            {clickable ?
+                           <ButtonProfile 
+                           content = {answer}
+                           func = {() => handleGenerateText(props.contents[index])}
+                           path = ""
+                           />
+                           :
+                           <ButtonProfile content={answer}/>}
+                        </li>
+                    )
+                })
+            }
+            
         </ul>
         
         </>
@@ -87,3 +95,12 @@ const BoxTalks = (props) => {
 }
 
 export default BoxTalks
+/*<li>
+                {
+                    clickable ? <ButtonProfile
+                    content = {props.answers}
+                    func = {handleGenerateText}
+                    path = ""
+                    /> : <ButtonProfile content="..."/>
+                }
+            </li>*/

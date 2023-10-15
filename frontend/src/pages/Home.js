@@ -4,8 +4,8 @@ import BoxTalks from "../components/BoxTalks";
 
 
 const Home = () => {
-    const content = "Lorem ipsum dolor sit amet consectetur adipisicing elit. In ex esse commodi non quaerat, sed repudiandae ullam ab. Repudiandae molestiae perferendis amet quasi illum sit enim earum officia laboriosam sint?"
-    
+    const content = ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Indae ullam ab. Repudiandae molestiae perferendis amet quasi illum sit enim earum officia laboriosam sint?"]
+    const answers = ["yop"]
     
     return(
         
@@ -30,8 +30,8 @@ const Home = () => {
             
             <BoxTalks
             talker = "Bloom"
-            content = {content}
-            answer = "yop"
+            contents = {content}
+            answers = {answers}
             />
         </div>
         

@@ -5,6 +5,7 @@ import Wallpaper from '../../components/Wallpaper'
 import { labBg } from "../../data/importedImages";
 import { getBoxPokemons } from "../../Functions/usePokemonAction";
 import MyBoxPokemons from "../../components/ProfileComp/MyBoxPokemons";
+import { Link } from "react-router-dom";
 
 const MyBox = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -50,7 +51,14 @@ const MyBox = () => {
                     function={addPokemon}
                     loading={loading}
                    />
+                <div className="box__contacts">
+                    <h2>My links</h2>
+                    <ul>
+                        <Link to="/npc">My contancts</Link>
+                    </ul>
+                </div>
             </div>
+          
         </Wallpaper>
           
     )

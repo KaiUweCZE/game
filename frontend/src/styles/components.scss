@@ -376,15 +376,32 @@ div.login{
 
 /*MyBox*/
 .prevent-wrap{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
     height: 100%;
 }
+
+.box__contacts{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 2em;
+    padding: 2em;
+    border: 2px solid white;
+    border-radius: 0.5em;
+    box-shadow: 0 0 15px black;
+    height: fit-content;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(1.8px);
+    -webkit-backdrop-filter: blur(1.8px);
+
+}
+
 .container__pc--pokemons{
     display: grid;
     grid-template-rows: minmax(1fr, 15rem);
-    width: 30%;
+    width: 80%;
     margin: 2em;
     padding: 2em;
     border: 2px solid white;
@@ -444,6 +461,3 @@ div.login{
     to { opacity: 1;}
 }
 
-
-
-    

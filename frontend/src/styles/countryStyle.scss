@@ -1,0 +1,15 @@
+@import './addons/variables', './addons/mixins';
+
+
+
+.town {
+    position: relative; // Aby mohly být vnitřní prvky absolutně pozicionovány vůči tomuto obrázku.
+    
+    .faux-area {
+        position: absolute;
+        border: 10px solid black; // Nebo jakýkoliv jiný základní styl.
+        &:hover {
+            filter: brightness(0.5);
+        }
+    }
+}
