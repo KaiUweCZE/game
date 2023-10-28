@@ -45,6 +45,9 @@ class UserApi{
     learnAttack(data){
         return axios.post(`${URL}addAttack`, data)
     }
+    setYourLocation(data){
+        return axios.post(`${URL}setLocation`, data)
+    }
 }
 
 export default new UserApi()

@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     img: String,
+    location: String,
     badges:[String],
     items: [{
         type: mongoose.Schema.Types.ObjectId,

@@ -221,3 +221,21 @@ export const removeFromSix = async (req, res, next) => {
         next(error)
     }
 }
+
+// set user location
+
+export const setLocation = async (req, res, next) => {
+    const { username, location } = req.body;
+    try{
+        const user = await User.findOne({username})
+        if (user) {
+            user.location = location
+            await user.save()
+            res.status(200).json({message: user.location})
+        } else {
+            res.status(404).json({ message: "Ooops!"})
+        }
+    } catch (error){
+        next(error)
+    }
+}

@@ -32,7 +32,7 @@ const Profile = () => {
             <img className="profile-img" src={charImg} alt="" />
             <UserInfoBox
                 name={currentUser.username}
-                location="Home"
+                location={currentUser.location}
                 abilities="none"
                 statistics="lorem, ipsum dolor."
             >

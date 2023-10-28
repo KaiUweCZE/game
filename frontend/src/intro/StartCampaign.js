@@ -13,7 +13,8 @@ import ProfesorPainter from '../components/introComponent/ProfesorPainter';
 import CompletedMission from '../components/introComponent/CompletedMission';
 import { pokemonForEvents } from '../data/giftsData';
 import { useStatePage } from '../Functions/myHooks';
-import { updateMySix } from '../redux/user/userSlice';
+import { setLocation, updateMySix } from '../redux/user/userSlice';
+import { setYourLocation } from '../Functions/hooks/useLocation';
 
 
 const StartCampaign = () => {
@@ -47,11 +48,14 @@ const StartCampaign = () => {
             const completePokemon = { ...basicPokemonInfo, ...generatedPokemon };
             const myNewSix = [...(currentUser.mySix || []), completePokemon.name]
             dispatch(updateMySix(myNewSix))
+            setYourLocation(currentUser.username, 'shire', dispatch);
             catchPokemon(completePokemon, currentUser)
             //addPokemonToSix(currentUser.username, currentUser.mySix)
             completeCampaign('firstChoice')
             navigate(`/profile?name=${name}&image=${image}`)}
     }
+    
+    console.log("you are here: ", currentUser?.myLocation);
 
     //first argument is initialPage => -1 because I want to run the function manually
     const [page, incrementPage, decrementPage] = useStatePage(-1, actions)

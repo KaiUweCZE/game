@@ -1,16 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BoxAction = ({title, links}) => {
+const BoxAction = (props) => {
 
     return(
         <div className="box__action">
             <article>
-                <h2>{title}</h2>
+                <h2>{props.title}</h2>
                 <a href=""></a>
                 <ul>
                     {
-                    links.map((link, index) => {
+                    props.links.map((link, index) => {
                         const {name, to} = link
                         return(
                             <li key={index}>

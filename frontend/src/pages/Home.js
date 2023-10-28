@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonA from "../components/ButtonA";
 import BoxTalks from "../components/BoxTalks";
+import MyMap from "./UserPages/MyMap";
 
 
 const Home = () => {
@@ -33,6 +34,8 @@ const Home = () => {
             contents = {content}
             answers = {answers}
             />
+
+            <MyMap />
         </div>
         
         

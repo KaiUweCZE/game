@@ -33,6 +33,11 @@ const userSlice = createSlice({
                 state.currentUser.img = action.payload;
             }
         },
+        setLocation: (state, action) => {
+            if (state.currentUser) {
+                state.currentUser.myLocation = action.payload;
+            }
+        },
         updateMySix: (state, action) => {
             if (state.currentUser) {
                 state.currentUser.mySix = action.payload;
@@ -41,6 +46,6 @@ const userSlice = createSlice({
     }
 });
 
-export const { signInStart, signInSuccess, signInFailure, signOut, setImage, updateMySix } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, signOut, setImage, updateMySix, setLocation } = userSlice.actions;
 
 export default userSlice.reducer;

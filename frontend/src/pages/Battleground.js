@@ -9,7 +9,7 @@ import { fieldOne } from "../data/importedImages";
 import HpComponent from "../components/battle-components/HpComponent";
 import EnergyComponent from "../components/battle-components/EnergyComponent";
 import BoxAttacks from "../components/battle-components/BoxAttacks";
-import { countryData } from "../data/countryData";
+import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
 
 const Battleground = () => {

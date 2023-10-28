@@ -13,3 +13,42 @@
         }
     }
 }
+
+
+.container__map{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: (5, 1fr);
+    //justify-content: center;
+    //align-items: center;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-collapse: collapse;
+    width: 50vw;
+    height: 50vw;
+    max-width: 1024px;
+    max-height: 1024px;
+    //position: relative;
+}
+
+.position{
+    display: flex;
+    //position: absolute;
+    //width: 50vw * 0.08;
+    //height: 50vw * 0.084;
+    border: 1px solid rgba(0,0,0, 0.4);
+    background-color: rgba(255,255,255, 0.1);
+    //left: 40%;
+    //bottom: 41.9%;
+    cursor: pointer;
+    transition: 0.5s;
+    color: transparent;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        background-color: rgba(0,0,0, 0.3);;
+        border: 2px dashed black;
+        color: white;
+    }
+}
