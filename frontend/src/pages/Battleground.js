@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { useLocation } from "react-router-dom";
+//import { useLocation } from "react-router-dom";
 import { useMySix } from "../Functions/usePokemonAction";
 import { useTimer } from "../Functions/myHooks";
 import { choosePokemon } from "../Functions/BattleFunctions";
@@ -11,10 +11,12 @@ import EnergyComponent from "../components/battle-components/EnergyComponent";
 import BoxAttacks from "../components/battle-components/BoxAttacks";
 import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
+import { useSelector } from "react-redux";
 
 const Battleground = () => {
-    const location = useLocation()
-    const from = location.state.from || "Nope"
+    //const location = useLocation()
+    //const from = location.state.from || "Nope"
+    const {currentUser} = useSelector((state) => state.user)
     const {pokemons, loading} = useMySix()
     const [startBattle, setStartBattle] = useState(false)
     const [activePokemon, setActivePokemon] = useState({name: ""})
@@ -42,7 +44,7 @@ const Battleground = () => {
     }
 
     //encounter random pokemon
-    const enemies = countryData.find(e => e.countryName === from)
+    const enemies = countryData.find(e => e.countryName === currentUser.location)
     useEffect(() => {
         const getEnemy = () => {
             const enemy = GetMob(enemies.names)

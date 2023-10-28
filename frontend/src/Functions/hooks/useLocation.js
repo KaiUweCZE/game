@@ -10,6 +10,3 @@ export const setYourLocation = (username, location, dispatch) => {
         .catch( err => console.error('Failed with image', err))
 }
 
-export const useGetLocation = () => {
-
-}

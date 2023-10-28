@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
+// Box shows actions and links for each country by the its name
 const BoxAction = (props) => {
 
     return(
@@ -9,20 +9,24 @@ const BoxAction = (props) => {
                 <h2>{props.title}</h2>
                 <a href=""></a>
                 <ul>
-                    {
+                    {/* first render links */
                     props.links.map((link, index) => {
-                        const {name, to} = link
+                        const {name, to, action} = link
                         return(
                             <li key={index}>
-                                {
-                                typeof to === "function" ? (
-                                <a onClick={to}>{name}</a>
-                                ):
-                                (<Link to={to}>{name}</Link>)
-                                }      
+                                    <a onClick={action}>{name}</a>   
                             </li>
                         )
                     })
+                    }
+                    { /* If there are any actions, they will be rendered */
+                        props.extra?.map((index) => {
+
+                            return(
+                                <li key={index}> <a href="/battle">Fight!</a></li>
+                            )
+                        })
+                        
                     }
                 </ul>
             </article>

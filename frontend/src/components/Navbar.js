@@ -17,9 +17,6 @@ const Navbar = () => {
                     {
                     currentUser ? 
                     <>
-                        <li className="menu__item">
-                            <NavLink to="/crossroad">Crossroad</NavLink>
-                        </li>
                         <li className="menu__item"><NavLink to="/profile">Profile</NavLink></li>
                         <li className="menu__item" onClick={logOut}><a>Logout</a></li> 
                     </>

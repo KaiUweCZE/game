@@ -12,7 +12,6 @@ const Profile = () => {
     const arrowRef = useRef(null);
     const arrowRef2 = useRef(null);
     const charImg = currentUser.img === "char1" ? char1 : char3;
-    const userData = useUserData(currentUser.username);
 
     const actions = {
         0: () => {},

@@ -35,7 +35,7 @@ const userSlice = createSlice({
         },
         setLocation: (state, action) => {
             if (state.currentUser) {
-                state.currentUser.myLocation = action.payload;
+                state.currentUser.location = action.payload;
             }
         },
         updateMySix: (state, action) => {

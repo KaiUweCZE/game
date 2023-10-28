@@ -165,4 +165,40 @@
   -webkit-backdrop-filter: blur(15px);
   align-items: center;
   margin-bottom: 0.25rem;
+}
+
+.box__timestamp {
+  display: flex;
+  width: 50%;
+  height: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 10%;
+  align-items: center;
+  padding: 0.15rem;
+}
+.box__timestamp div {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.box__timestamp span {
+  position: absolute;
+  z-index: 1;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 0 0 4px black;
+}
+.box__timestamp .box__item {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background-image: linear-gradient(135deg, rgba(59, 0, 223, 0.6588235294) 10%, rgba(18, 0, 216, 0.7529411765) 100%);
+  position: relative;
+  transition: width 1s linear;
 }/*# sourceMappingURL=lightComponent.css.map */
