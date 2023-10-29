@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 
-const TimeStamp = () => {
+const TimeStamp = ({time}) => {
     const [width, setWidth] = useState(100)
 
     useEffect(() => {
+        let atomicTime =(1000/(time - 1000)) * 100;
         const timer = setInterval(() => {
-            setWidth(width - 1);
+            setWidth(width - atomicTime);
         }, 1000);
 
         return () => clearInterval(timer);

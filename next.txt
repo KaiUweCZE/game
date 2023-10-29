@@ -1,14 +1,14 @@
-1. úklid a přejmenování/popsání funkcí
-
-2. styly, protřídit
-
 
 5. V raidu přidat pokračování a podle toho stupňovat sílu pokémonů... začlenit energy componentu
 
 
-v procesu:
-4. Začít s vytvořením 10 pokémonů + jejich evoluce + vývoje & exps i abilities, rozpracovat
-zaměřit se na RenderStats.js
-
 3.treatment of functions
 ex. => if (variable !== undefined && variable !== null)
+
+
+1. potřeba provést úklid a přeorganizování složek a souborů/ zakomentování
+samotných komponent
+
+2. ikonky k záhlaví
+
+3.převést traveling time do komponenty

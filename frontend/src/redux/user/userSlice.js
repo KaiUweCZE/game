@@ -42,10 +42,18 @@ const userSlice = createSlice({
             if (state.currentUser) {
                 state.currentUser.mySix = action.payload;
             }
+        },
+        startTraveling: (state, action) => {
+            state.traveling = true;
+            state.travelEndTime = action.payload; 
+        },
+        endTraveling: (state) => {
+            state.traveling = false;
+            state.travelEndTime = null;
         }
     }
 });
 
-export const { signInStart, signInSuccess, signInFailure, signOut, setImage, updateMySix, setLocation } = userSlice.actions;
+export const { signInStart, signInSuccess, signInFailure, signOut, setImage, updateMySix, setLocation, startTraveling, endTraveling } = userSlice.actions;
 
 export default userSlice.reducer;

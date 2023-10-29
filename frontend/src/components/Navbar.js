@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLogOut } from "../Functions/userHooks/formHooks";
+import NavbarItem from "./light-component/NavbarItem";
 
 const Navbar = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -13,6 +14,7 @@ const Navbar = () => {
             </div>
             <nav className="navigation">
                 <ul className="menu">
+                    <NavbarItem/>
                     <li className="menu__item"><NavLink to="/">Home</NavLink></li>
                     {
                     currentUser ? 

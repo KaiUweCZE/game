@@ -461,3 +461,20 @@ div.login{
     to { opacity: 1;}
 }
 
+figure.menu__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    img{
+        width: 1.5rem;
+        filter: brightness(5);
+        transition: 0.5s;
+    }
+    &:hover{
+        img{
+            transform: scale(1.2);
+        }
+    }
+}
