@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useLogOut } from "../Functions/userHooks/formHooks";
 import NavbarItem from "./light-component/NavbarItem";
+import homeIcon from '../styles/images/home.svg';
+import keyIcon from '../styles/images/key.svg';
+import userIcon from '../styles/images/user.svg';
+import registerIcon from '../styles/images/register.svg'
 
 const Navbar = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -14,18 +18,17 @@ const Navbar = () => {
             </div>
             <nav className="navigation">
                 <ul className="menu">
-                    <NavbarItem/>
-                    <li className="menu__item"><NavLink to="/">Home</NavLink></li>
+                        <NavbarItem title="Home" to="/" icon={homeIcon}/>
                     {
                     currentUser ? 
                     <>
-                        <li className="menu__item"><NavLink to="/profile">Profile</NavLink></li>
-                        <li className="menu__item" onClick={logOut}><a>Logout</a></li> 
+                        <NavbarItem title="Profile" to="/profile" icon={userIcon}/>
+                        <NavbarItem  title="LogOut" icon={keyIcon} func={logOut}/>
                     </>
                     :
                     <>
-                        <li className="menu__item"><NavLink to="/login">Login</NavLink></li>
-                        <li className="menu__item"><NavLink to="/register">Register</NavLink></li>
+                        <NavbarItem title="Login" to="/login" icon={keyIcon} />
+                        <NavbarItem title="Register" to="/register" icon={registerIcon} />
                     </>
                     }
                 </ul>

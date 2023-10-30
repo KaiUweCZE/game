@@ -507,8 +507,8 @@ figure.menu__item {
   font-size: 1.25rem;
 }
 figure.menu__item img {
-  width: 1.5rem;
-  filter: brightness(5);
+  width: 1.75rem;
+  filter: brightness(8);
   transition: 0.5s;
 }
 figure.menu__item:hover img {
