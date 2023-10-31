@@ -109,6 +109,12 @@
     cursor: pointer;
 }
 
+@mixin flex-centred{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin column-center{
     display: flex;
     flex-direction: column;

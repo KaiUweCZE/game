@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-//import { useLocation } from "react-router-dom";
 import { useMySix } from "../Functions/usePokemonAction";
 import { useTimer } from "../Functions/myHooks";
 import { choosePokemon } from "../Functions/BattleFunctions";
@@ -14,8 +13,6 @@ import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWal
 import { useSelector } from "react-redux";
 
 const Battleground = () => {
-    //const location = useLocation()
-    //const from = location.state.from || "Nope"
     const {currentUser} = useSelector((state) => state.user)
     const {pokemons, loading} = useMySix()
     const [startBattle, setStartBattle] = useState(false)
@@ -26,6 +23,7 @@ const Battleground = () => {
     const [enemyDmg, setEnemyDmg] = useState(0)
     const [isOver, setIsOver] = useState(false)
     const [who, setWho] = useState()
+    const [round, setRound] = useState(1)
     //const [stopFight, setStopFight] = useState(false)
 
     //updateDmg
@@ -72,7 +70,7 @@ const Battleground = () => {
 
     return(
         <div className="container__battle">
-            {loading ? (<Loader /> ) :  ( isOver ? ( <EndOfBattleWallpaper who={who} /> ) : (
+            {loading ? (<Loader /> ) :  ( isOver ? ( <EndOfBattleWallpaper who={who} round={round}/> ) : (
                 <>
                 <div className="box__battle--user">
                     {/* this will be component*/}

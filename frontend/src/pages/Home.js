@@ -29,13 +29,6 @@ const Home = () => {
                 </article>
             </main>
             
-            <BoxTalks
-            talker = "Bloom"
-            contents = {content}
-            answers = {answers}
-            />
-
-            <MyMap />
         </div>
         
         

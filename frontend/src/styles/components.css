@@ -82,7 +82,7 @@ div.login {
   width: -moz-fit-content;
   width: fit-content;
   max-width: 20em;
-  font-size: 1.125em;
+  font-size: 1.125rem;
   font-weight: bold;
   background-color: rgb(253, 77, 77);
   color: white;
@@ -467,6 +467,7 @@ div.login {
 
 .GameOver {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   background-color: rgba(189, 60, 60, 0.75);
   align-items: center;
@@ -481,6 +482,32 @@ div.login {
 }
 .GameOver h2 {
   animation: kukuluku 1s ease forwards;
+}
+.GameOver .box__choices {
+  display: grid;
+  grid-template-areas: "headline" "div";
+}
+.GameOver .box__choices h3 {
+  grid-area: headline;
+}
+.GameOver .box__choices div {
+  grid-area: div;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button.box__button {
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(30, 30, 30, 0.6);
+  transition: 0.5s;
+}
+button.box__button:hover {
+  background-color: rgba(30, 30, 30, 0.9);
 }
 
 @keyframes kukuluku {

@@ -2,20 +2,22 @@
 $bgc-primary: black;
 $bgc-secondary: white;
 
+
+
 /*Font setting*/
 $color-primary: white;
 $color-secondary: rgb(40, 40, 40);
 $color-error: rgb(253, 77, 77);
-$size-important: 1.5em;
-$logo-font: 2.2em;
+$size-important: 1.5rem;
+$logo-font: 2.2rem;
 
 //units
-$standard-unit: 1em;
+$standard-unit: 1rem;
 
 //types of pokemon
 $pokemon-normal: rgb(173, 150, 106);
 
 //button colors
-$button-first: #2f6b61;//rgba(60, 60, 60, 1);
-$button-second: rgba(0,50,50, 0.85);
-$button-third: #3d9183;//rgba(39, 182, 226, 0.8);
+$button-first: #757575;//rgba(60, 60, 60, 1);
+$button-second: rgba(43, 43, 43, 0.85);
+$button-third: #969696;//rgba(39, 182, 226, 0.8);

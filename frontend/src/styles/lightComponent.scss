@@ -95,6 +95,7 @@
     100%{transform: rotate(1turn)}
   }
 
+  // styles for BoxTalks component
   .box__talks{
     display: flex;
     flex-direction: column;
@@ -102,8 +103,8 @@
     position: relative;
     width: 25rem;
     //height: 8rem;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-    opacity: 0.8;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    opacity: 0.9;
     border: 0.1rem solid #ffe4c4;
     border-radius: .5rem;
     box-shadow: 0 0 8px #808080;
@@ -136,6 +137,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
     column-gap: 2rem;
+    max-width: 85rem;
+    justify-items: center;
+    margin: 0 auto;
 }
 .box__NPC{
     display: grid;
@@ -155,21 +159,24 @@
         flex-direction: column;
         background-color: beige;
         background-image: linear-gradient(to top, rgba(108, 156, 140, 0.45) 0%, rgba(145, 219, 197, 0.45) 100%);
-        border: 0.1rem solid #ffe4c4;
+        background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        border: 0.15rem solid rgba(50, 50, 50, 0.7);
         border-radius: .5rem;
         box-shadow: 0 0 8px #808080;
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
         align-items: center;
         margin-bottom: 0.25rem;
+        padding: .5rem;
     }
 }
 
+//Styles for TimeStamp component
 .box__timestamp{
     display: flex;
     width: 50%;
     height: 1.5rem;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba($bgc-secondary, 0.5);
     border-radius: 1rem; 
     position: absolute;
     bottom: 10%;
@@ -177,17 +184,15 @@
     padding: .15rem;
     // wrap and centralized span :)
     div{
-        display: flex;
+        @include flex-centred;
         position: absolute;
         width: 100%;
         height: 100%;
-        align-items: center;
-        justify-content: center;
     } 
     span{
         position: absolute;
         z-index: 1;
-        font-size: 1.8rem;
+        font-size: 1.75em;
         font-weight: bold;
         text-shadow: 0 0 4px black;
     }
@@ -197,6 +202,7 @@
         height: 100%;
         border-radius: 1rem;
         background-image: linear-gradient( 135deg, #3b00dfa8 10%, #1200d8c0 100%);
+        background: linear-gradient(45deg, rgba(27,122,154,1) 5%, rgba(14,80,158,1) 25%, rgba(30,133,168,1) 56%, rgba(19,83,158,1) 78%, rgba(30,133,168,1) 100%);
         position: relative;
         transition: width 1s linear;
     }

@@ -435,6 +435,7 @@ div.login{
 
 .GameOver{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: rgba(#bd3c3c, 0.75);
     align-items: center;
@@ -448,6 +449,34 @@ div.login{
     z-index: -3;
     h2{
         animation: kukuluku 1s ease forwards;
+    }
+    .box__choices{
+        display: grid;
+        grid-template-areas: 
+        "headline"
+        "div";
+        h3{
+            grid-area: headline;
+        }
+        div{
+            grid-area: div;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            gap: 1rem;
+        }
+    }
+}
+
+button.box__button{
+    cursor: pointer;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    background-color: rgba(30,30,30,0.6);
+    transition: .5s;
+    &:hover{
+        background-color: rgba(30,30,30,0.9);
     }
 }
 

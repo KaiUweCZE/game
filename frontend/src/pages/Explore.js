@@ -4,12 +4,12 @@ import BoxAction from "../components/BoxAction";
 import { useDispatch, useSelector } from "react-redux";
 import { countries } from "../data/DataCountries/countryData";
 import { setYourLocation } from "../Functions/hooks/useLocation";
-import { startTraveling, endTraveling } from "../redux/user/userSlice";
+import { endTraveling } from "../redux/user/userSlice";
 import OnRoad from "../components/OnRoad";
+import { startUserTraveling } from "../Functions/travelActions";
 
 // Main interactive place with your location(some action or go somewhere else)
 const Explore = () => {
-    const [travelTime, setTravelTime] = useState(0)
     const {currentUser, traveling, travelEndTime} = useSelector((state) => state.user)
     const dispatch = useDispatch();
     
@@ -23,17 +23,14 @@ const Explore = () => {
             name: e,
             to: '/onroad',
             action: async () => {
-                const addTime = 15000; // travel duration: 15s
-                const travelEndTime = new Date().getTime() + addTime; 
-                setTravelTime(addTime)
-                // traveling start! We set it to redux, so we do not need it to send props to other components
-                dispatch(startTraveling({ end: travelEndTime, time: addTime})); 
+                const duration = 5000; // travel duration: 5s
+                startUserTraveling(dispatch, duration, e);
                 setYourLocation(currentUser.username, e, dispatch); // set location
             },
         };
     });
 
-    
+    // restructure it later.. ?
     useEffect(() => {
         if (traveling) {
           const currentTime = new Date().getTime();

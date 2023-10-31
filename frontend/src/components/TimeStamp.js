@@ -12,7 +12,7 @@ const TimeStamp = () => {
         const timer = setInterval(() => {
             const currentTime = new Date().getTime();
             const newRemainingTime = travelEndTime - currentTime;
-            const newWidth = (newRemainingTime / travelTime) * 100;
+            const newWidth = (newRemainingTime / travelTime ) * 100;
             setWidth(newWidth);
         }, 1000);
         return () => clearInterval(timer);
