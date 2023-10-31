@@ -45,11 +45,13 @@ const userSlice = createSlice({
         },
         startTraveling: (state, action) => {
             state.traveling = true;
-            state.travelEndTime = action.payload; 
+            state.travelEndTime = action.payload.end;
+            state.travelTime = action.payload.time; 
         },
         endTraveling: (state) => {
             state.traveling = false;
             state.travelEndTime = null;
+            state.travelTime = null;
         }
     }
 });

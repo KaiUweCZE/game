@@ -5,6 +5,7 @@ import tinyCaveImg1 from '../../styles/images/countries/cave1.webp'
 import barnImg1 from '../../styles/images/countries/barn.webp'
 import magicalForImg1 from '../../styles/images/countries/magical-forest1.webp'
 import grandpaMoImg1 from '../../styles/images/countries/gmountain1.webp'
+import teleportImg from '../../styles/images/countries/teleport1.webp'
 
 export const countryData = [
     {
@@ -56,9 +57,9 @@ export const countries = [
     },
     {
         name: "Te Leport",
-        img: [],
+        img: [teleportImg],
         about: "Te Leport is old port in south.",
-        routes: ["Northmadic", "Te Leport"]
+        routes: ["Northmadic", "Shire"]
     },
     {
         name: "Yummy Desert",

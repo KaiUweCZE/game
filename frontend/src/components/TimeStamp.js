@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 
-const TimeStamp = ({time}) => {
-    const [width, setWidth] = useState(100)
-
+const TimeStamp = () => {
+    const { travelTime, travelEndTime } = useSelector((state) => state.user);
+    const currentTime = new Date().getTime();
+    const newRemainingTime = travelEndTime - currentTime;
+    const [width, setWidth] = useState((newRemainingTime / travelTime) * 100)
+    
     useEffect(() => {
-        let atomicTime =(1000/(time - 1000)) * 100;
         const timer = setInterval(() => {
-            setWidth(width - atomicTime);
+            const currentTime = new Date().getTime();
+            const newRemainingTime = travelEndTime - currentTime;
+            const newWidth = (newRemainingTime / travelTime) * 100;
+            setWidth(newWidth);
         }, 1000);
-
         return () => clearInterval(timer);
-    })
+    });
 
     return(
         <div className="box__timestamp">

@@ -4,11 +4,11 @@ import roadImg from '../styles/images/countries/crossroad.webp'
 import TimeStamp from "./TimeStamp";
 
 
-const OnRoad = ({ travelTime }) => {
+const OnRoad = () => {
 
     return(
         <Wallpaper background={roadImg}>
-            <TimeStamp time={travelTime}/>
+            <TimeStamp />
         </Wallpaper>
     )
 }

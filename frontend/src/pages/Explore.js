@@ -23,15 +23,17 @@ const Explore = () => {
             name: e,
             to: '/onroad',
             action: async () => {
-                const addTime = 15000;
-                const travelEndTime = new Date().getTime() + addTime; // add 10s to actual time
+                const addTime = 15000; // travel duration: 15s
+                const travelEndTime = new Date().getTime() + addTime; 
                 setTravelTime(addTime)
-                dispatch(startTraveling(travelEndTime)); // traveling start!
+                // traveling start! We set it to redux, so we do not need it to send props to other components
+                dispatch(startTraveling({ end: travelEndTime, time: addTime})); 
                 setYourLocation(currentUser.username, e, dispatch); // set location
             },
         };
     });
 
+    
     useEffect(() => {
         if (traveling) {
           const currentTime = new Date().getTime();
@@ -49,7 +51,7 @@ const Explore = () => {
     return(
         <>
         {
-            traveling ? <OnRoad travelTime={travelTime} /> :
+            traveling ? <OnRoad /> :
         <Wallpaper background={country.img[0]}>
             <BoxAction 
                 title={country.name}
