@@ -1,7 +1,7 @@
 import yummyImg1 from '../../styles/images/countries/yummy1.webp'
 import northmadicImg1 from '../../styles/images/countries/northmandic1.webp'
 import shireImg1 from '../../styles/images/countries/shire1.webp'
-import tinyCaveImg1 from '../../styles/images/countries/cave1.webp'
+import tinyCaveImg1 from '../../styles/images/countries/cave2.webp'
 import barnImg1 from '../../styles/images/countries/barn.webp'
 import magicalForImg1 from '../../styles/images/countries/magical-forest1.webp'
 import grandpaMoImg1 from '../../styles/images/countries/gmountain2.webp'
@@ -11,6 +11,9 @@ import icesreamImg1 from '../../styles/images/countries/iceScream1.webp'
 import lovelyImg1 from '../../styles/images/countries/lovely1.webp'
 import jungleImg1 from '../../styles/images/countries/jungle1.webp'
 import redwoodsImg1 from '../../styles/images/countries/redwoods1.webp'
+import futuromeImg1 from '../../styles/images/countries/futurome1.webp'
+import chatotImg1 from '../../styles/images/countries/chatotcastle1.webp'
+import waterfallsImg1 from '../../styles/images/countries/waterfalls1.webp'
 
 export const countryData = [
     {
@@ -52,7 +55,7 @@ export const countries = [
         name:"Grandpa's Mountains",
         img: [grandpaMoImg1],
         about: "Lorem",
-        routes: ["Yummy Desert", "Magical Forest"],
+        routes: ["Yummy Desert", "Magical Forest", "Futu Rome"],
         actions: ["fight"],
         enemies: []
     },
@@ -69,7 +72,7 @@ export const countries = [
         name: "Jungle",
         img: [jungleImg1],
         about: "lorem",
-        routes: ["Willy's Barn", "Tiny Cave"],
+        routes: ["Willy's Barn", "Tiny Cave", "Waterfalls"],
         enemies: [],
         actions: [],
     },
@@ -78,20 +81,22 @@ export const countries = [
         name: "Redwoods",
         img: [redwoodsImg1],
         about: "lorem",
-        routes: ["Willy's Barn"],
+        routes: ["Willy's Barn", "Waterfalls"],
         enemies: [],
         actions: [],
     },
     {
         id: "c07",
-        img: [],
+        name: "Waterfalls",
+        img: [waterfallsImg1],
         about: "lorem",
-        routes: [],
+        routes: ["Willy's Barn", "Jungle"],
         enemies: [],
         actions: [],
     },
     {
         id: "c08",
+        name: "Mine",
         img: [],
         about: "lorem",
         routes: [],
@@ -100,6 +105,7 @@ export const countries = [
     },
     {
         id: "c09",
+        name: "Tower",
         img: [],
         about: "lorem",
         routes: [],
@@ -162,29 +168,29 @@ export const countries = [
         name: "Ice Scream",
         img: [icesreamImg1],
         about: "",
-        routes: ["Macho Pichu", "Lovely"]
+        routes: ["Macho Pichu", "Lovely", "Chatot Castle"]
     },
     {
-        id: "07",
+        id: "t07",
         name: "Lovely",
         img: [lovelyImg1],
         about: "",
-        routes: ["Ice Scream"]
+        routes: ["Ice Scream", "Futu Rome"]
     }
     ,{
-        id: "",
-        name: "",
-        img: [],
+        id: "t08",
+        name: "Futu Rome",
+        img: [futuromeImg1],
         about: "",
-        routes: ""
+        routes: ["Lovely", "Grandpa's Mountains", "Chatot Castle"]
     },{
-        id: "",
-        name: "",
-        img: [],
+        id: "t09",
+        name: "Chatot Castle",
+        img: [chatotImg1],
         about: "",
-        routes: ""
+        routes: ["Futu Rome", "Ice Scream"]
     },{
-        id: "",
+        id: "t10",
         name: "",
         img: [],
         about: "",

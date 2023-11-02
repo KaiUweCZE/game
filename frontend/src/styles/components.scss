@@ -282,7 +282,7 @@ div.login{
     }
 }
 
-/*hpComponenta*/
+/*hpComponent*/
 .background__bar{
     display: flex;
     margin-left: 10%;
@@ -446,24 +446,32 @@ div.login{
     text-shadow: 0 0 10px black;
     color: white;
     animation: animationGameOver 1s ease forwards;
-    z-index: -3;
     h2{
         animation: kukuluku 1s ease forwards;
     }
-    .box__choices{
+    .box{
         display: grid;
-        grid-template-areas: 
-        "headline"
-        "div";
-        h3{
-            grid-area: headline;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 1rem;
+    }
+    h3{
+        grid-column: span 2;
+    }
+    button{
+        display: flex;
+        justify-content: center;
+        font-size: 1.25rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 8px black;
+        cursor: pointer;
+        background-color: rgba(0,0,0,0.5);
+        padding: 1rem;
+        transition: 1s;
+        &:hover{
+            background-color: rgba(0,0,0,0.9);
         }
-        div{
-            grid-area: div;
-            display: flex;
-            width: 100%;
-            justify-content: center;
-            gap: 1rem;
+        a {
+            color: $color-primary;
         }
     }
 }

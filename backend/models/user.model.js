@@ -14,10 +14,10 @@ const userSchema = new mongoose.Schema({
     img: String,
     location: String,
     badges:[String],
-    items: [{
+    /*items: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Item'
-    }],
+    }],*/
     pokemon: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pokemon'
@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema({
         of: Boolean,
         default: {}
     },
+    items:{
+        type: Map,
+        of: Number,
+        default: {}
+    }
 }, {timestamps: true})
 
 const skillSchema = new mongoose.Schema({

@@ -28,7 +28,7 @@ const Home = () => {
                     
                 </article>
             </main>
-            
+        
         </div>
         
         

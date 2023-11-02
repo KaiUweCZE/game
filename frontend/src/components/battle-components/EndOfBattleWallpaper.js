@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const EndOfBattleWallpaper = (props) => {
-    const [message, setMessage ] = useState()
+    const [message, setMessage] = useState()
     const [bgc, setBgc] = useState()
 
     useEffect(() => {
-        if (props.who === "user"){
+        if (props.who === "user") {
             setMessage("Na mašírku!")
             setBgc("#bd3c3c")
         } else {
@@ -14,19 +14,14 @@ const EndOfBattleWallpaper = (props) => {
         }
     }, [])
 
-    const nextRound = (num) => {
-        return props.round + num
-    }
-    return(
-        <div className="GameOver" style={{backgroundColor: `${bgc}`}}>
+
+    return (
+        <div className="GameOver" style={{ backgroundColor: `${bgc}` }}>
             <h2>{message}</h2>
-            <div className="box__choices">
+            <div className="box">
                 <h3>Do you want to continue?</h3>
-                <div>
-                    <button onClick={nextRound(+1)}>Keep going!</button>
-                    <button onClick={nextRound(-1)}>It is enough!</button>
-                </div>
-                
+                <button onClick={props.incrementPage}>Keep going!</button>
+                <button><a href="/">It is enough!</a></button>
             </div>
         </div>
     )

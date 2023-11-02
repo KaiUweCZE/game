@@ -1,5 +1,5 @@
 import React from "react";
-import { npcCharacters } from "../data/imagesFolder/characterImgs";
+import { npcCharacters } from "../data/DataNPC/npcData";
 import CardNPC from "../components/CardNPC"
 
 const NPC = () => {

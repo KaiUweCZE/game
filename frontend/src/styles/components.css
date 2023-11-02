@@ -281,7 +281,7 @@ div.login {
   height: clamp(10em, 85%, 16em);
 }
 
-/*hpComponenta*/
+/*hpComponent*/
 .background__bar {
   display: flex;
   margin-left: 10%;
@@ -478,24 +478,35 @@ div.login {
   text-shadow: 0 0 10px black;
   color: white;
   animation: animationGameOver 1s ease forwards;
-  z-index: -3;
 }
 .GameOver h2 {
   animation: kukuluku 1s ease forwards;
 }
-.GameOver .box__choices {
+.GameOver .box {
   display: grid;
-  grid-template-areas: "headline" "div";
+  grid-template-columns: repeat(2, 1fr);
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
 }
-.GameOver .box__choices h3 {
-  grid-area: headline;
+.GameOver h3 {
+  grid-column: span 2;
 }
-.GameOver .box__choices div {
-  grid-area: div;
+.GameOver button {
   display: flex;
-  width: 100%;
   justify-content: center;
-  gap: 1rem;
+  font-size: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 8px black;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  transition: 1s;
+}
+.GameOver button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.GameOver button a {
+  color: white;
 }
 
 button.box__button {

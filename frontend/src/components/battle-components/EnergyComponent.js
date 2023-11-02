@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+
+// This component visualizes energy staus for user pokemon
 const EnergyComponent = ({ energy, costEnergy }) => {
     const [actualEnergy, setActualEnergy] = useState(energy)
     useEffect(() => {
@@ -16,13 +18,10 @@ const EnergyComponent = ({ energy, costEnergy }) => {
 
     console.log("tohle že je energY?  ", energy);
     return (
-        <>
-            <h2>{energy}</h2>
-            <div className="background__bar">
-                <div className="your-energy" style={{ width: `${actualEnergy * (100/energy)}%` }}>
-                </div>
-            </div>
-        </>
+        
+        <div className="background__bar">
+            <div className="your-energy" style={{ width: `${actualEnergy * (100/energy)}%` }}></div>
+        </div>
     )
 }
 

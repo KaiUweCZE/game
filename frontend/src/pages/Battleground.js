@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useMySix } from "../Functions/usePokemonAction";
-import { useTimer } from "../Functions/myHooks";
+import { useStatePage, useTimer } from "../Functions/myHooks";
 import { choosePokemon } from "../Functions/BattleFunctions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
@@ -23,7 +23,6 @@ const Battleground = () => {
     const [enemyDmg, setEnemyDmg] = useState(0)
     const [isOver, setIsOver] = useState(false)
     const [who, setWho] = useState()
-    const [round, setRound] = useState(1)
     //const [stopFight, setStopFight] = useState(false)
 
     //updateDmg
@@ -66,11 +65,22 @@ const Battleground = () => {
         }
     }, 2000)
 
+    //send functions to custom hooks (useStatePage),every increment is next round in battleground
+    const actions = {
+        0: () => {console.log("clicked on start"), setIsOver(false)},
+        1: () => console.log("Next Round!"),
+        2: () => console.log("Oh man, the last one")
+    }
+
+
+     //first argument is initialPage => -1 because I want to run the function manually
+     const [page, incrementPage, decrementPage] = useStatePage(-1, actions)
+
 
 
     return(
         <div className="container__battle">
-            {loading ? (<Loader /> ) :  ( isOver ? ( <EndOfBattleWallpaper who={who} round={round}/> ) : (
+            {loading ? (<Loader /> ) :  ( isOver ? ( <EndOfBattleWallpaper who={who} incrementPage={incrementPage}/> ) : (
                 <>
                 <div className="box__battle--user">
                     {/* this will be component*/}

@@ -9,3 +9,5 @@ ex. => if (variable !== undefined && variable !== null)
 samotných komponent
 
 2. nastavit bag, podle komponent(tedy item data, badge data.)
+
+3.backend pro items
