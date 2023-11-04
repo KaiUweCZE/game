@@ -14,6 +14,10 @@ import redwoodsImg1 from '../../styles/images/countries/redwoods1.webp'
 import futuromeImg1 from '../../styles/images/countries/futurome1.webp'
 import chatotImg1 from '../../styles/images/countries/chatotcastle1.webp'
 import waterfallsImg1 from '../../styles/images/countries/waterfalls1.webp'
+import gastlyTowerImg1 from '../../styles/images/countries/gastlytower1.webp'
+import monastryImg1 from '../../styles/images/countries/monastry1.webp'
+import mineImg1 from '../../styles/images/countries/deepmine1.webp'
+import lakeImg1 from '../../styles/images/countries/lake1.webp'
 
 export const countryData = [
     {
@@ -37,7 +41,7 @@ export const countries = [
         name:"Magical Forest",
         img: [magicalForImg1],
         about: "Lorem",
-        routes: ["Yummy Desert", "Grandpa's Mountains", "Tiny Cave"],
+        routes: ["Yummy Desert", "Te Leport", "Northmadic"],
         actions: ["fight"],
         enemies: []   
     },
@@ -46,7 +50,7 @@ export const countries = [
         name:"Tiny Cave",
         img: [tinyCaveImg1],
         about: "Lorem",
-        routes: ["Magical Forest", "Willy's Barn", "Jungle"],
+        routes: ["noname3", "Shire", "Lovely", "Macho Pichu"],
         actions: ["fight"],
         enemies: []
     },
@@ -55,7 +59,7 @@ export const countries = [
         name:"Grandpa's Mountains",
         img: [grandpaMoImg1],
         about: "Lorem",
-        routes: ["Yummy Desert", "Magical Forest", "Futu Rome"],
+        routes: ["noname4", "Mine", "Monastry"],
         actions: ["fight"],
         enemies: []
     },
@@ -64,7 +68,7 @@ export const countries = [
         name:"Willy's Barn",
         img: [barnImg1],
         about: "Lorem",
-        routes: ["Tiny Cave", "Jungle", "Redwoods"],
+        routes: ["Futu Rome", "Shire", "noname3"],
         enemies: []
     },
     {
@@ -72,7 +76,7 @@ export const countries = [
         name: "Jungle",
         img: [jungleImg1],
         about: "lorem",
-        routes: ["Willy's Barn", "Tiny Cave", "Waterfalls"],
+        routes: ["Last City", "Macho Pichu", "Gastly Tower"],
         enemies: [],
         actions: [],
     },
@@ -81,7 +85,7 @@ export const countries = [
         name: "Redwoods",
         img: [redwoodsImg1],
         about: "lorem",
-        routes: ["Willy's Barn", "Waterfalls"],
+        routes: ["Lovely", "Macho Pichu", "Ice Scream", "Last City"],
         enemies: [],
         actions: [],
     },
@@ -90,41 +94,79 @@ export const countries = [
         name: "Waterfalls",
         img: [waterfallsImg1],
         about: "lorem",
-        routes: ["Willy's Barn", "Jungle"],
+        routes: ["noname3", "Macho Pichu", "Gastly Tower"],
         enemies: [],
         actions: [],
     },
     {
         id: "c08",
         name: "Mine",
-        img: [],
+        img: [mineImg1],
         about: "lorem",
-        routes: [],
+        routes: ["Te Leport", "Grandpa's Mountains", "Yummy Desert"],
         enemies: [],
         actions: [],
     },
     {
         id: "c09",
-        name: "Tower",
-        img: [],
+        name: "Gastly Tower",
+        img: [gastlyTowerImg1],
         about: "lorem",
-        routes: [],
+        routes: ["Jungle", "Waterfalls"],
         enemies: [],
         actions: [],
     },
     {
         id: "c10",
-        img: [],
+        name: "Monastry",
+        img: [monastryImg1],
         about: "lorem",
-        routes: [],
+        routes: ["Grandpa's Mountains", "Chatot Castle", "Ice Scream"],
         enemies: [],
         actions: [],
     },
     {
         id: "c11",
+        name: "Lake",
+        img: [lakeImg1],
+        about: "lorem",
+        routes: ["Northmadic", "Shire", "Yummy Desert", "Lovely"],
+        enemies: [],
+        actions: [],
+    },
+    {
+        id: "c12",
+        name: "noname1",
         img: [],
         about: "lorem",
-        routes: [],
+        routes: ["Chatot Castle", "Ice Scream", "Last City"],
+        enemies: [],
+        actions: [],
+    },
+    {
+        id: "c13",
+        name: "noname2",
+        img: [],
+        about: "lorem",
+        routes: ["Northmadic", "Futu Rome", "Shire"],
+        enemies: [],
+        actions: [],
+    },
+    {
+        id: "c14",
+        name: "noname3",
+        img: [],
+        about: "lorem",
+        routes: ["Willy's Barn","Tiny Cave","Waterfalls"],
+        enemies: [],
+        actions: [],
+    },
+    {
+        id: "c15",
+        name: "noname4",
+        img: [],
+        about: "lorem",
+        routes: ["Grandpa's Mountains", "Yummy Desert", "Lovely", "Ice Scream"],
         enemies: [],
         actions: [],
     },
@@ -133,67 +175,67 @@ export const countries = [
         name: "Te Leport",
         img: [teleportImg1],
         about: "Te Leport is old port in south.",
-        routes: ["Northmadic", "Shire"]
+        routes: ["Magical Forest", "Mine"]
     },
     {
         id: "t02",
         name: "Yummy Desert",
         img: [yummyImg1],
         about: "Sooo yummy",
-        routes: ["Magical Forest", "Grandpa's Mountains", "Northmadic"]
+        routes: ["Lake", "Magical Forest", "Mine", "noname4"]
     },
     {
         id: "t03",
         name: "Northmadic",
         img: [northmadicImg1],
         about: "Welcome on the North.",
-        routes: ["Shire", "Te Leport", "Yummy Desert"]
+        routes: ["Magical Forest", "Lake", "noname2"]
     },
     {
         id: "t04",
         name: "Shire",
         img: [shireImg1],
         about: "Deer and foxes are citizens here.",
-        routes: ["Northmadic", "Te Leport", "Macho Pichu"]
+        routes: ["noname2", "Lake", "Tiny Cave", "Willy's Barn"]
     },
     {
         id: "t05",
         name: "Macho Pichu",
         img: [machupichuImg1],
         about: "At a long time, macho and pichu connected people in this place.",
-        routes: ["Shire", "Ice Scream"]
+        routes: ["Redwoods", "Jungle", "Tiny Cave", "Waterfalls"]
     },
     {
         id: "t06",
         name: "Ice Scream",
         img: [icesreamImg1],
         about: "",
-        routes: ["Macho Pichu", "Lovely", "Chatot Castle"]
+        routes: ["Redwoods", "noname4", "Monastry", "noname1"]
     },
     {
         id: "t07",
         name: "Lovely",
         img: [lovelyImg1],
         about: "",
-        routes: ["Ice Scream", "Futu Rome"]
+        routes: ["noname4", "Redwoods", "Lake", "Tiny Cave"]
     }
     ,{
         id: "t08",
         name: "Futu Rome",
         img: [futuromeImg1],
         about: "",
-        routes: ["Lovely", "Grandpa's Mountains", "Chatot Castle"]
+        routes: ["Willy's Barn", "noname2"]
     },{
         id: "t09",
         name: "Chatot Castle",
         img: [chatotImg1],
         about: "",
-        routes: ["Futu Rome", "Ice Scream"]
+        routes: ["noname1", "Monastry"]
     },{
         id: "t10",
-        name: "",
+        name: "Last City",
         img: [],
         about: "",
-        routes: ""
+        routes: ["noname1", "Redwoods", "Jungle"]
     }
 ]

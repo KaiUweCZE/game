@@ -23,7 +23,7 @@ const Explore = () => {
             name: e,
             to: '/onroad',
             action: async () => {
-                const duration = 5000; // travel duration: 5s
+                const duration = 2000; // travel duration: 5s
                 startUserTraveling(dispatch, duration, e);
                 setYourLocation(currentUser.username, e, dispatch); // set location
             },
