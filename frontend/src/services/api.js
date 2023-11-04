@@ -48,6 +48,15 @@ class UserApi{
     setYourLocation(data){
         return axios.post(`${URL}setLocation`, data)
     }
+    getItems(data){
+        return axios.get(`${URL}items`, { params: data })
+    }
+    addItem(data){
+        return axios.post(`${URL}getItem`, data)
+    }
+    useItem(data){
+        return axios.patch(`${URL}useItem`, data)
+    }
 }
 
 export default new UserApi()

@@ -243,7 +243,24 @@ export const setLocation = async (req, res, next) => {
 
 // item controller
 
-export const getItem = async (req, res, next) => {
+export const getItems = async (req, res, next) => {
+    const {username} = req.query;
+    try{
+        const user = await User.findOne({username})
+                    .populate({
+                      path: 'items',
+                    });
+        if (user){
+            return res.status(200).json({ items: user.items})
+        }else{
+            return res.status(404).json({ message: 'false'})
+        }
+    } catch(error){
+        next(error)
+    }
+}
+
+export const addItem = async (req, res, next) => {
     const { username, item } = req.body;
     try{
         const user = await User.findOne({username})
