@@ -239,3 +239,59 @@ export const setLocation = async (req, res, next) => {
         next(error)
     }
 }
+
+
+// item controller
+
+export const getItem = async (req, res, next) => {
+    const { username, item } = req.body;
+    try{
+        const user = await User.findOne({username})
+
+        if (!user){
+            return res.status(404).json({ message: "User not found"});
+        }
+
+        // updating the number of items
+        const itemCount = user.items.get(item) || 0;
+        user.items.set(item, itemCount + 1);
+
+        await user.save();
+
+        res.status(200).json({
+            message:"Item added successfully",
+            items: user.items
+        });
+
+    } catch (error){
+        next(error)
+    }
+}
+
+export const useItem = async (req, res, next) => {
+    const { username, item } = req.body;
+
+    try{
+        const user = await User.findOne({username})
+
+        if (!user){
+            return res.status(404).json({ message: "User not found"});
+        }
+
+        // updating the number of items
+        const itemCount = user.items.get(item);
+        if (itemCount && itemCount > 0) {
+            user.items.set(item, itemCount - 1);
+            await user.save();
+            res.status(200).json({
+                message:"Item used successfully",
+                items: user.items
+            });
+        } else {
+            res.status(400).json({message: "out of stock"});
+        }
+
+    } catch (error){
+        next(error)
+    }
+}
