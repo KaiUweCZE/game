@@ -2,6 +2,8 @@ import React, { forwardRef, useEffect, useState } from "react";
 import { elixirOne } from "../../data/importedImages";
 import UserApi from "../../services/api"
 import {badge01, badge02, badge03, badge04, badge05, badge06, badge07, badge08, badge09} from "../../data/imagesFolder/itemsImages"
+import { useGetItems } from "../../Functions/ItemsFunc";
+import { othersItemData } from "../../data/DataItems/itemsData";
 
 const badgeMaping = {
     'badge01': badge01,
@@ -56,29 +58,36 @@ const BoxBadges = ({name}) => {
 
 
 
-const BoxInventory = ( ) =>{
+const BoxInventory = ({username}) =>{
+    const [itemsImg, setItemsImg] = useState([])
+    const { items } = useGetItems(username);
 
+    useEffect(() => {
+        console.log("Your items: ", items);
+    },[items])
 
     return(
-        <div className="item-list">
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                    <figure className="item"><img src={elixirOne} alt="" /></figure>
-                </div>
+        <div className="box__items">
+            {Object.entries(items).map(([key, value]) => (
+                <figure key={key}>
+                    <img src={ othersItemData.find(e => e.name === `${key}`).img} />
+                    <figcaption>{value}</figcaption>
+                </figure>
+            ))}
+        </div>
+        
     )
 }
+
+/*
+{
+                items.map((item, index) => {
+
+                    return(
+                        <li key={index}>{item}</li>
+                    )
+                })
+            }
+*/
 
 export { BoxBadges, BoxInventory, Arrow }

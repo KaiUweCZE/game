@@ -175,25 +175,6 @@ header{
         width: 70%;
         margin-bottom: 1rem;
     }
-    .item-list{
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
-        margin-inline: 10%;
-    }
-    .item{
-        margin: 0;
-        padding: 0;
-        img{
-            height: 100%;
-            width: 100%;
-            cursor: pointer;
-            transition: 0.3s;
-            &:hover{
-                transform:scale(1.1);
-            }
-        }
-        
-    }
     .arrow{
         position: sticky;
         bottom: 1rem;
@@ -207,11 +188,56 @@ header{
         
     }
 }
+
+.box__items{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+    margin-inline: 10%;
+    figure{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        background-color: rgba(40,40,40,0.1);
+        border-radius: 92% 8% 91% 9% / 7% 95% 5% 93%;
+        border: 3px solid rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        img{
+            display: flex;
+            width: 75%;
+            cursor: pointer;
+            padding-block: .25rem;
+            transition: 0.3s;
+            &:hover{
+            transform:scale(1.1);
+            z-index: 2;
+            }
+        }
+        figcaption{
+            display: flex;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+            font-size: .8rem;
+            width: 1.15rem;
+            aspect-ratio: 1/1;
+            border-radius: 0.5rem;
+            background-color: rgba(0,0,0,0.8);
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            bottom: 0.25rem;
+            right: 0.25rem;
+        }
+    }
+}
+
+
 .box__user-inventory.active{
     visibility: visible;
     transform: translateY(0);
-    opacity: 1;
-    
+    opacity: 1;   
 }
 .box__user-inventory.fast-opacity{
     transition: transform 0.7s, opacity 0.5s 0.1s;

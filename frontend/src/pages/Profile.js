@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { char1, char3, arrow } from "../data/importedImages";
-import { Arrow } from "../components/light-component/LightComponent";
+import { Arrow } from "../components/ProfileComp/ProfileSubComponent";
 import UserInfoBox from "../components/ProfileComp/UserInfoBox";
 import UserInventoryBox from "../components/ProfileComp/UserInventoryBox";
 import UserPokemonsBox from "../components/ProfileComp/UserPokemonsBox";
@@ -38,7 +38,7 @@ const Profile = () => {
                 <Arrow ref={arrowRef} src={arrow} fun={page <= -1 ? incrementPage : decrementPage} />
             </UserInfoBox>
 
-            <UserInventoryBox myClass={page >= 0 ? "active" : ""} i={page}>
+            <UserInventoryBox myClass={page >= 0 ? "active" : ""} i={page} user={currentUser.username}>
                 <Arrow ref={arrowRef2} src={arrow} fun={page <= 0 ? incrementPage : decrementPage} />
             </UserInventoryBox>
             <UserPokemonsBox myClass={page >= 1 ? "active" : ""} i={page} />

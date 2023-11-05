@@ -1,5 +1,5 @@
-import char1 from '../styles/images/boy_char1.webp';
-import char3 from '../styles/images/boy_char3.webp';
+import char1 from '../styles/images/mainchar1.webp';
+import char3 from '../styles/images/mainchar2.webp';
 import arrow from '../styles/images/arrow2.svg'
 import elixirOne from '../styles/images/elixir.svg'
 import pika from '../styles/images/load.gif'

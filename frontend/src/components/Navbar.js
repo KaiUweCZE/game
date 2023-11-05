@@ -7,6 +7,7 @@ import homeIcon from '../styles/images/home.svg';
 import keyIcon from '../styles/images/key.svg';
 import userIcon from '../styles/images/user.svg';
 import registerIcon from '../styles/images/register.svg'
+import mapIcon from '../styles/images/map.svg'
 
 const Navbar = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -22,6 +23,7 @@ const Navbar = () => {
                     {
                     currentUser ? 
                     <>
+                        <NavbarItem title="Explore" to="/onroad" icon={mapIcon}/>
                         <NavbarItem title="Profile" to="/profile" icon={userIcon}/>
                         <NavbarItem  title="LogOut" icon={keyIcon} func={logOut}/>
                     </>

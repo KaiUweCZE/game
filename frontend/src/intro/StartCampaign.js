@@ -48,7 +48,7 @@ const StartCampaign = () => {
             const completePokemon = { ...basicPokemonInfo, ...generatedPokemon };
             const myNewSix = [...(currentUser.mySix || []), completePokemon.name]
             dispatch(updateMySix(myNewSix))
-            setYourLocation(currentUser.username, 'shire', dispatch);
+            setYourLocation(currentUser.username, 'Te Leport', dispatch);
             catchPokemon(completePokemon, currentUser)
             //addPokemonToSix(currentUser.username, currentUser.mySix)
             completeCampaign('firstChoice')
