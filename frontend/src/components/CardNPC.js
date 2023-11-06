@@ -1,6 +1,5 @@
 import React from "react";
 import ButtonProfile from "./light-component/ButtonProfile";
-import bgci from '../styles/images/seamless/metal.webp'
 
 const CardNPC = (props) => {
 

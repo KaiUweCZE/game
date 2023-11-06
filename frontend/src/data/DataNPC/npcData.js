@@ -2,14 +2,14 @@ import mainCharacter01 from '../../styles/images/boy_char1.webp'
 import mainCharacter02 from '../../styles/images/boy_char3.webp'
 import profBloom1 from '../../styles/images/characters/profbloom.webp'
 import hank1 from '../../styles/images/characters/hank.webp'
-import samuel1 from '../../styles/images/reedit/Samuel/sam1.webp'
-import joel1 from '../../styles/images/reedit/Joel/joel1.webp'
+import samuel1 from '../../styles/images/characters/samuel.webp'
+import joel1 from '../../styles/images/characters/joel.webp'
 import barbagoose1 from '../../styles/images/characters/barbagoose.webp'
 import raphael1 from '../../styles/images/characters/raphael.webp'
 import fattucino1 from '../../styles/images/characters/fattucino.webp'
 import jude1 from '../../styles/images/characters/jude.webp'
 import bob1 from '../../styles/images/characters/bob.webp'
-import rust1 from '../../styles/images/reedit/stadion trainers/08/rust1.webp'
+import attila1 from '../../styles/images/characters/attila.webp'
 import donChatot1 from '../../styles/images/characters/donchatot.webp'
 import isabella1 from '../../styles/images/characters/isabella.webp'
 import nana1 from '../../styles/images/characters/nana.webp'
@@ -17,6 +17,24 @@ import princess1 from '../../styles/images/characters/princess.webp'
 import wingchu1 from '../../styles/images/characters/wingchu.webp'
 import willy1 from '../../styles/images/characters/willy.webp'
 import sencha1 from '../../styles/images/characters/sencha.webp'
+import wee1 from '../../styles/images/characters/wee.webp'
+import pepe1 from '../../styles/images/characters/pepe.webp'
+import mac1 from '../../styles/images/characters/mac.webp'
+import donald1 from '../../styles/images/characters/donald.webp'
+import salazar1 from '../../styles/images/characters/salazar.webp'
+import jean1 from '../../styles/images/characters/jean.webp'
+import alcubone1 from '../../styles/images/characters/alcubone.webp'
+import amendsen1 from '../../styles/images/characters/amendsen.webp'
+import anna1 from '../../styles/images/characters/anna.webp'
+import confusitionus1 from '../../styles/images/characters/confusitionus.webp'
+import conrad1 from '../../styles/images/characters/conrad.webp'
+import fu1 from '../../styles/images/characters/fu.webp'
+import kung1 from '../../styles/images/characters/kung.webp'
+import kali1 from '../../styles/images/characters/kali.webp'
+import makatai1 from '../../styles/images/characters/makatai.webp'
+import geronimo1 from '../../styles/images/characters/geronimo.webp'
+import bruce1 from '../../styles/images/characters/bruce.webp'
+import golias1 from '../../styles/images/characters/golias.webp'
 
 
 export {mainCharacter01, mainCharacter02, profBloom1, hank1, samuel1, joel1}
@@ -131,15 +149,45 @@ export const npcCharacters = [
         ]
     },
     {
-        id: 7,
+        id: 8,
         name: "Don Chatot",
         images: [donChatot1],
         pokemons: [],
     },
     {
-        id: 8,
-        name: "Rust",
-        images: [rust1],
+        id: 9,
+        name: "Attila",
+        images: [attila1],
+        pokemons: [],
+    },
+    {
+        id: 10,
+        name: "Wee",
+        images: [wee1],
+        pokemons: [],
+    },
+    {
+        id: 11,
+        name: "Pepe",
+        images: [pepe1],
+        pokemons: [],
+    },
+    {
+        id: 12,
+        name: "Al Cubone",
+        images: [alcubone1],
+        pokemons: [],
+    },
+    {
+        id: 13,
+        name: "Mac",
+        images: [mac1],
+        pokemons: [],
+    },
+    {
+        id: 14,
+        name: "Donald",
+        images: [donald1],
         pokemons: [],
     },
     {
@@ -182,6 +230,84 @@ export const npcCharacters = [
         id: 21,
         name: "Sencha",
         images: [sencha1],
+        pokemons: [],
+    },
+    {
+        id: 22,
+        name: "Salazar",
+        images: [salazar1],
+        pokemons: [],
+    },
+    {
+        id: 23,
+        name: "Jean",
+        images: [jean1],
+        pokemons: [],
+    },
+    {
+        id: 24,
+        name: "Conrad",
+        images: [conrad1],
+        pokemons: [],
+    },
+    {
+        id: 25,
+        name: "Amend Sen",
+        images: [amendsen1],
+        pokemons: [],
+    },
+    {
+        id: 26,
+        name: "Anna",
+        images: [anna1],
+        pokemons: [],
+    },
+    {
+        id: 27,
+        name: "Con",
+        images: [fu1],
+        pokemons: [],
+    },
+    {
+        id: 28,
+        name: "Fu",
+        images: [kung1],
+        pokemons: [],
+    },
+    {
+        id: 29,
+        name: "Si-on",
+        images: [confusitionus1],
+        pokemons: [],
+    },
+    {
+        id: 30,
+        name: "Kali",
+        images: [kali1],
+        pokemons: [],
+    },
+    {
+        id: 31,
+        name: "Geronimo",
+        images: [geronimo1],
+        pokemons: [],
+    },
+    {
+        id: 32,
+        name: "Ma-ka-tai",
+        images: [makatai1],
+        pokemons: [],
+    },
+    {
+        id: 33,
+        name: "Bruce",
+        images: [bruce1],
+        pokemons: [],
+    },
+    {
+        id: 34,
+        name: "Golias",
+        images: [golias1],
         pokemons: [],
     }
 ]

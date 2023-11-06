@@ -154,6 +154,7 @@
   display: flex;
   margin: 0 auto;
   max-height: 25rem;
+  filter: brightness(0.2);
 }
 .box__NPC article {
   grid-area: article;

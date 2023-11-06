@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { npcCharacters } from "../../data/imagesFolder/characterImgs";
+import { npcCharacters } from "../../data/DataNPC/npcData";
 import BoxTalks from "../../components/BoxTalks"
 import UserInfoBox from "../../components/ProfileComp/UserInfoBox";
 
