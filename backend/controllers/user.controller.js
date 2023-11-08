@@ -312,3 +312,45 @@ export const useItem = async (req, res, next) => {
         next(error)
     }
 }
+
+// contanct
+
+export const getContacts = async (req, res, next) => {
+    const {username} = req.query;
+    try {
+        const user = await User.findOne({username}).populate({path: 'contacts'});
+        if (user){
+            return res.status(200).json({contacts: user.contacts})
+        } else{
+            return res.status(404).json({message:'user not found'})
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const addContact = async (req, res, next) => {
+    const {username} = req.body;
+    const {contact} = req.body;
+    try {
+        const user = await User.findOne({username});
+        if (user){
+            if (user.contacts.includes(contact)){
+                return res.status(409).json({ message: 'Contact already exists' });
+            }
+
+            // push contact to contacts array
+            user.contacts.push(contact);
+            
+            // saved an actualization
+            await user.save();
+
+            return res.status(200).json({contacts: user.contacts});
+        }else{
+            return res.status(404).json({message: "User not found"})
+        }
+
+    } catch (error) {
+        next(error)
+    }
+}

@@ -13,11 +13,8 @@ const userSchema = new mongoose.Schema({
     },
     img: String,
     location: String,
-    badges:[String],
-    /*items: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Item'
-    }],*/
+    badges:[String], // this will be deleted
+    contacts:[String],
     pokemon: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Pokemon'
