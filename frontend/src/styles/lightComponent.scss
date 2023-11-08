@@ -152,7 +152,10 @@
         display: flex;
         margin: 0 auto;
         max-height: 25rem;
-        filter: brightness(0.2);
+        filter: brightness(0.02);
+    }
+    .my-contact{
+        filter: brightness(1);
     }
     article{
         grid-area: article;

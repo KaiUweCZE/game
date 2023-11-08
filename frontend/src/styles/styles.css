@@ -494,6 +494,9 @@ div.box__buttons {
 }
 
 .img-wrapper {
+  display: flex;
+  height: 50vh;
+  aspect-ratio: 1/2;
   opacity: 0;
   animation: intro 0.5s ease-in forwards;
   position: relative;

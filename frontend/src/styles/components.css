@@ -100,6 +100,7 @@ div.login {
   animation: intro 0.5s ease-in forwards;
   opacity: 0;
   margin-bottom: 2em;
+  width: 50vw;
 }
 .box__painter div {
   display: flex;
@@ -107,6 +108,7 @@ div.login {
   align-items: center;
 }
 .box__painter img {
+  padding: 2rem;
   width: 100%;
   cursor: pointer;
   transition: 0.5s;
