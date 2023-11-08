@@ -1,5 +1,5 @@
 import React from "react";
-import professorImage from '../../styles/images/profbloom.webp'
+import professorImage from '../../styles/images/characters/profbloom.webp'
 
 const ProfesorPainter = (props) => {
 

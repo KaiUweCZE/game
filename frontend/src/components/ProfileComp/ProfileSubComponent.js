@@ -59,7 +59,6 @@ const BoxBadges = ({name}) => {
 
 
 const BoxInventory = ({username}) =>{
-    const [itemsImg, setItemsImg] = useState([])
     const { items } = useGetItems(username);
 
     useEffect(() => {

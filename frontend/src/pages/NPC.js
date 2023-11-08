@@ -1,8 +1,10 @@
 import React from "react";
 import { npcCharacters } from "../data/DataNPC/npcData";
 import CardNPC from "../components/CardNPC"
+import { useGetContacts } from "../Functions/ContactFunctions";
 
 const NPC = () => {
+    const data = useGetContacts();
 
     return(
         <>
@@ -18,6 +20,7 @@ const NPC = () => {
                         id = {character.id}
                         image = {character.images[0]}
                         name = {character.name}
+                        myContacts = {data.contacts}
                         />
                     )
                 })

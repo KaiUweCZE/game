@@ -15,6 +15,7 @@ import { pokemonForEvents } from '../data/giftsData';
 import { useStatePage } from '../Functions/myHooks';
 import { setLocation, updateMySix } from '../redux/user/userSlice';
 import { setYourLocation } from '../Functions/hooks/useLocation';
+import { newContact } from '../Functions/ContactFunctions';
 
 
 const StartCampaign = () => {
@@ -52,6 +53,7 @@ const StartCampaign = () => {
             catchPokemon(completePokemon, currentUser)
             //addPokemonToSix(currentUser.username, currentUser.mySix)
             completeCampaign('firstChoice')
+            newContact(currentUser.username, 'prof. Bloom');
             navigate(`/profile?name=${name}&image=${image}`)}
     }
     

@@ -2,8 +2,9 @@ import React from "react";
 import { BoxBadges } from "./ProfileSubComponent";
 import { Link } from 'react-router-dom'
 
+
 const UserInfoBox = ({name, badges, location, abilities, statistics, children}) => {
-    
+
 
     return(
         <>

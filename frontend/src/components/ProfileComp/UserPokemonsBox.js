@@ -3,7 +3,7 @@ import {usePokemonActions} from "../../Functions/usePokemonAction";
 import ButtonProfile from "../light-component/ButtonProfile";
 import {pokemonsData} from "../../data/pokemons"
 import LoaderLight from "../LoaderLight";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateMySix } from "../../redux/user/userSlice";
 
 const UserPokemonsBox = ({myClass, i}) => {
@@ -11,7 +11,6 @@ const UserPokemonsBox = ({myClass, i}) => {
     const [buttonShow, setButtonShow] = useState("Show stats!")
     const { pokemons, removeFromSix, getMySix} = usePokemonActions()
     const [loading, setLoading] = useState(false);
-    const {currentUser} = useSelector((state) => state.user)
     const dispatch = useDispatch()
 
     const otherclass = () => {
