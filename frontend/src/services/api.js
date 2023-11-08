@@ -57,6 +57,12 @@ class UserApi{
     useItem(data){
         return axios.patch(`${URL}useItem`, data)
     }
+    getContacts(data){
+        return axios.get(`${URL}contacts`, {params: data})
+    }
+    addContact(data){
+        return axios.post(`${URL}addContact`, data)
+    }
 }
 
 export default new UserApi()
