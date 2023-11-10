@@ -32,7 +32,12 @@ const userSchema = new mongoose.Schema({
         type: Map,
         of: Number,
         default: {}
-    }
+    },
+    mails:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Message',
+    }]
+    
 }, {timestamps: true})
 
 const skillSchema = new mongoose.Schema({
@@ -95,7 +100,13 @@ const itemSchema = new mongoose.Schema({
     effect: String
 })
 
+const messageSchema = new mongoose.Schema({
+    name: String,
+    text: String
+})
+
 export const User = new mongoose.model('User', userSchema)
 export const Pokemon = new mongoose.model('Pokemon', pokemonSchema)
 export const Attack = new mongoose.model('Attack', attackSchema)
 export const Item = new mongoose.model('Item', itemSchema)
+export const Message = new mongoose.model('Message', messageSchema)

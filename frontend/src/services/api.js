@@ -63,6 +63,12 @@ class UserApi{
     addContact(data){
         return axios.post(`${URL}addContact`, data)
     }
+    getMails(data){
+        return axios.get(`${URL}message`, {params: data})
+    }
+    addMessage(data){
+        return axios.get(`${URL}message`, data)
+    }
 }
 
 export default new UserApi()

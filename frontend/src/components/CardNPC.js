@@ -12,7 +12,8 @@ const CardNPC = (props) => {
                 <h2>{contact ? props.name : "???"}</h2>
                 <p>Lorem ipsum dolor sit amet.</p>
             </article>
-            <ButtonProfile content="Call him" path={`/npc/${props.id}`}/>
+
+            { contact ? <ButtonProfile content="Call him" path={`/npc/${props.id}`}/> : ""}
         </figure>
     )
 }

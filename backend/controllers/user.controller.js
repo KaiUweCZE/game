@@ -1,4 +1,4 @@
-import { User, Pokemon } from "../models/user.model.js"
+import { User, Pokemon, Message } from "../models/user.model.js"
 export const test_message = (req, res) => {
     res.json({
         message: "Api example"
@@ -350,6 +350,47 @@ export const addContact = async (req, res, next) => {
             return res.status(404).json({message: "User not found"})
         }
 
+    } catch (error) {
+        next(error)
+    }
+}
+
+// Mails controllers
+export const getMails = async (req, res, next) => {
+    const {username} = req.query;
+    try {
+        const user = await User.findOne({username}).populate({path: 'mails'})
+        if(user){
+            const mailDetails = user.mails.map(m => ({
+                name: m.name,
+                text: m.text
+            }))
+            return res.status(200).json({mail: mailDetails})
+        } else{
+            return res.status(404).json({message: 'user not found'})
+        }
+    } catch (error) {
+        next(error)
+    }
+}
+
+export const addMail = async (req, res, next) => {
+    const {username, name, text} = req.body;
+    try {
+        const user = await User.findOne({username})
+        if(user){
+            const message = new Message({
+                name: name,
+                text: text,
+            });
+
+            await message.save();
+            user.mails.push(message);
+            await user.save();
+            return res.status(200).json({ message: "new message added", messageId: message._id})
+        } else {
+            return res.status(404).json({ message: 'User not found' });
+        } 
     } catch (error) {
         next(error)
     }

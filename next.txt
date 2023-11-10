@@ -8,6 +8,4 @@ ex. => if (variable !== undefined && variable !== null)
 1. potřeba provést úklid a přeorganizování složek a souborů/ zakomentování
 samotných komponent
 
-2. nastavit bag, podle komponent(tedy item data, badge data.)
-
-3.backend pro items
+3.notification

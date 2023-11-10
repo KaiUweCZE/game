@@ -152,7 +152,7 @@
         display: flex;
         margin: 0 auto;
         max-height: 25rem;
-        filter: brightness(0.02);
+        filter: brightness(0.02) blur(2px);
     }
     .my-contact{
         filter: brightness(1);

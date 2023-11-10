@@ -1,0 +1,77 @@
+@import './addons/variables', './addons/mixins';
+
+.container__mail{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: 100vh;
+    width: 90%;
+    max-width: 85rem;
+    margin: 0 auto;
+    column-gap: 2rem;
+    padding-block: 3rem;
+}
+
+.box__mail{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba($color: rgb(235, 201, 150), $alpha: .3);
+    border-radius: 1rem;
+    box-shadow: 0 0 8px grey;
+    height: 30rem;
+    h2{
+        align-self: center;
+    }
+}
+
+.box__message{
+    display: grid;
+    grid-template-areas: 1fr 1fr;
+    background-color: rgba($color: rgb(235, 201, 150), $alpha: .3);
+    height: fit-content;
+    max-height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 8px black;
+    overflow-y: scroll;
+    padding: .5rem;
+    row-gap: .5rem;
+}
+
+.menu__mail{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: .5rem;
+    li{
+        display: flex;
+        width: 100% - padding;
+        align-items: center;
+        padding-inline: .25rem;
+        height: 1.5rem;
+        cursor: pointer;
+        transition: .5s;
+        &:hover{
+            background-color: darken($color: rgba(235, 201, 150, 0.3), $amount: 15);
+        }
+    }
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    h2{
+        font-size: 1.25rem;
+    }
+    p{
+        width: 100%;
+        font-size: .85rem;
+    }
+}
+
+.message__npc{
+    font-size: .85rem;
+}
+
+.message__user{
+    justify-self: flex-end;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { pokemonsData } from "../../data/pokemons";
 import LoaderLight from "../LoaderLight";
 
-
+// box in profile page it is used in Profile.js
 const MyBoxPokemons = (props) => {
     
     return(

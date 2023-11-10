@@ -13,7 +13,7 @@ import Map from './pages/Map';
 import NPC from './pages/NPC'
 import ActionNPC from './pages/subPages/ActionNPC';
 import Explore from './pages/Explore';
-import OnRoad from './components/OnRoad';
+import Mail from './pages/Mail';
 
 
 
@@ -34,7 +34,7 @@ const App = () => {
                         <Route path='/map' element={<Map/>} />
                         <Route path="/npc" element={<NPC/>}/>
                         <Route path="/npc/:id" element={<ActionNPC />} />
-                        <Route path='/traveling' element={<OnRoad />} />
+                        <Route path="/mail" element={<Mail />}/>
                     </Route>
                 </Route>
                 
