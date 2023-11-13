@@ -35,6 +35,10 @@ import makatai1 from '../../styles/images/characters/makatai.webp'
 import geronimo1 from '../../styles/images/characters/geronimo.webp'
 import bruce1 from '../../styles/images/characters/bruce.webp'
 import golias1 from '../../styles/images/characters/golias.webp'
+import bruno1 from '../../styles/images/characters/bruno.webp'
+import humberto1 from '../../styles/images/characters/humberto.webp'
+import gourmatt1 from '../../styles/images/characters/gourmatt.webp'
+import heath1 from '../../styles/images/characters/heath.webp'
 
 
 export {mainCharacter01, mainCharacter02, profBloom1, hank1, samuel1, joel1}
@@ -309,5 +313,29 @@ export const npcCharacters = [
         name: "Golias",
         images: [golias1],
         pokemons: [],
+    },
+    {
+        id: 35,
+        name: "Humberto",
+        images: [humberto1],
+        pokemons: []
+    },
+    {
+        id: 36,
+        name: "Bruno",
+        images: [bruno1],
+        pokemons: []
+    },
+    {
+        id: 37,
+        name: "Matt",
+        images: [gourmatt1],
+        pokemomns: []
+    },
+    {
+        id: 38,
+        name:"Heath",
+        images: [heath1],
+        pokemons: []
     }
 ]

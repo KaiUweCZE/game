@@ -69,6 +69,9 @@ class UserApi{
     addMessage(data){
         return axios.get(`${URL}message`, data)
     }
+    getConversation(data){
+        return axios.get(`${URL}conversation`, {params: data})
+    }
 }
 
 export default new UserApi()

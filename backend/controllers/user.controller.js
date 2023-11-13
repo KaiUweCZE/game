@@ -389,9 +389,30 @@ export const addMail = async (req, res, next) => {
             await user.save();
             return res.status(200).json({ message: "new message added", messageId: message._id})
         } else {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: 'User not found yoyo' });
         } 
     } catch (error) {
         next(error)
     }
+}
+
+export const getConversation = async (req, res, next) => {
+    const {username, npc} = req.query;
+
+    try {
+        const user = await User.findOne({username}).populate({
+            path: 'mails',
+            match: { name: npc}
+        });
+
+        if(user && user.mails.length > 0) {
+            res.status(200).json({conversation: user.mails})
+        } else {
+            res.status(404).json({ message: 'COnversation not found'})
+        }
+
+    } catch (error) {
+        next(error)
+    }
+
 }

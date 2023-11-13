@@ -1,47 +1,27 @@
-import React from "react";
-import '../styles/mailStyle.css'
+import React, { useEffect, useState } from "react";
+import '../styles/mailStyle.css';
+import { useSelector } from "react-redux";
+import { useGetConversation, useGetMail } from "../Functions/MailFunction";
+import MailMenu from "../components/mail-components/MailMenu";
+import MailMessageBox from "../components/mail-components/MailMessageBox"
 
+// This feature will bring into play the ability to interact with NPCs (after each turn there will be some 
+//probability that they will challenge you to a duel, for example) 
 const Mail = () => {
+    const [npcName, setNpcName] = useState("prof Bloom")
+    const {currentUser} = useSelector(state => state.user)
+
+    const data = useGetMail(currentUser.username)
+    const conversation = useGetConversation(currentUser.username, npcName)
+    
+    const handleString = (name) =>{
+        setNpcName(name)
+    }
 
     return(
         <div className="container__mail">
-            <div className="box__mail">
-                <h2>Contact</h2>
-                <ul className="menu__mail">
-                    <li>Conrad</li>
-                    <li>Amelie</li>
-                    <li>Jhon Bert</li>
-                    <li>Nor Bert</li>
-                    <li>Elvin</li>
-                    <li>Muck</li>
-                    <li>Trevor</li>
-                    <li>Prevor</li>
-                    <li>Ul-ama-na</li>
-                    <li>Kobakami</li>
-                </ul>
-            </div>
-            <div className="box__message">
-                <article className="message__npc">
-                    <h2>Conrad</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Natus, in.
-                    </p>
-                </article>
-                <article className="message__user">
-                    <h2>User</h2>
-                    <p>
-                        Lorem ipsum dolor sit Lorem ipsum dolor sit.
-                    </p>
-                </article>
-                <article className="message__npc">
-                    <h2>Conrad</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur 
-                        adipisicing elit. Natus, in.
-                    </p>
-                </article>
-            </div>
+            <MailMenu npc={data} func={handleString} />
+            <MailMessageBox messages={conversation} />
         </div>
     )
 }

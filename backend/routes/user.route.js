@@ -1,5 +1,5 @@
 import express from 'express';
-import { test_message, addPokemon, campaignProgress, checkCampaign, getYourPokemons, addImageProfile, getUser, addToSix, getSix, removeFromSix, pokemonsInBox, setLocation, addItem, useItem, getItems, getContacts, addContact, addMail, getMails} from '../controllers/user.controller.js';
+import { test_message, addPokemon, campaignProgress, checkCampaign, getYourPokemons, addImageProfile, getUser, addToSix, getSix, removeFromSix, pokemonsInBox, setLocation, addItem, useItem, getItems, getContacts, addContact, addMail, getMails, getConversation} from '../controllers/user.controller.js';
 import { addBadge } from '../controllers/item.controller.js';
 
 const router = express.Router();
@@ -27,6 +27,7 @@ router.get("/pokemonsInBox", pokemonsInBox)
 router.get("/items", getItems)
 router.get("/contacts", getContacts)
 router.get("/message", getMails)
+router.get("/conversation", getConversation)
 //remove
 router.delete("/removeFromSix", removeFromSix)
 //patch methods
