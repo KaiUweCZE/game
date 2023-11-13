@@ -9,15 +9,21 @@
     margin: 0 auto;
     column-gap: 2rem;
     padding-block: 3rem;
+    opacity: 0;
+    animation: intro 0.75s ease-in forwards;
 }
 
 .box__mail{
     display: flex;
     flex-direction: column;
-    background-color: rgba($color: rgb(235, 201, 150), $alpha: .3);
+    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+    //background-color: rgb(235, 235, 235);
     border-radius: 1rem;
     box-shadow: 0 0 8px grey;
-    height: 30rem;
+    height: fit-content;
+    max-height: 30rem;
+    padding-block: 5%;
+    overflow: scroll;
     h2{
         align-self: center;
     }
@@ -26,7 +32,7 @@
 .box__message{
     display: grid;
     grid-template-areas: 1fr 1fr;
-    background-color: rgba($color: rgb(235, 201, 150), $alpha: .3);
+    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
     height: fit-content;
     max-height: 20rem;
     border-radius: 1rem;
@@ -34,7 +40,10 @@
     overflow-y: scroll;
     padding: .5rem;
     row-gap: .5rem;
+    transition: .5s;
 }
+
+
 
 .menu__mail{
     display: flex;
@@ -45,8 +54,9 @@
         display: flex;
         width: 100% - padding;
         align-items: center;
-        padding-inline: .25rem;
+        padding-inline: 5%;
         height: 1.5rem;
+        font-weight: bold;
         cursor: pointer;
         transition: .5s;
         &:hover{

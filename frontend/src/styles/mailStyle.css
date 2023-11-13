@@ -11,15 +11,21 @@
   -moz-column-gap: 2rem;
        column-gap: 2rem;
   padding-block: 3rem;
+  opacity: 0;
+  animation: intro 0.75s ease-in forwards;
 }
 
 .box__mail {
   display: flex;
   flex-direction: column;
-  background-color: rgba(235, 201, 150, 0.3);
+  background-image: linear-gradient(174.2deg, rgb(255, 244, 228) 7.1%, rgb(240, 246, 238) 67.4%);
   border-radius: 1rem;
   box-shadow: 0 0 8px grey;
-  height: 30rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 30rem;
+  padding-block: 5%;
+  overflow: scroll;
 }
 .box__mail h2 {
   align-self: center;
@@ -28,7 +34,7 @@
 .box__message {
   display: grid;
   grid-template-areas: 1fr 1fr;
-  background-color: rgba(235, 201, 150, 0.3);
+  background-image: linear-gradient(174.2deg, rgb(255, 244, 228) 7.1%, rgb(240, 246, 238) 67.4%);
   height: -moz-fit-content;
   height: fit-content;
   max-height: 20rem;
@@ -37,6 +43,7 @@
   overflow-y: scroll;
   padding: 0.5rem;
   row-gap: 0.5rem;
+  transition: 0.5s;
 }
 
 .menu__mail {
@@ -49,8 +56,9 @@
   display: flex;
   width: 100%-padding;
   align-items: center;
-  padding-inline: 0.25rem;
+  padding-inline: 5%;
   height: 1.5rem;
+  font-weight: bold;
   cursor: pointer;
   transition: 0.5s;
 }
