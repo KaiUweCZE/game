@@ -1,8 +1,20 @@
+import { useState } from 'react';
 import { pokemonsData } from '../data/pokemons';
 import { useNavigate } from 'react-router-dom';
 
 // battleground, pokemon
 export const choosePokemon = (pokemon, setActivePokemon, setStartBattle) => {
+    const pokemonData = pokemonsData.find(e => e.name === pokemon.name);
+    const pokemonImg = pokemonData.img;
+    const onePokemon = { pokemon, pokemonImg };
+    setActivePokemon(onePokemon);
+    setStartBattle(true);
+}
+
+export const useChoosePokemon = (pokemon) => {
+    const [activePokemon, setActivePokemon] = useState([]);
+    const [startBattle, setStartBattle] = useState(false);
+
     const pokemonData = pokemonsData.find(e => e.name === pokemon.name);
     const pokemonImg = pokemonData.img;
     const onePokemon = { pokemon, pokemonImg };

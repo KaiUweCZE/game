@@ -269,6 +269,17 @@ div.login{
     }
 }
 
+.box__change{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(230,230,230, 0.7);
+    padding: 0.5em;
+    margin: 1em;
+    box-shadow: 0 0 5px black;
+    border: 1px solid grey;
+    border-radius: 0.25em;
+}
+
 .battle-field{
     display: flex;
     width: 100%;

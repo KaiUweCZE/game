@@ -11,6 +11,7 @@ import BoxAttacks from "../components/battle-components/BoxAttacks";
 import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
 import { useSelector } from "react-redux";
+import UserPokemonsBox from "../components/battle-components/UserPokemonsBox";
 
 const Battleground = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -72,7 +73,6 @@ const Battleground = () => {
         2: () => console.log("Oh man, the last one")
     }
 
-
      //first argument is initialPage => -1 because I want to run the function manually
      const [page, incrementPage, decrementPage] = useStatePage(-1, actions)
 
@@ -118,10 +118,10 @@ const Battleground = () => {
                         )}
                     
                     </div>
+                    <UserPokemonsBox pokemons={pokemons}/>
                 </div>
-            
-                <div className="box__battle--middle">
-
+                
+                <div className="box__battle--middle">       
                 </div>
                 <div className="box__battle--enemy">
                     {/* this will be component*/}
