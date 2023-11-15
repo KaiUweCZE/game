@@ -1,33 +1,14 @@
-import { useState } from 'react';
 import { pokemonsData } from '../data/pokemons';
-import { useNavigate } from 'react-router-dom';
 
 // battleground, pokemon
 export const choosePokemon = (pokemon, setActivePokemon, setStartBattle) => {
+    console.log("choosePokemon called with:", pokemon);
     const pokemonData = pokemonsData.find(e => e.name === pokemon.name);
+    console.log("Found pokemon data:", pokemonData);
     const pokemonImg = pokemonData.img;
     const onePokemon = { pokemon, pokemonImg };
+    console.log("Setting active pokemon:", onePokemon);
     setActivePokemon(onePokemon);
+    console.log("Starting battle");
     setStartBattle(true);
 }
-
-export const useChoosePokemon = (pokemon) => {
-    const [activePokemon, setActivePokemon] = useState([]);
-    const [startBattle, setStartBattle] = useState(false);
-
-    const pokemonData = pokemonsData.find(e => e.name === pokemon.name);
-    const pokemonImg = pokemonData.img;
-    const onePokemon = { pokemon, pokemonImg };
-    setActivePokemon(onePokemon);
-    setStartBattle(true);
-}
-
-//checks the previous page and passes information to the current page
-export const useToBattle = (name) => {
-    const navigate = useNavigate()
-
-    const toBattle = () => {
-        navigate("/battle", { state: { from: name }});
-    }
-    return toBattle
-};

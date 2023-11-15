@@ -11,7 +11,8 @@ import BoxAttacks from "../components/battle-components/BoxAttacks";
 import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
 import { useSelector } from "react-redux";
-import UserPokemonsBox from "../components/battle-components/UserPokemonsBox";
+import PokemonList from "../components/PokemonList";
+
 
 const Battleground = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -101,24 +102,20 @@ const Battleground = () => {
                         />
                         </>
                     ) : null}
-                    { 
+                    {
                     activePokemon.name === "" ? "" : ( <BoxAttacks 
                     id= {activePokemon}
                     afterAttack= {afterAttack}
                     startBattle= {startBattle}
                      /> 
-                    )}
-                                
-                    <div className="box-battle">
-                        <h2>Your Pokemons</h2>
-                    {
-                        pokemons.map((pokemon, index) => (
-                                <span key={index} onClick={() => choosePokemon(pokemon, setActivePokemon, setStartBattle)}>{pokemon.name}</span>
-                            )
-                        )}
-                    
-                    </div>
-                    <UserPokemonsBox pokemons={pokemons}/>
+                    )
+                    }
+                    <PokemonList 
+                    pokemons={pokemons} 
+                    choosePokemon={choosePokemon} 
+                    setActivePokemon={setActivePokemon} 
+                    setStartBattle={setStartBattle} 
+                    />
                 </div>
                 
                 <div className="box__battle--middle">       

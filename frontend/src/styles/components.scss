@@ -269,15 +269,58 @@ div.login{
     }
 }
 
-.box__change{
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(230,230,230, 0.7);
+.box__pokemon-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
     padding: 0.5em;
     margin: 1em;
+    //background-image: linear-gradient(to right, #434343 80%, rgb(27, 26, 26) 100%);
+    //background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+    //background-color: rgba(0,0,0,0.5);
     box-shadow: 0 0 5px black;
-    border: 1px solid grey;
-    border-radius: 0.25em;
+    //border: 2px solid black;
+    border-radius: 0.5em;
+    gap: .5rem;
+    figure{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        aspect-ratio: 1/1;
+        //background-color: rgba(255, 255, 255, 0.35);
+        justify-content: center;
+        align-items: center;
+        border-radius: 91% 9% 93% 7% / 9% 91% 9% 91%;
+        border-radius: 1.5rem;
+        //box-shadow: 0 0 3px black;
+        position: relative;
+        overflow: hidden;
+    }
+    figure:hover figcaption{
+        opacity: 1;
+
+    }
+    figcaption{
+        display: flex;
+        opacity: 0;
+        justify-content: center;
+        width: 100%;
+        position: absolute;
+        bottom: 0.2rem;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: white;
+        background-color: $bgc-primary;
+        transition: 0.5s;
+    }
+    img{
+        display: flex;
+        width: 100%;
+        cursor: pointer;
+        transition: .5s;
+        &:hover{
+            transform: scale(1.1);
+        }
+    }
 }
 
 .battle-field{

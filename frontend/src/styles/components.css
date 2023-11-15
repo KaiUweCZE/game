@@ -270,15 +270,51 @@ div.login {
   text-shadow: 0 0 2px rgb(60, 60, 60);
 }
 
-.box__change {
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(230, 230, 230, 0.7);
+.box__pokemon-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
   padding: 0.5em;
   margin: 1em;
   box-shadow: 0 0 5px black;
-  border: 1px solid grey;
-  border-radius: 0.25em;
+  border-radius: 0.5em;
+  gap: 0.5rem;
+}
+.box__pokemon-list figure {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  aspect-ratio: 1/1;
+  justify-content: center;
+  align-items: center;
+  border-radius: 91% 9% 93% 7%/9% 91% 9% 91%;
+  border-radius: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.box__pokemon-list figure:hover figcaption {
+  opacity: 1;
+}
+.box__pokemon-list figcaption {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  width: 100%;
+  position: absolute;
+  bottom: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  transition: 0.5s;
+}
+.box__pokemon-list img {
+  display: flex;
+  width: 100%;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.box__pokemon-list img:hover {
+  transform: scale(1.1);
 }
 
 .battle-field {
