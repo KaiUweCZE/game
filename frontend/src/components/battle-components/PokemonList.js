@@ -1,5 +1,5 @@
 import React from 'react';
-import { pokemonsData } from '../data/pokemons';
+import { pokemonsData } from '../../data/pokemons';
 
 //This component shows your six of user's pokemon
 const PokemonList = ({ pokemons, choosePokemon, setActivePokemon, setStartBattle }) => {

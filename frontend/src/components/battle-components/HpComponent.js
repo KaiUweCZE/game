@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 // This component visualizes hp staus for user and enemy pokemons
-const HpComponent = ( { who, hp, damage, itIsOver } ) => {
-    const [actualHp, setActualHp] = useState(hp)
+const HpComponent = ( { who, maxHp, currentHp, damage, itIsOver } ) => {
+    const [actualHp, setActualHp] = useState(currentHp)
 
     useEffect(() => {
         if (damage !== undefined && damage !== null) {
@@ -21,7 +21,7 @@ const HpComponent = ( { who, hp, damage, itIsOver } ) => {
 
     return (
         <div className="background__bar">
-            <div className="your-hp" style={{ width: `${(actualHp/hp)*100}%` }}></div>
+            <div className="your-hp" style={{ width: `${(actualHp/maxHp)*100}%` }}></div>
         </div>
     )
 }

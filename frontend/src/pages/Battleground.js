@@ -11,7 +11,7 @@ import BoxAttacks from "../components/battle-components/BoxAttacks";
 import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
 import { useSelector } from "react-redux";
-import PokemonList from "../components/PokemonList";
+import PokemonList from "../components/battle-components/PokemonList";
 import BoxEnemy from "../components/battle-components/BoxEnemy";
 import UserApi from "../services/api"
 
@@ -33,18 +33,6 @@ const Battleground = () => {
     const afterAttack = async (dmg, energy) => {
         setDmg(dmg)
         setEnergy(energy)
-        console.log("Rodič obdržel: ", dmg, "energie: ", energy);
-        const newHp = activePokemon.currentHp - dmg;
-        const updatedHp = newHp > 0 ? newHp : 0;
-        const data = {
-            currentHp: updatedHp,
-        }
-        try {
-            await UserApi.updatePokemonStatus(activePokemon._id, data)
-            console.log("status updated", activePokemon.currentHp);
-        } catch (error) {
-            console.error("status update error", error);
-        }
     }
 
     const itIsOver = (who) => {
@@ -76,6 +64,26 @@ const Battleground = () => {
     useTimer(() => {
         if (startBattle) {
             setEnemyDmg(activeEnemy.dmg)
+            console.log("Tohle je aktuální hp",activePokemon.pokemon.currentHp);
+            const newHp = activePokemon.pokemon.currentHp - activeEnemy.dmg;
+            const updatedHp = newHp > 0 ? newHp : 0;
+            let data = {
+                currentHp: updatedHp,
+            }
+            UserApi.updateStatus(activePokemon.pokemon._id, data)
+            .then(res => {
+                if (res.status === 200){
+                    setActivePokemon(prev => ({
+                        ...prev,
+                        pokemon: {
+                            ...prev.pokemon,
+                            currentHp: updatedHp
+                        }
+                    }))
+                    console.log("status updated", updatedHp);
+                }
+            })
+            .catch(error => {console.error("status update error"), error})
         }
     }, 2000)
 
@@ -110,7 +118,8 @@ const Battleground = () => {
                         <>
                         <HpComponent 
                             who= "user"
-                            hp= {activePokemon?.pokemon?.currentHp}
+                            maxHp= {activePokemon?.pokemon?.skills.hp}
+                            currentHp= {activePokemon.pokemon.currentHp}
                             damage= {enemyDmg}
                             itIsOver= {itIsOver}
                         />
@@ -144,7 +153,8 @@ const Battleground = () => {
                     <span>{activeEnemy.name}</span>              
                     <HpComponent 
                     who="enemy"
-                    hp= {activeEnemy.hp}
+                    maxHp= {activeEnemy.hp}
+                    currentHp={activeEnemy.hp}
                     damage = {dmg}
                     itIsOver= {itIsOver}
                     />           
