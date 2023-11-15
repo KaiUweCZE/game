@@ -28,10 +28,16 @@ export const addPokemon = async (req, res, next) => {
     const {name, skills, attacks, expToNextLevel } = req.body.pokemon;
     const { trainer } = req.body;
     console.log('Request body:', req.body);
-    const newPokemon = new Pokemon({name, skills, attacks})
-    try {
-        console.log('New Pokemon:', newPokemon);
+    const newPokemon = new Pokemon({
+        name, 
+        skills, 
+        attacks,
+        currentHp: skills.hp,
+        currentEnergy: skills.energy,
+        currentExp: 0
+    })
 
+    try {
         const savedPokemon = await newPokemon.save();
         console.log('Saved Pokemon:', savedPokemon);
 
@@ -220,6 +226,36 @@ export const removeFromSix = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+}
+
+export const updatePokemonStatus = async (req,res,next) =>{
+    const {pokemonId} = req.params;
+    const { currentHp, currentEnergy, currentExp } = req.body;
+
+    try {
+        const pokemon = await Pokemon.findById(pokemonId);
+
+        if(!pokemon){
+            res.status(404).json({message: "Pokemon not found"});
+        }
+
+        if (currentHp !== undefined) {
+            pokemon.currentHp = currentHp;          
+        }
+        if (currentEnergy !== undefined) {
+            pokemon.currentEnergy = currentEnergy;         
+        }
+        if (currentExp !== undefined) {
+            pokemon.currentExp = currentExp;
+        }
+
+        await pokemon.save();
+
+        res.status(200).json({ message: "Pokemon status updated"})
+    } catch (error) {
+        next(error);
+    }
+
 }
 
 // set user location

@@ -1,6 +1,7 @@
 import React from 'react';
 import { pokemonsData } from '../data/pokemons';
 
+//This component shows your six of user's pokemon
 const PokemonList = ({ pokemons, choosePokemon, setActivePokemon, setStartBattle }) => {
 
     //create an array with length 6 elements

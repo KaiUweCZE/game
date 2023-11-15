@@ -52,6 +52,15 @@ const skillSchema = new mongoose.Schema({
 const pokemonSchema = new mongoose.Schema({
     name: String,
     skills: skillSchema,
+    currentHp: {
+        type: Number,
+        default: function() { return this.skills.hp; }
+    },
+    currentEnergy: {
+        type: Number,
+        default: function() { return this.skills.energy; }
+    },
+    currentExp: Number,
     expToNextLevel: {
         type: Number,
         default: 100

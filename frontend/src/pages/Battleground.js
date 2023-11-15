@@ -12,6 +12,8 @@ import { countryData } from "../data/DataCountries/countryData";
 import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWallpaper";
 import { useSelector } from "react-redux";
 import PokemonList from "../components/PokemonList";
+import BoxEnemy from "../components/battle-components/BoxEnemy";
+import UserApi from "../services/api"
 
 
 const Battleground = () => {
@@ -28,18 +30,34 @@ const Battleground = () => {
     //const [stopFight, setStopFight] = useState(false)
 
     //updateDmg
-    const afterAttack = (dmg, energy) => {
+    const afterAttack = async (dmg, energy) => {
         setDmg(dmg)
         setEnergy(energy)
         console.log("Rodič obdržel: ", dmg, "energie: ", energy);
+        const newHp = activePokemon.currentHp - dmg;
+        const updatedHp = newHp > 0 ? newHp : 0;
+        const data = {
+            currentHp: updatedHp,
+        }
+        try {
+            await UserApi.updatePokemonStatus(activePokemon._id, data)
+            console.log("status updated", activePokemon.currentHp);
+        } catch (error) {
+            console.error("status update error", error);
+        }
     }
 
     const itIsOver = (who) => {
         //setStopFight(true)
         console.log("Konec battlu " + who + " je poražen");
-        setStartBattle(false)
-        setWho(who)
-        setIsOver(true)
+        setStartBattle(false);
+        setWho(who);
+        setIsOver(true);
+    }
+
+    const nextRound = () => {
+        setIsOver(false)
+        setStartBattle(true)
     }
 
     //encounter random pokemon
@@ -69,7 +87,7 @@ const Battleground = () => {
 
     //send functions to custom hooks (useStatePage),every increment is next round in battleground
     const actions = {
-        0: () => {console.log("clicked on start"), setIsOver(false)},
+        0: () => {console.log("clicked on start"), nextRound()},
         1: () => console.log("Next Round!"),
         2: () => console.log("Oh man, the last one")
     }
@@ -92,7 +110,7 @@ const Battleground = () => {
                         <>
                         <HpComponent 
                             who= "user"
-                            hp= {activePokemon?.pokemon?.skills?.hp}
+                            hp= {activePokemon?.pokemon?.currentHp}
                             damage= {enemyDmg}
                             itIsOver= {itIsOver}
                         />
@@ -122,9 +140,7 @@ const Battleground = () => {
                 </div>
                 <div className="box__battle--enemy">
                     {/* this will be component*/}
-                    <div className="battle-field" style={{backgroundImage: `url(${fieldOne})`}}>
-                        <img className="combined-animation" src={activeEnemy.img} alt="" />                        
-                    </div>
+                    <BoxEnemy backgroundImage={fieldOne} enemyImg={activeEnemy.img}/>
                     <span>{activeEnemy.name}</span>              
                     <HpComponent 
                     who="enemy"
