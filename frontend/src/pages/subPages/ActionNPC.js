@@ -6,9 +6,8 @@ import UserInfoBox from "../../components/ProfileComp/UserInfoBox";
 
 const ActionNPC = () => {
     const { id } = useParams();
-    console.log(id);
     const character = npcCharacters.find((c) => c.id === Number(id));
-    console.log(character);
+
     return(
         <>
         <div className="container__profile">

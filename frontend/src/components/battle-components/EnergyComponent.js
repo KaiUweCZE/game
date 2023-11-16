@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 
 // This component visualizes energy staus for user pokemon
-const EnergyComponent = ({ energy, costEnergy }) => {
+const EnergyComponent = ({ energy, costEnergy=0 }) => {
     const [actualEnergy, setActualEnergy] = useState(energy)
     useEffect(() => {
         if (costEnergy !== undefined && costEnergy !== null) {

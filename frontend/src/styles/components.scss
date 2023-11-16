@@ -571,3 +571,19 @@ figure.menu__item{
         }
     }
 }
+
+//ActionPokemon styles
+.box__one-pokemon{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    //background-color: rgb(142, 155, 123);
+    //align-items: center;
+    img{
+        max-width: 15rem;
+    }
+    .background__bar{
+        margin: 0;
+        justify-content: flex-start;
+    }
+}

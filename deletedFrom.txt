@@ -1,0 +1,24 @@
+/*useTimer(() => {
+        if (startBattle) {
+            setEnemyDmg(activeEnemy.dmg)
+            const newHp = activePokemon.pokemon.currentHp - activeEnemy.dmg;
+            const updatedHp = newHp > 0 ? newHp : 0;
+            let data = {
+                currentHp: updatedHp,
+            }
+            UserApi.updateStatus(activePokemon.pokemon._id, data)
+            .then(res => {
+                if (res.status === 200){
+                    setActivePokemon(prev => ({
+                        ...prev,
+                        pokemon: {
+                            ...prev.pokemon,
+                            currentHp: updatedHp
+                        }
+                    }))
+                    console.log("status updated", updatedHp);
+                }
+            })
+            .catch(error => {console.error("status update error"), error})
+        }
+    }, 2000)*/ - from Battleground.js

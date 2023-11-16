@@ -12,6 +12,7 @@ import MyBox from './pages/UserPages/MyBox';
 import Map from './pages/Map';
 import NPC from './pages/NPC'
 import ActionNPC from './pages/subPages/ActionNPC';
+import ActionPokemon from './pages/subPages/ActionPokemon';
 import Explore from './pages/Explore';
 import Mail from './pages/Mail';
 
@@ -34,6 +35,7 @@ const App = () => {
                         <Route path='/map' element={<Map/>} />
                         <Route path="/npc" element={<NPC/>}/>
                         <Route path="/npc/:id" element={<ActionNPC />} />
+                        <Route path='/pokemon/:id' element={<ActionPokemon />}/>
                         <Route path="/mail" element={<Mail />}/>
                     </Route>
                 </Route>

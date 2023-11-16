@@ -600,4 +600,17 @@ figure.menu__item img {
 }
 figure.menu__item:hover img {
   transform: scale(1.2);
+}
+
+.box__one-pokemon {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+.box__one-pokemon img {
+  max-width: 15rem;
+}
+.box__one-pokemon .background__bar {
+  margin: 0;
+  justify-content: flex-start;
 }/*# sourceMappingURL=components.css.map */

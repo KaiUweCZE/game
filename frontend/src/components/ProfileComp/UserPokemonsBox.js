@@ -5,6 +5,7 @@ import {pokemonsData} from "../../data/pokemons"
 import LoaderLight from "../LoaderLight";
 import { useDispatch } from "react-redux";
 import { updateMySix } from "../../redux/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const UserPokemonsBox = ({myClass, i}) => {
     const [t,setT] = useState("")
@@ -12,6 +13,7 @@ const UserPokemonsBox = ({myClass, i}) => {
     const { pokemons, removeFromSix, getMySix} = usePokemonActions()
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const otherclass = () => {
         if (t === ""){
@@ -23,7 +25,6 @@ const UserPokemonsBox = ({myClass, i}) => {
         }
     }
 
-
     const handleRemove = async (id) => {
         setLoading(true); // Start loader
         const success = await removeFromSix(id); // Remove Pokemon
@@ -33,6 +34,7 @@ const UserPokemonsBox = ({myClass, i}) => {
             setLoading(false); // Stop loader
         }
     };
+
 
     return(
         <div className={`box__user-pokemons ${i === 1 ? myClass : ""} ${i === 0 ? "fast-opacity" : ""}`}>
@@ -54,7 +56,7 @@ const UserPokemonsBox = ({myClass, i}) => {
                 
                 return(
                     <figure key={index}>
-                        <img src={onePokemon.img} alt=""/>
+                        <img src={onePokemon.img} alt="" onClick={() => navigate(`/pokemon/${pokemon._id}`)} />
                         <article className={`${t}`}>
                             <h3>{pokemon.name}</h3>
                             <p>level: {level}</p>
