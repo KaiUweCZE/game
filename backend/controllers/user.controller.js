@@ -108,6 +108,24 @@ export const getUser = async (req, res, next) => {
 
 
 //gets all of your pokemons
+export const getOnePokemon = async (req, res, next) => {
+    const { pokemonId } = req.params;
+    try {
+        const pokemon = await Pokemon.findById(pokemonId)
+            .populate('attacks', 'name') //get only names of attacks
+            //.populate('trainer', 'username') //get only name of trainer
+        if (pokemon) {
+            return res.status(200).json({pokemon})
+        } else {
+            return res.status(404).json({ message: "Pokemon is not found"})
+        }
+    } catch (error) {
+        console.log(pokemonId);
+        next(error)     
+    }
+}
+
+
 export const getYourPokemons = async (req, res, next) => {
     const {username} = req.query;
     try{
