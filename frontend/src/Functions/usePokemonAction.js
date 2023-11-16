@@ -135,3 +135,12 @@ export const getBoxPokemons = (username) => {
   })
  
 }
+
+export const getOnePokemon = (id) => {
+  return UserApi.getOnePokemon(id).then(res => {
+    return res.data.pokemon;
+  }).catch(err => {
+    console.error(err);
+    throw err;
+  })
+}

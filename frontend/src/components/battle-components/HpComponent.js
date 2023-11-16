@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // This component visualizes hp staus for user and enemy pokemons
-const HpComponent = ( { who, maxHp, currentHp, damage, itIsOver } ) => {
+const HpComponent = ( { who="", maxHp, currentHp, damage=0, itIsOver="" } ) => {
     const [actualHp, setActualHp] = useState(currentHp)
 
     useEffect(() => {

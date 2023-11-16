@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useMySix } from "../Functions/usePokemonAction";
 import { useStatePage, useTimer } from "../Functions/myHooks";
-import { choosePokemon } from "../Functions/BattleFunctions";
+import { choosePokemon, updateHp } from "../Functions/BattleFunctions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { fieldOne } from "../data/importedImages";
@@ -13,8 +13,6 @@ import EndOfBattleWallpaper from "../components/battle-components/EndOfBattleWal
 import { useSelector } from "react-redux";
 import PokemonList from "../components/battle-components/PokemonList";
 import BoxEnemy from "../components/battle-components/BoxEnemy";
-import UserApi from "../services/api"
-
 
 const Battleground = () => {
     const {currentUser} = useSelector((state) => state.user)
@@ -61,32 +59,26 @@ const Battleground = () => {
          getEnemy()
     },[])
     
+    //this part of code user's pokemon current hp in database
+    //setEnemyDmg visualize it
     useTimer(() => {
         if (startBattle) {
             setEnemyDmg(activeEnemy.dmg)
-            console.log("Tohle je aktuální hp",activePokemon.pokemon.currentHp);
-            const newHp = activePokemon.pokemon.currentHp - activeEnemy.dmg;
-            const updatedHp = newHp > 0 ? newHp : 0;
-            let data = {
-                currentHp: updatedHp,
-            }
-            UserApi.updateStatus(activePokemon.pokemon._id, data)
-            .then(res => {
-                if (res.status === 200){
+            updateHp(
+                activePokemon.pokemon.currentHp,
+                activeEnemy.dmg,
+                activePokemon.pokemon._id
+                ).then(updateHp => {
                     setActivePokemon(prev => ({
-                        ...prev,
-                        pokemon: {
-                            ...prev.pokemon,
-                            currentHp: updatedHp
-                        }
-                    }))
-                    console.log("status updated", updatedHp);
-                }
-            })
-            .catch(error => {console.error("status update error"), error})
+                     ...prev, pokemon: { ...prev.pokemon, currentHp:updateHp}
+                }))
+                }).catch(error => {
+                    console.error("Failed", error)}
+                )
         }
     }, 2000)
 
+    //because of the hp component that reacts to dmg changes 
     useTimer(() => {
         if(startBattle && enemyDmg !== 0){
             setEnemyDmg(0)

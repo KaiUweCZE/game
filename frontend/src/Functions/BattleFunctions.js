@@ -1,4 +1,5 @@
 import { pokemonsData } from '../data/pokemons';
+import UserApi from '../services/api'
 
 // battleground, pokemon
 export const choosePokemon = (pokemon, setActivePokemon, setStartBattle) => {
@@ -11,4 +12,53 @@ export const choosePokemon = (pokemon, setActivePokemon, setStartBattle) => {
     setActivePokemon(onePokemon);
     console.log("Starting battle");
     setStartBattle(true);
+}
+
+
+export const updateHp = (hp, dmg, id) => {
+    const newHp = hp - dmg;
+    const updatedHp = newHp > 0 ? newHp : 0
+    let data = {
+        currentHp: updatedHp,
+    }
+
+    return UserApi.updateStatus(id, data)
+            .then(res => {
+                if(res.status === 200){
+                    console.log("New Hp: ", updatedHp);
+                    return updatedHp;
+                } else{
+                    throw new Error("failed to update status");
+                }
+            })
+            .catch(err => {
+                console.error("status update error", err);
+                throw err
+            })
+}
+
+export const updateExp = (currentExp, newExp, id) => {
+    const exp = currentExp + newExp
+    
+    let data = {
+        currentExp: exp,
+    }
+
+    return UserApi.updateStatus(id, data)
+            .then(res => {
+                if(res.status === 200){
+                    console.log("New Exp", exp);
+                    return exp;
+                } else {
+                    throw new Error("failed to update status")
+                }
+            })
+            .catch(err => {
+                console.error("exp update error: ", err);
+            })
+}
+
+
+export const avoidAttack = () => {
+
 }

@@ -37,5 +37,6 @@ export const findImg = (nameOfImage) => {
 
 export const findImgOfPokemon = (pokemon) => {
     const pokemonImg = pokemonsData.find(e => e.name.toLocaleLowerCase() === pokemon.toLocaleLowerCase())
-
+    console.log("Obrázek: ", pokemonImg);
+    return pokemonImg.img
 }

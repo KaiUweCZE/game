@@ -75,6 +75,9 @@ class UserApi{
     updateStatus(pokemonId, data){
         return axios.patch(`${URL}pokemon/${pokemonId}`, data)
     }
+    getOnePokemon(pokemonId){
+        return axios.get(`${URL}pokemon/${pokemonId}`)
+    }
 }
 
 export default new UserApi()

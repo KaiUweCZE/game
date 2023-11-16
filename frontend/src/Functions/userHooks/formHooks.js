@@ -16,7 +16,3 @@ export const useLogOut = () => {
     
     return logOut;
 }
-
-export const useReduxData = () => {
-    return useSelector((state) => state.user.currentUser);
-}
