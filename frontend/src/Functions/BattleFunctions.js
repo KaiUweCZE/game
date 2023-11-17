@@ -58,6 +58,28 @@ export const updateExp = (currentExp, newExp, id) => {
             })
 }
 
+export const updateEnergy = (currentEnergy, energyCost, id) => {
+    const energy = currentEnergy - energyCost
+    const updatedEnergy = energy > 0 ? energy : 0
+
+    let data = {
+        currentEnergy: energy,
+    }
+
+    return UserApi.updateStatus(id, data)
+            .then(res => {
+                if(res.status === 200){
+                    console.log("Stálo to toliko energie: ", energyCost);
+                    console.log("New energy is: ", updatedEnergy)
+                    return updatedEnergy
+                } else {
+                    throw new Error("failed to update energy")
+                }
+            })
+            .catch(err => {
+                console.error("energy update error", err);
+            })
+}
 
 export const avoidAttack = () => {
 

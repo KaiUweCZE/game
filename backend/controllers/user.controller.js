@@ -254,7 +254,7 @@ export const updatePokemonStatus = async (req,res,next) =>{
         const pokemon = await Pokemon.findById(pokemonId);
 
         if(!pokemon){
-            res.status(404).json({message: "Pokemon not found"});
+            return res.status(404).json({message: "Pokemon not found"});
         }
 
         if (currentHp !== undefined) {
@@ -269,7 +269,7 @@ export const updatePokemonStatus = async (req,res,next) =>{
 
         await pokemon.save();
 
-        res.status(200).json({ message: "Pokemon status updated"})
+        return res.status(200).json({ message: "Pokemon status updated"})
     } catch (error) {
         next(error);
     }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useMySix } from "../Functions/usePokemonAction";
 import { useStatePage, useTimer } from "../Functions/myHooks";
-import { choosePokemon, updateHp } from "../Functions/BattleFunctions";
+import { choosePokemon, updateEnergy, updateHp } from "../Functions/BattleFunctions";
 import Loader from "../components/Loader";
 import GetMob from "../Functions/GetMob";
 import { fieldOne } from "../data/importedImages";
@@ -25,17 +25,29 @@ const Battleground = () => {
     const [enemyDmg, setEnemyDmg] = useState(0)
     const [isOver, setIsOver] = useState(false)
     const [who, setWho] = useState()
-    //const [stopFight, setStopFight] = useState(false)
+    const [withoutEnergy, setWithoutEnergy] = useState(false)
 
     //updateDmg
-    const afterAttack = async (dmg, energy) => {
+    const afterAttack = (dmg, energy) => {
         setDmg(dmg)
         setEnergy(energy)
+        console.log("ENNEERRE", energy);
+        updateEnergy(
+            activePokemon.pokemon.currentEnergy,
+            energy,
+            activePokemon.pokemon._id
+        ).then( updatedEnergy => {
+            console.log("zasílám toliko energy: ", activePokemon.pokemon.currentEnergy);
+            setActivePokemon( prev => ({
+                ...prev,
+                pokemon: { ...prev.pokemon, currentEnergy: updatedEnergy}
+            }))
+        }).catch(err => {
+            console.error("failed", err);
+        })
     }
 
     const itIsOver = (who) => {
-        //setStopFight(true)
-        console.log("Konec battlu " + who + " je poražen");
         setStartBattle(false);
         setWho(who);
         setIsOver(true);
@@ -51,10 +63,7 @@ const Battleground = () => {
     useEffect(() => {
         const getEnemy = () => {
             const enemy = GetMob(enemies.names)
-            console.log("tohle jsou jeho staty: ", enemy);
-            //enemyImg(enemy)
             setActiveEnemy(enemy)
-            console.log("tohle jsou jeho staty: ", enemy);
          }      
          getEnemy()
     },[])
@@ -115,9 +124,11 @@ const Battleground = () => {
                             damage= {enemyDmg}
                             itIsOver= {itIsOver}
                         />
-                        <EnergyComponent 
-                        energy= {activePokemon.pokemon.skills.energy}
+                        <EnergyComponent
+                        currentEnergy = {activePokemon.pokemon.currentEnergy}
+                        maxEnergy = {activePokemon.pokemon.skills.energy}
                         costEnergy = {energy}
+                        setWithoutEnergy={setWithoutEnergy}
                         />
                         </>
                     ) : null}
@@ -126,6 +137,7 @@ const Battleground = () => {
                     id= {activePokemon}
                     afterAttack= {afterAttack}
                     startBattle= {startBattle}
+                    withoutEnergy={withoutEnergy}
                      /> 
                     )
                     }

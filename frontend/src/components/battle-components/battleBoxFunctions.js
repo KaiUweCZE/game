@@ -1,9 +1,10 @@
 
 
 export const handlerAttack = (attack) =>{
+    console.log("tento attack: ", attack);
     return attack
-    //calculateHp(attack.dmg)
 }
+
 export const handlerAvoid = () =>{
     console.log("void!");
 }

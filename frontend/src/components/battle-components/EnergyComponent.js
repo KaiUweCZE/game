@@ -2,25 +2,27 @@ import React, { useState, useEffect } from "react";
 
 
 // This component visualizes energy staus for user pokemon
-const EnergyComponent = ({ energy, costEnergy=0 }) => {
-    const [actualEnergy, setActualEnergy] = useState(energy)
+const EnergyComponent = ({ currentEnergy, maxEnergy, costEnergy=0, setWithoutEnergy}) => {
+    const [actualEnergy, setActualEnergy] = useState(currentEnergy)
     useEffect(() => {
         if (costEnergy !== undefined && costEnergy !== null) {
             const newEnergy = actualEnergy - costEnergy;
             if (newEnergy < 0) {
-                console.log("ÚTOK NELZE  PROVÉST");
+                setActualEnergy(0)
+                setWithoutEnergy(true)
+                console.log("ÚTOK NELZE PROVÉST");
             } else {
                 setActualEnergy(newEnergy);
             }
         }
 
-    }, [energy, costEnergy]);
+    }, [maxEnergy, costEnergy]);
 
-    console.log("tohle že je energY?  ", energy);
+    console.log("tohle že je energY?  ", maxEnergy);
     return (
         
         <div className="background__bar">
-            <div className="your-energy" style={{ width: `${actualEnergy * (100/energy)}%` }}></div>
+            <div className="your-energy" style={{ width: `${actualEnergy * (100/maxEnergy)}%` }}></div>
         </div>
     )
 }
